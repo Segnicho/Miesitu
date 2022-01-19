@@ -1,16 +1,24 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
-xmlns:th="http://www.thymeleaf.org">
- <head>
-   <title>MIESITU</title>
-   <!-- Bootstrap core CSS -->
-   <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
- </head>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
- <body>
+<head>
+    <title>MIESITU</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/footer.css" />
+</head>
+
+<body>
     <div class="container">
         <h1>Welcome to Miesitu Page!</h1>
+
     </div>
+    <div th:replace="footer.html :: footer"></div>
+
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
 </body>
+
 </html>
