@@ -16,32 +16,33 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="myleft">
-                        <form action="#" th:action = "@{/signup}" method="post">
+
+                        <form action="#" th:action = "@{signup}" method="post">
                             <h2>Sign-up</h2>
                             <div class="form-sytle">
                                 <div class="row">
-                                    <div class="col-6"><input th:field="*{fristName}" type="text" class="form-control" name="First-name" placeholder="First-name" required="required"> </div>
-                                    <div class="col-6"><input th:field="*{lastName}" type="text" class="form-control" name="Last-name" placeholder="Last-name" required="required"></div>
+                                    <div class="col-6"><input type="text" class="form-control" name="fristNameInp" placeholder="First-name" required="required"> </div>
+                                    <div class="col-6"><input type="text" class="form-control" name="lastNameInp" placeholder="Last-name" required="required"></div>
                                 </div>
                                 <div class="form-style row">
-                                    <div class="col-12"><input type="email" th:field="*{email}" class="form-control" name="Email" placeholder="Enter email"></div>
+                                    <div class="col-12"><input type="email" class="form-control" name="emailInp" placeholder="Enter email"></div>
                                 </div>
                 
                                 <div class="form-sytle row">
-                                    <div class="col-12"><input type="number" th:field="*{phone}" class="form-control" name="Phone" placeholder="Phone" required="required"></div>
+                                    <div class="col-12"><input type="number" class="form-control" name="phoneInp" placeholder="Phone" required="required"></div>
                                 </div>
                 
                                 <div class="form-style row">
-                                    <div class="col-12"><input type="number" class="form-control" name="Code" placeholder="Code" required="required"></div>
+                                    <div class="col-12"><input type="number" class="form-control" name="codeInp" placeholder="Code" required="required"></div>
                                 </div>
                 
                                 <div class="form-style row">
-                                    <div class="col-12"><input type="text" th:field="*{area}" class="form-control" name="Area" placeholder="Area" required="required"></div>
+                                    <div class="col-12"><input type="text" class="form-control" name="areaInp" placeholder="Area" required="required"></div>
                                 </div>
                 
                                 <div class="row">
-                                    <div class="col-6"><input type="password" class="form-control" name="Password" placeholder="Password" required="required"> </div>
-                                    <div class="col-6"><input type="password" class="form-control" name="Confirm_Password" placeholder="Confirm Password" required="required"></div>
+                                    <div class="col-6"><input type="password" class="form-control" name="Password" placeholder="PasswordInp" required="required"> </div>
+                                    <div class="col-6"><input type="password" class="form-control" name="Confirm_Password" placeholder="Confirm_PasswordInp" required="required"></div>
                                 </div>
                                 <button type="Submit" class="btn btn-primary btn-block">Submit</button>
                             </div>
