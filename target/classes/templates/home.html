@@ -2,23 +2,139 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>MIESITU</title>
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css"  th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css}">
+
+    <script th:src="@{https://code.jquery.com/jquery-3.5.1.slim.min.js}" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js}" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css}">
+    
+    <link rel="stylesheet" type="text/css" href="css/nav.css">
+    <link rel="stylesheet" type="text/css" href="css/small nav.css">
+    <link rel="stylesheet" type="text/css" href="css/menu.css">
+
+    <link rel="stylesheet" type="text/css" href="css/home.css">
+
+   
+    <title>Home</title>
     <link rel="stylesheet" type="text/css" href="css/footer.css" />
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 </head>
-
 <body>
-    <div class="container">
-        <h1>Welcome to Miesitu Page!</h1>
+    <header>
+        <section class="header header row">
 
-    </div>
+            <div class="header__logo col-2 col-xsm-4"> <a href="index.html"> <img src="images/logo.pn" alt="MIESITU" srcset=""></a> </div>
+            <div class="header__logo col-1"></div>
+
+            <nav class="header__links hide initial col-5 col-sm-0">
+                <ul class="header__links__ul">
+                    <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                        <i class="bi bi-house-fill"></i>
+                        <a href="index.html"> home </a></li>
+                    <li class="header__links__ul__li"> 
+                        <i class="bi bi-info-circle-fill"></i>
+                        <a href="Html/about.html"> 
+                        </i> about </a>    </li>
+                    <li class="header__links__ul__li"> 
+                        <i class="bi bi-telephone-fill"></i>
+                        <a href="Html/tutorials.html"> Contact Us</a> </li>
+                </ul>
+            </nav>
+
+            <section class="header__topnav col-3 col-xsm-8">        
+                <div class="header__topnav__left">
+                    <div class = "header__topnav__left__btn">
+                    <a href="" class = "btn btn-primary">Log in</a>
+                    <a href="" class = "btn btn-info">Sign up</a>
+                    </div>
+                    <div class="menu">
+                        <div class="menu__icon">
+                            <div class="menu__icon__middle"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        <img src="images/Vector(1).svg" alt="Navigation wavy image" srcset="" class="svg col-0">
+
+        </section>
+    </header>
+
+    <main>
+        <section class="intro">
+            <div class="row">
+            <section class="intro__welcome col-7">
+                <div class="intro__welcomeTxt">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                    Odio maiores quod debitis, doloribus alias reiciendis. 
+                    Sapiente quo ad consectetur beatae tempore hic ullam laborum 
+                    adipisci natus eveniet iure, esse eligendi.<br><br>
+                    <a href="" class = "btn btn-info">Sign up</a>
+                </div>
+            </section>
+
+            <section class="intro__image col-5">
+                <img src="images/logo.png" alt="MIESITU" srcset="" class = "intro__img">
+            </section>
+            </div>
+            <img src="images/Vector(2).svg" alt="Wavy Image" srcset="" class = "wavy">
+        </section>
+
+        <section class="products row">
+            <h1>Products</h1>
+            <div class="card col-6" style="width: 18rem; margin:5px;">
+                <img src="images/logo.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Sugar</h5>
+                  <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit,.</p>
+                  <a href="#" class = "btn btn-primary">See detail</a>
+        
+                </div>
+              </div>
+            <div class="card col-6" style="width: 18rem; margin:5px;">
+            <img src="images/logo.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Sugar</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit,.</p>
+                <a href="#" class = "btn btn-primary">See detail</a>
+    
+            </div>
+            </div>
+            <img src="images/Vector(3).svg" alt="Wavy Image" srcset="" class = "wavy">
+
+        </section>
+
+        <section class="sellStatus">
+
+            <h2>Sell Status</h2>
+            <div class="card container row sellStatus__item" style="height: 9rem; margin:5px;">
+                <div class = "col-4">
+                    <img src="images/logo.png" class="sellStatus__item__img" alt="..." style="height: 9rem;"></div>
+                <div class="col-8">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos dolores doloremque.
+                </div>
+            </div>
+
+            <div class="card container row sellStatus__item" style="height: 9rem; margin:5px;">
+                <div class = "col-4">
+                    <img src="images/logo.png" class="sellStatus__item__img" alt="..."style="height: 9rem;">
+                </div>
+                <div class="col-8">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos dolores doloremque.
+                </div>
+            </div>
+        </section>
+    </main>
+    
     <div th:replace="footer.html :: footer"></div>
-
-    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="js/menu.js"></script>
 </body>
-
 </html>
