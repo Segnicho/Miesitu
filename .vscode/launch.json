@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-WebProjectApplication<web_project>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.miesitu.web_project.WebProjectApplication",
+            "projectName": "web_project",
+            "args": ""
+        }
+    ]
+}
