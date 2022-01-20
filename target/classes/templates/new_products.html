@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    
+
+    <div class="container">
+
+
+        <h1>Adding a newly arrived products</h1>
+        
+        <form action="#" th:action="/addNewProduct" th:object="@{product}" method="post"></form>
+
+        <div class="container" th:action="@{/addProduct}" th:object = "${product}" method="POST">
+            <input type="text" th:field="*{sugarPrice}" placeholder="price of  a kilo of a sugar for this time">
+            <input type="text" th:field="*{oilPrice}" placeholder="price of  a kilo of a oil for this time">
+            <input type="text" th:field="*{startDate}" placeholder="startin gfrom when is the product goin to be distributed">
+            <input type="text" th:field="*{endDate}" placeholder="Starting from when is the distribution of the products going to stop.">
+            <button type="submit" class="btn btn-info col-2"> Add the product </button>
+        </div>
+
+
+    </div>
+
+
+
+</body>
+</html>
