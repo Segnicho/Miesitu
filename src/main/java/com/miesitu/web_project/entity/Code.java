@@ -1,7 +1,8 @@
 package com.miesitu.web_project.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import java.util.List;
+
+import javax.persistence.*;
 
 import lombok.*;
 
@@ -12,11 +13,13 @@ import lombok.*;
 public class Code {
     @Id
     private long code;
-    
-    public static enum ROLES{
-        ADMIN, CUSTOMER, DISTRIBUTER
-    }
 
-    private ROLES role;
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(
+        name = "code_role",
+        joinColumns = @JoinColumn(name = "code", referencedColumnName = "code"),
+        inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "roleId")
+    )
+    private List<Role> codeRole;
 
 }
