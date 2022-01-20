@@ -29,6 +29,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 2vw;
 }
 
 .myright log {
@@ -42,6 +43,7 @@
     height: 100%;
     padding: 20px;
     padding-left: 4vw;
+    float: left;
 }
 
 .row {
