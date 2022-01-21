@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Users</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container-fluid text-center">
+        <h1>List of Users </h1>
+        <div class="mr-2">
+            <a class="h2" th:href="@{/admin/newUser}">Add new user</a>
+        </div>
+        <div th:if="${message}" class=" alert alert-success text-center ">
+            [[${message}]]
+        </div>
+        <table class="table table-bordered ">
+            <thead class="table-dark ">
+                <tr>
+                    <th scope="col ">#</th>
+                    <th scope="col ">firstName</th>
+                    <th scope="col ">lastName</th>
+                    <th scope="col ">email</th>
+                    <th scope="col ">phone</th>
+                    <th scope="col ">Area</th>
+                    <th scope="col ">password</th>
+                    <th scope="col "></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <th scope="row ">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>fat</td>
+                    <td>
+                        <a>edit</a>
+                        <a>delete</a>
+                    </td>
+                </tr>
+                <th:block th:each=" user : ${userLists} ">
+                    <tr>
+                        <td>[[${user.getUserId}]]</td>
+
+                        <td>[[${user.getFirstName}]]</td>
+                        <td>[[${user.getLastName}]]</td>
+                        <td>[[${user.getEmail}]]</td>
+                        <td>[[${user.getPhone}]]</td>
+                        <td>[[${user.getArea}]]</td>
+                        <td>[[${user.getPassword}]]</td>
+                        <td>
+                            <a class="h3 mr-3 " th:href="@{ '/admin/editUser/' + ${user.getUserId}} ">edit</a>
+                            <a class="h3 mr-3 " th:href="@{ '/admin/deleteUser/' + ${user.getUserId}} ">delete</a>
+                        </td>
+
+                    </tr>
+                </th:block>
+
+            </tbody>
+        </table>
+
+    </div>
+    <script th:src="@{/js/bootstrap.bundle.min.js} "></script>
+
+</body>
+
+</html>

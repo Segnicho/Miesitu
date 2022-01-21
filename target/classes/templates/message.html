@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Contact</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+</head>
+
+<body>
+    <main class="Contact mx-auto w-50">
+        <h1>contact Us</h1>
+        <div th:if="${message}" class=" alert alert-success text-center ">
+            [[${message}]]
+        </div>
+        <form method="post" action="#" th:action="@{/contactUs}">
+            <h1 class="h3 mb-3 fw-normal">Send us Feedback</h1>
+
+            <label class="form-label" for="fullname">fullname</label>
+            <input type="text" class="form-control" id="fullname" name="fullname" placeholder="fullname" />
+            <label class="form-label" for="email">email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="email@gmail.com" />
+            <label class="form-label" for="UserMessage">message</label>
+            <textarea type="text" class="form-control" id="fullname" name="UserMessage" placeholder="message" rows="5"></textarea>
+
+            <button class="w-100 btn btn-lg btn-primary my-2" type="submit">send</button>
+        </form>
+    </main>
+
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>

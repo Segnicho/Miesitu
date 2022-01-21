@@ -18,7 +18,7 @@ public class Anouncement {
     private String subject;
     private String message;
 
-    @OneToOne
+    //@OneToOne
     private User to;
     
     private Date sentDate;
