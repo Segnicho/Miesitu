@@ -1,6 +1,7 @@
 package com.miesitu.web_project.entity;
 
 import java.sql.Date;
+import java.time.Instant;
 
 import javax.persistence.*;
 
@@ -13,14 +14,16 @@ import lombok.*;
 @Entity
 public class Anouncement {
     @Id
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE)
     private long anouncementId;
 
     private String subject;
     private String message;
 
-    //@OneToOne
-    private User to;
+    @OneToOne
+    private User byUser;
     
-    private Date sentDate;
+    private Instant sentDate = Instant.now();
 
 }

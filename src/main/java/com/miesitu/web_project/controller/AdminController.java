@@ -1,7 +1,9 @@
 package com.miesitu.web_project.controller;
 
 
+import com.miesitu.web_project.services.AnouncementService;
 import com.miesitu.web_project.services.UserService;
+import com.miesitu.web_project.entity.Anouncement;
 import com.miesitu.web_project.entity.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class AdminController {
     @Autowired
     private UserService userSaveService;
+
+    @Autowired
+    private AnouncementService anouncementSaveService;
 
     @GetMapping("/admin")
     public String  showUserList(Model model) {
@@ -40,7 +45,6 @@ public class AdminController {
        userSaveService.saveUser(user1);
        ra.addFlashAttribute("message", "User has been saved succesfully.");
         return "redirect:/admin";
-
     }
 
     @GetMapping("/admin/editUser/{userId}")
@@ -70,7 +74,66 @@ public class AdminController {
     }
     return "redirect:/admin";
 
-    }  
+    } 
+
+    //Anouncement
+
+
+    @GetMapping("/admin/Anouncements")
+    public String  anouncementLIst(Model model) {
+        try {
+            Iterable<Anouncement> anouncement_Lists  = anouncementSaveService.listAll();
+            model.addAttribute("anouncementLists", anouncement_Lists);
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+        
+        return "anouncements";
+
+    }
     
+    @GetMapping("/admin/newAnouncement")
+    public String  newAnouncement(Model model) {
+        model.addAttribute("anounce", new Anouncement());
+        model.addAttribute("pageTitle", "Add New Anouncement");
+        return "AnouncementForm";
+
+    }
+
+    @PostMapping("/admin/saveAnouncement")//    Anouncement anouncement
+    public String  saveAnouncement(Anouncement anouncement, RedirectAttributes ra) {
+        anouncementSaveService.saveAnouncement(anouncement);
+        ra.addFlashAttribute("message", "Anouncement has been Posted Succesfully.");
+        return "redirect:/admin/Anouncements";
+    }
+
+
+    @GetMapping("/admin/editAnouncement/{anouncementId}")
+    public String  editAnouncement(@PathVariable("anouncementId") long anouncementId, Model model, RedirectAttributes ra) {
+        try {
+        Anouncement anouncement = anouncementSaveService.getAnouncements(anouncementId);
+        model.addAttribute("anouncement", anouncement);
+        model.addAttribute("pageTitle","Edit anouncement(Id:" + anouncement.getSubject() + ")");
+        return "AnouncementForm";
+
+        } catch (UsernameNotFoundException e) {
+            ra.addFlashAttribute("message", e.getMessage());
+            return "redirect:/admin/Anouncements";
+        }
+
+    }
+
+    @GetMapping("/admin/deleteAnouncement/{anouncementId}") //  Anouncement
+    public String deleteAnouncement(@PathVariable("anouncementId") long anouncementId,RedirectAttributes ra) {
+        try {
+            anouncementSaveService.delete(anouncementId);
+            ra.addFlashAttribute("message","The Anouncement ID:"+anouncementId+"has been deleted.");
+
+        } catch (UsernameNotFoundException e) {
+            ra.addFlashAttribute("message", e.getMessage());
+        }
+        return "redirect:/admin/Anouncements";
+
+    } 
 }
 

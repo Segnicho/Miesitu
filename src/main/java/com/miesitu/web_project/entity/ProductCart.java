@@ -12,14 +12,16 @@ import lombok.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "products")
-public class Product {
+public class ProductCart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long productId;
-    private int sugarPrice;
-    private int oilPrice;
+    private long cartId;
+    
+    @ManyToOne
+    private Products product;
+    
+    private int price;
     private Date startDate;
     private Date endDate;
-    private String productDesc;
     
 }

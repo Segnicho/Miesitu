@@ -46,13 +46,15 @@ Unable to login. Check your username and password.
     <title>Document</title>
 </head>
 <body class="container">
-    
+
     <div th:if="${param.error}">
         Unable to login. Check your username and password.
     </div>
     <div th:if="${message}">
         [[${message}]]
-    </div>
+    </div>    
+    Unable to login. Check your username and password.
+</div>
 
     <form method="POST" th:action="@{/login}" id="loginForm">
     <fieldset  class="border p-5">
@@ -61,13 +63,13 @@ Unable to login. Check your username and password.
       <div  class="container">
 
     <div class="form"> 
-      <input type="text" id="username" class="form__input" autocomplete="off" placeholder=" ">
-      <label for="useername" class="form__label">Username</label></div>
-      <div style="margin: 2%;" class="form"> 
+        <input type="text" id="username" class="form__input" autocomplete="off" placeholder=" ">
+        <label for="useername" class="form__label">Username</label></div>
+        <div style="margin: 2%;" class="form"> 
 
-    <input type="password" id="password" class="form__inpt" autocomplete="off" placeholder=" ">
-      <label for="password" class="form__labl">password</label> </div>
-  <div>  
+        <input type="password" id="password" class="form__inpt" autocomplete="off" placeholder=" ">
+        <label for="password" class="form__labl">password</label> </div>
+    <div>  
       <input type="submit" style="margin-top: 1rem;" id="form__button" class="btn btn-primary" value="Login">
     </div>
     </fieldset>
