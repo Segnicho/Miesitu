@@ -18,15 +18,6 @@
 </br></br></br></br></br>
 
     <section id="about" class="section-padding about-section">
-        <div sec:authorize="isAuthenticated()">
-            Welcome <b><span sec:authentication="name">Username</span></b>
-            &nbsp;
-            <i><span sec:authentication="principal.authorities">Roles</span></i>
-            <form th:action="@{/logout}" method="post">
-                <input type="submit" value="Logout" />
-            </form>  
-        </div>
-
         <div class="container">
             <div class="row" >
                 <div class="col-sm-8">
