@@ -14,22 +14,24 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 
 import lombok.*;
-
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class Role {
     @Id
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE)
     private long roleId;
 
-    private String roleName;
+    private String name;
 
     private String description;
 
-    @ManyToMany(mappedBy = "codeRole")
+    @ManyToMany(mappedBy = "codeRole", cascade = CascadeType.ALL)
     private Collection<Code> code;
 
-    @ManyToMany(mappedBy = "userRole")
+    @ManyToMany(mappedBy = "userRole", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Collection<User> user;
 }

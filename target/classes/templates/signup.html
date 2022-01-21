@@ -22,31 +22,36 @@
                     <div class="col-md-6">
                         <div class="myleft">
 
-                            <form action="#" th:action="@{signup}" method="post">
-                                <h2>Sign-up</h2>
+                            <form action="#" th:action="@{signup}" th:object="${form}" method="post">
+                                <h2>Sign-up</h2><br>
+                                <div th:if="${er}" class = "alert alert-danger text-center">
+                                    [[${er}]]
+                                </div>
+                                
                                 <div class="form-sytle">
                                     <div class="row">
-                                        <div class="col-6"><input type="text" class="form-control" name="fristNameInp" placeholder="First-name" required="required"> </div>
-                                        <div class="col-6"><input type="text" class="form-control" name="lastNameInp" placeholder="Last-name" required="required"></div>
+                                        <form:errors path="name" cssClass="error" />
+                                        <div class="col-6"><input type="text" class="form-control" th:field="*{fristName}" name="fristName" placeholder="First-name" required="required"> </div>
+                                        <div class="col-6"><input type="text" class="form-control" th:field="*{lastName}" name="lastName" placeholder="Last-name" required="required"></div>
                                     </div>
                                     <div class="form-style row">
-                                        <div class="col-12"><input type="email" class="form-control" name="emailInp" placeholder="Enter email"></div>
+                                        <div class="col-12"><input type="email" class="form-control" th:field="*{email}" name="email" placeholder="Enter email"></div>
                                     </div>
 
                                     <div class="form-sytle row">
-                                        <div class="col-12"><input type="number" class="form-control" name="phoneInp" placeholder="Phone" required="required"></div>
+                                        <div class="col-12"><input type="number" class="form-control" th:field="*{phone}" name="phone" placeholder="Phone" required="required"></div>
                                     </div>
 
                                     <div class="form-style row">
-                                        <div class="col-12"><input type="number" class="form-control" name="codeInp" placeholder="Code" required="required"></div>
+                                        <div class="col-12"><input type="number" class="form-control" th:field="*{code}" name="code" placeholder="Code" required="required"></div>
                                     </div>
 
                                     <div class="form-style row">
-                                        <div class="col-12"><input type="text" class="form-control" name="areaInp" placeholder="Area" required="required"></div>
+                                        <div class="col-12"><input type="text" class="form-control" th:field="*{area}" name="area" placeholder="Area" required="required"></div>
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-6"><input type="password" class="form-control" name="Password" placeholder="PasswordInp" required="required"> </div>
+                                        <div class="col-6"><input type="password" class="form-control" name="password" placeholder="PasswordInp" required="required"> </div>
                                         <div class="col-6"><input type="password" class="form-control" name="Confirm_Password" placeholder="Confirm_PasswordInp" required="required"></div>
                                     </div>
                                     <button type="Submit" class="btn btn-primary btn-block">Submit</button>
@@ -63,7 +68,8 @@
             </div>
         </div>
     </div>
-    <div th:replace="footer.html :: footer"></div>
+
+    <div th:replace="fragments/footer.html :: footer"></div>
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

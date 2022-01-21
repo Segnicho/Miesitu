@@ -6,12 +6,14 @@ import javax.persistence.*;
 
 import lombok.*;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class Product {
     @Id
+
     private long productId;
     private String productName;
     private int productPrice;

@@ -1,5 +1,7 @@
 package com.miesitu.web_project.entity;
 
+import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -15,23 +17,29 @@ import javax.persistence.*;
 
 import lombok.*;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class User implements UserDetails {//implements UserDetails{
     @Id
-    
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE)
     private long userId;
+    
     private String username;
     private String fristName;
     private String lastName;
     private String email;
     private int phone;
     private String password;
-    private String area;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
+    
+    private String area;
+    private Instant registeredDate;
+
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(
         name = "user_role",
         joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "userId")},
@@ -50,7 +58,16 @@ public class User implements UserDetails {//implements UserDetails{
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+
+        Collection <SimpleGrantedAuthority> user_authorities = new ArrayList();
+        Collection <Role> user_roles = this.getUserRole();
+        for (Role role : user_roles){
+            user_authorities.add(new SimpleGrantedAuthority(role.getName()));
+        }
+        // return Arrays.asList();
+        // userRole.iterator().forEachRemaining(new SimpleGrantedAuthority("UserRole"));
+        // userRole.iterator().
+        return user_authorities;
     }
 
     @Override

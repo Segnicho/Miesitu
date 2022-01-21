@@ -6,7 +6,8 @@ import javax.persistence.*;
 
 import lombok.*;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -18,7 +19,7 @@ public class Message {
     private String email;
     private String message;
     private Date sentDate;
-    
+
     @OneToOne
     private User user;
 

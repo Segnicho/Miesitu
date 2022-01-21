@@ -1,23 +1,79 @@
-// package com.miesitu.web_project.services;
+package com.miesitu.web_project.services;
 
-// import org.springframework.stereotype.Service;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Random;
 
-// import lombok.AllArgsConstructor;
+import com.miesitu.web_project.Repository.CodeRepository;
+import com.miesitu.web_project.Repository.RoleRepository;
+import com.miesitu.web_project.Repository.UserRepository;
+import com.miesitu.web_project.entity.Code;
+import com.miesitu.web_project.entity.Role;
+import com.miesitu.web_project.entity.User;
+import com.miesitu.web_project.form.SignUpForm;
 
-// @Service
-// @AllArgsConstructor
-// public class ValidateSaveService {
-//     private PasswordEncoder passwordEncoder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-//     userRepo.save(form.toUser(passwordEncoder));
-//     public User toUser(User user, PasswordEncoder passwordEncoder) {
-//         return new User(
-//         user.username, user.fristNmae, user.lastName , user.email, user.phone, passwordEncoder.encode(user.password),
-//         user.area, code, role);
-//     }
+@Service
+public class ValidateSaveService {
 
-//     public doSave(User user){
-//         if (user.codeNum in CodeRepository.findByCode(user.code) != null)  //call ValidSaveService and to User above, then save to db using above cmd
-//     }
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private CodeRepository codeRepo;
+    @Autowired
+    private UserRepository userRepo;
+    @Autowired
+    private RoleRepository roleRepo;
+
+    Collection<Role> realrole = new ArrayList();
+
+
+
+    // userRepo.save(form.toUser(passwordEncoder));
+
+    public User toUser(SignUpForm form, PasswordEncoder passwordEncoder, Code code, Collection<Role> role) {
+        return new User(0, form.getFristName() + form.getLastName() + String.valueOf(new Random().nextInt(100)), 
+        form.getFristName(), form.getLastName() , form.getEmail(), form.getPhone(), passwordEncoder.encode(form.getPassword()),
+        form.getArea(), Instant.now(), role, code);
+    }
+    public boolean passwordMacher(String pass1, String pass2){
+        return pass1.equals(pass2);
+    }
+
+    @Transactional
+    public boolean doSave(SignUpForm form){
+        // System.out.println("\n\nhi\n\n");
+        long codeNum = form.getCode();
+        // System.out.println("\n\nhi\n");
+        System.out.println(form.getCode());
+        // System.out.println("\n\n\n\n");
+        Code code = codeRepo.findByCode(codeNum);
+        if ( code != null){
+            // System.out.println("\n\nhi\n\n");
+
+            Collection<Role> role = code.getCodeRole();
+            if(role != null)
+                for( Role rl : role){
+                Role rlRole = roleRepo.findByRoleId(rl.getRoleId());
+                if(rlRole != null)
+                        realrole.add(rlRole);
+                }
+            
+            User user = toUser(form, passwordEncoder, code, realrole );
+            if(user != null){
+                // System.out.println("\n\nhi\n\n");
+                userRepo.save(user);
+                codeRepo.deleteById(code.getCode());
+                return true;
+            }
+            return false;
+        }
+        return false;  //call ValidSaveService and to User above, then save to db using above cmd
+    }
     
-// }
+}
