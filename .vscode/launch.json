@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch SaveMessageService",
+            "request": "launch",
+            "mainClass": "com.miesitu.web_project.services.SaveMessageService",
+            "projectName": "web_project"
+        },
+        {
+            "type": "java",
+            "name": "Launch CurrentDateTimeExample1",
+            "request": "launch",
+            "mainClass": "com.miesitu.web_project.services.CurrentDateTimeExample1",
+            "projectName": "web_project"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-WebProjectApplication<web_project>",
             "request": "launch",
             "cwd": "${workspaceFolder}",

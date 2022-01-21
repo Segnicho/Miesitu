@@ -1,11 +1,12 @@
 package com.miesitu.web_project.entity;
 
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,15 +21,23 @@ import lombok.*;
 @NoArgsConstructor
 @Entity
 public class User implements UserDetails {//implements UserDetails{
-    @Id
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long userId;
+    // @NotBlank
     private String username;
-    private String fristName;
+    @NotBlank
+    private String firstName;
+    @NotBlank
     private String lastName;
+    @NotBlank
     private String email;
     private int phone;
     private String password;
+    private Instant registeredDate = Instant.now();
+
+    // @NotBlank
     private String area;
 
     @ManyToMany(cascade = CascadeType.MERGE)
