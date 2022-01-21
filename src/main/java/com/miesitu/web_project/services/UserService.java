@@ -7,11 +7,11 @@ import com.miesitu.web_project.Repository.UserRepository;
 import com.miesitu.web_project.entity.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-
-
 
 
 @Service
@@ -45,5 +45,10 @@ public class UserService {
     }
     public void delete(long userId) {
         repo.deleteById(userId);
+    }
+    // Page<User> findPaginated(int PageNo, int pageSize);
+    public Page<User> findPaginated(int pageNo, int pageSize){
+        PageRequest pageable = PageRequest.of(pageNo - 1, pageSize);
+        return this.repo.findAll(pageable);
     }
 }
