@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    
+  
+
+
+
+<div class="container">
+
+
+    <table border="1" class="table table-striped table-responsive-md">
+        <thead>
+            <tr>
+                <th>
+                productId
+                </th>
+                <th>
+                sugar price
+                </th>
+                <th>
+                Oil price
+                </th>
+                <th>
+                start date
+                </th>
+                <th>
+                end date
+                </th>
+                <th>
+                product description
+                </th>
+                 <th>
+             Action
+                </th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr th:each="product:${productList}">
+                <td  th:text="${product.productId}"></td>
+                <td  th:text="${product.sugarPrice}"></td>
+                <td th:text="${product.oilPrice}"></td>
+                <td th:text="${product.startDate}"></td>
+                <td th:text="${product.endDate}"></td>
+                <td th:text="${product.productDesc}">
+                </td>
+                <td><a th:href="@{/updateForm}/{productId}(productId=${product.productId})}" class="btn btn-primary">Update</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/showAddNewProduct}" class="btn btn-primary btn-md">Add Product</a>
+
+</div>
+
+
+
+
+</body>
+</html>
