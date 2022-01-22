@@ -31,7 +31,6 @@ xmlns:th="http://www.thymeleaf.org">
 
     <!DOCTYPE html>
     <html lang="en">
-
     <head>
         <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
         <style>
@@ -54,12 +53,13 @@ xmlns:th="http://www.thymeleaf.org">
 
     <body class="container">
 
-        <div th:if="${error}">
-            <p>New here? Click
-                <a th:href="@{/register}">here</a> to register.</p>
-
+        <div th:if="${param.error}">
             Unable to login. Check your username and password.
         </div>
+        <div th:if="${message}">
+            [[${message}]]
+        </div>    
+    </div>
 
         <form method="POST" th:action="@{/login}" id="loginForm">
             <fieldset class="border p-5">
