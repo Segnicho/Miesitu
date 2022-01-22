@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/signup.css" />
-    <link  rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link  rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/footer.css" />
     <title>Sign Up</title>
@@ -29,58 +29,40 @@
 
 <body>
     <div th:replace="fragments/nav.html :: nav"></div>
-    <div class="Sign">
-        <div class="container">
-            <div class="mycard">
+    <div class="Signup-form">
+        <form >
+            <h2>Sign-up</h2>
+            <div class="form-group">
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="myleft">
-
-                            <form action="#" th:action="@{signup}" th:object="${form}" method="post">
-                                <h2>Sign-up</h2><br>
-                                <div th:if="${er}" class = "alert alert-danger text-center">
-                                    [[${er}]]
-                                </div>
-                                
-                                <div class="form-sytle">
-                                    <div class="row">
-                                        <form:errors path="name" cssClass="error" />
-                                        <div class="col-6"><input type="text" class="form-control" th:field="*{fristName}" name="fristName" placeholder="First-name" required="required"> </div>
-                                        <div class="col-6"><input type="text" class="form-control" th:field="*{lastName}" name="lastName" placeholder="Last-name" required="required"></div>
-                                    </div>
-                                    <div class="form-style row">
-                                        <div class="col-12"><input type="email" class="form-control" th:field="*{email}" name="email" placeholder="Enter email"></div>
-                                    </div>
-
-                                    <div class="form-sytle row">
-                                        <div class="col-12"><input type="number" class="form-control" th:field="*{phone}" name="phone" placeholder="Phone" required="required"></div>
-                                    </div>
-
-                                    <div class="form-style row">
-                                        <div class="col-12"><input type="number" class="form-control" th:field="*{code}" name="code" placeholder="Code" required="required"></div>
-                                    </div>
-
-                                    <div class="form-style row">
-                                        <div class="col-12"><input type="text" class="form-control" th:field="*{area}" name="area" placeholder="Area" required="required"></div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-6"><input type="password" class="form-control" name="password" placeholder="PasswordInp" required="required"> </div>
-                                        <div class="col-6"><input type="password" class="form-control" name="Confirm_Password" placeholder="Confirm_PasswordInp" required="required"></div>
-                                    </div>
-                                    <button type="Submit" class="btn btn-primary btn-block">Submit</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="myright">
-                            <div class="d-sm-none"> <img src="images/logo.png" alt="image"  class="img-fluid" /> </div>
-                        </div>
-                    </div>
+                    <div class="col-6"><input type="text" class="form-control" name="fristNameInp" placeholder="First-name" required="required"> </div>
+                    <div class="col-6"><input type="text" class="form-control" name="lastNameInp" placeholder="Last-name" required="required"></div>
                 </div>
-            </div>
+            </div>    
+                <div class="form-group">
+                    <div class="col-12"><input type="email" class="form-control" name="emailInp" placeholder="Enter email"></div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-12"><input type="number" class="form-control" name="phoneInp" placeholder="Phone" required="required"></div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-12"><input type="number" class="form-control" name="codeInp" placeholder="Code" required="required"></div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-12"><input type="text" class="form-control" name="areaInp" placeholder="Area" required="required"></div>
+                </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-6"><input type="password" class="form-control" name="Password" placeholder="PasswordInp" required="required"> </div>
+                    <div class="col-6"><input type="password" class="form-control" name="Confirm_Password" placeholder="Confirm_PasswordInp" required="required"></div>
+                </div>
+            </div> 
+        <div class="form-group">  
+                <button type="Submit" class="btn btn-primary btn-block">Submit</button>
         </div>
+        </form>
     </div>
 
     <div th:replace="fragments/footer.html :: footer"></div>
