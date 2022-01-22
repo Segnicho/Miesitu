@@ -56,7 +56,7 @@ public class User implements UserDetails {//implements UserDetails{
     )
     private Collection<Role> userRole;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "code", referencedColumnName = "code")
     private Code code;
 
