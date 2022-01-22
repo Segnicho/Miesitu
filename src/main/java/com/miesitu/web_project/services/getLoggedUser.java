@@ -15,7 +15,6 @@ public class getLoggedUser {
     @Autowired
     private UserRepository userRepo;
     
-    @Bean
     public String get_Username(){
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -26,7 +25,6 @@ public class getLoggedUser {
 		return null;
     }
 
-    @Bean
     public User get_User(){
         String username = get_Username();
         if(username != null){
