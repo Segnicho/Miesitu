@@ -44,10 +44,24 @@ public class DistributorController {
     @GetMapping("distr/user")
     public String usersInDistributerArea(Model model, Consumtion consumtion){
         // consupSer
+        User dist;
+        try {
+            User loggedUser = logeduserService.get_User();
+            if(loggedUser != null){
+                dist = loggedUser;
+            }else{
+                return "redirect:/logout";}
+        } catch (UsernameNotFoundException e) {
+            ra.addFlashAttribute("message", e.getMessage());
+            return "redirect:/consumtion";
+        }
+
         User loggedUser = logeduserService.get_User();
         if( loggedUser != null){
             String area = loggedUser.getArea();
-            model.addAttribute("users", consupServ.getUsersByArea(area));
+            List<User> users = (List<User>) consupServ.getUsersByArea(area);
+            users.remove(dist);
+            model.addAttribute("users", users);
             return "usersListinArea";
         }
         return "redirect:/logout";
