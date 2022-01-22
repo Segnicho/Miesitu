@@ -1,5 +1,3 @@
-
-<<<<<<< HEAD
 .Sign {
     /* background-color: black; */
     position: relative;
@@ -15,78 +13,74 @@
     margin-bottom: 80px;
     /* left: 50%; */
     /* transform: translate(-50%, -50%); */
-=======
-body{
-    color: #fff;
-    background: #63738a;
-    font-family: 'Roboto', sans-serif;
+    background-color: black;
 }
 
-.form-control{
+.form-control {
     height: 40px;
-    box-shadow:none;
+    box-shadow: none;
     color: #969fa4;
->>>>>>> 3750187367cb267e524f5c45158f46f6744ad3c7
 }
 
-h2{
+h2 {
     text-align: center;
 }
 
-.form-control:focus{
+.form-control:focus {
     border-color: turquoise;
 }
-.form-control, .btn{
+
+.form-control,
+.btn {
     border-radius: 5px;
 }
 
-.signup-form{width: 450px;
-margin: 0 auto;
-padding: 30px 0;
-font-size: medium;}
+.signup-form {
+    width: min(100vw, 700px);
+    margin: 0 auto;
+    padding: 30px 0;
+    font-size: medium;
+}
 
-.signup-form .hint-text{
+.signup-form .hint-text {
     color: #999;
     margin-bottom: 30px;
     text-align: center;
 }
 
-.signup-form form{
+.signup-form form {
     color: #999;
     border-radius: 5px;
     margin-bottom: 15px;
     background: #f2f3f7;
-    box-shadow: 0px 2px rgba(0,0,0,0.3);
+    box-shadow: 0px 2px rgba(0, 0, 0, 0.3);
     padding: 30px;
 }
-.signup-form .form-group{
+
+.signup-form .form-group {
     margin-bottom: 20px;
 }
 
-.signup-form .btn{
+.signup-form .btn {
     font-size: 16px;
     font-weight: bold;
     min-width: 140px;
     outline: none;
 }
 
-.signup-form .row div:first-child{
+.signup-form .row div:first-child {
     padding-right: 10px;
 }
 
-.signup-form .row div:last-child{
+.signup-form .row div:last-child {
     padding-right: 10px;
 }
 
-.signup-form a{
+.signup-form a {
     color: #fff;
-text-decoration: underline;
-}
-
-.signup-form form a:hover{
     text-decoration: underline;
 }
 
-
-
-
+.signup-form form a:hover {
+    text-decoration: underline;
+}

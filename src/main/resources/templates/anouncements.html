@@ -10,7 +10,7 @@
     <div class="container-fluid text-center">
         <h1>List of Anouncements </h1>
         <div class="mr-2">
-            <a class="h2" th:href="@{/admin/newAnouncement}">Add new Anouncement</a>
+            <a class="h2 btn btn-primary btn-md" th:href="@{/admin/newAnouncement}">Add new Anouncement</a>
         </div>
         <div th:if="${message}" class=" alert alert-success text-center ">
             [[${message}]]
@@ -26,17 +26,6 @@
                 </tr>
             </thead>
             <tbody>
-
-                <tr>
-                    <th scope="row ">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>fat</td>
-                    <td>
-                        <a>edit</a>
-                        <a>delete</a>
-                    </td>
-                </tr>
                 <th:block th:each=" anouncement : ${anouncementLists} ">
                     <tr>
                         <td>[[${anouncement.getAnouncementId}]]</td>
@@ -45,8 +34,8 @@
                         <td>[[${anouncement.getMessage}]]</td>
                         <td>[[${anouncement.getSentDate}]]</td>
                         <td>
-                            <a class="h3 mr-3 " th:href="@{ '/admin/editAnouncement/' + ${anouncement.getAnouncementId}} ">edit</a>
-                            <a class="h3 mr-3 " th:href="@{ '/admin/deleteAnouncement/' + ${anouncement.getAnouncementId}} ">delete</a>
+                            <a class="h3 mr-3 btn btn-primary " th:href="@{ '/admin/editAnouncement/' + ${anouncement.getAnouncementId}} ">EDIT</a>
+                            <a class="h3 mr-3 btn btn-danger " th:href="@{ '/admin/deleteAnouncement/' + ${anouncement.getAnouncementId}} ">DELETE</a>
                         </td>
 
                     </tr>
