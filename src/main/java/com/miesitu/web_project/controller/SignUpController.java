@@ -54,7 +54,7 @@ public class SignUpController{
 
         
         return "signup";
-
+    
     }
 
     @PostMapping //@ModelAttribute("User") User user
