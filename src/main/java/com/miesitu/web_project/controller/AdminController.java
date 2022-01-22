@@ -2,9 +2,13 @@ package com.miesitu.web_project.controller;
 
 
 import com.miesitu.web_project.services.UserService;
+
+import java.util.List;
+
 import com.miesitu.web_project.entity.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,9 +25,10 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String  showUserList(Model model) {
-        Iterable<com.miesitu.web_project.entity.User> userLists  = userSaveService.listAll();
-        model.addAttribute("userLists", userLists);
-        return "user";
+        // Iterable<com.miesitu.web_project.entity.User> userLists  = userSaveService.listAll();
+        // model.addAttribute("userLists", userLists);
+        // return "user";
+        return findPagenated(1, model);
 
     }
 
@@ -71,6 +76,19 @@ public class AdminController {
     return "redirect:/admin";
 
     }  
+
+    @GetMapping("/page/{pageNo}")
+    public String  findPagenated(@PathVariable(value="pageNo") int pageNo, Model model ) {
+        int pageSize = 2;
+        Page<User> page = userSaveService.findPaginated(pageNo,pageSize);
+        List<User> userLists = page.getContent();
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems", page.getTotalElements());
+        model.addAttribute("userLists", userLists);
+        return "user";
+
+    }
     
 }
 
