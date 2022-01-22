@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en-US">
+
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+  
+    <th:block  th:include="fragments/head.html :: head"/>
+
+    <title>update</title>
 </head>
 <body>
     
@@ -14,14 +16,14 @@
 
         <h1>Updating the products</h1>
         
-        <form action="#" th:action="/addNewProduct" th:object="@{product}" method="post"></form>
+        <form action="#" th:action="/admin/addNewProduct" th:object="@{product}" method="post"></form>
             <input type="text" th:field="*{sugarPrice}">
             <input type="text" th:field="*{oilPrice}">
             <input type="text" th:field="*{startDate}">
             <input type="text" th:field="*{endDate}">
             <button type="submit" class="btn btn-info col-2"> Update the product </button>
 
-            <a th:href="@{/products}">back</a>
+            <a th:href="@{/admin/product}">back</a>
         </div>
 
 
@@ -30,4 +32,10 @@
 
 
 </body>
+
+
+<th:block th:replace="fragments/script :: script"/>
+
+<div th:replace="fragments/footer.html :: footer"></div>
+
 </html>

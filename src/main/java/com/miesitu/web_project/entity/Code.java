@@ -17,7 +17,7 @@ public class Code {
         strategy = GenerationType.SEQUENCE)
     private long code;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
+    @ManyToMany(cascade = CascadeType.REMOVE)
     @JoinTable(
         name = "code_role",
         joinColumns = @JoinColumn(name = "code", referencedColumnName = "code"),

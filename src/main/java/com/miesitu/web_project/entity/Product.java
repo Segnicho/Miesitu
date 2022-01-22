@@ -1,8 +1,10 @@
 package com.miesitu.web_project.entity;
-import java.sql.Date;
+import java.util.*;
+import java.time.Instant;
 
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.*;
 
@@ -21,7 +23,11 @@ public class Product {
     private PRODUCT productName;
     private String productDesc;
     private int price;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date startDate;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endDate;
     
 }
