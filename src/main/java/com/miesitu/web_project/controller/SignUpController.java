@@ -27,7 +27,7 @@ public class SignUpController{
     @GetMapping
     public String signup() {
         return "signup";
-
+    
     }
 
     @PostMapping

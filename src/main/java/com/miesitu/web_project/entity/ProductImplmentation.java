@@ -1,6 +1,7 @@
 package com.miesitu.web_project.entity;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.miesitu.web_project.Repository.ProductRepository;
 import com.miesitu.web_project.services.ProductService;
@@ -21,27 +22,33 @@ public class ProductImplmentation implements ProductService{
     public List<Product> getAllProducts(){
 
         return productRepository.findAll();
-
     }
+
     @Override
     public void addProduct(Product product){
-
         this.productRepository.save(product);
     }
+
     @Override
-        public Product getProductByProductId(long productId){
+    public Product getProductByProductId(long productId){
 
 
-            java.util.Optional<Product> optional = productRepository.findById(productId);
-            Product product = null;
-            if(optional.isPresent()){
+        Optional<Product> optional = productRepository.findById(productId);
+        Product product = null;
+        if(optional.isPresent()){
 
-                product = optional.get();
-            }
-            else{
-                throw new RuntimeException("The kind of product you tried to access is not available ");
-            }
-                return product;
+            product = optional.get();
         }
+        else{
+            throw new RuntimeException("The kind of product you tried to access is not available ");
+        }
+            return product;
+    }
+
+    public void delete(long productId) {
+        productRepository.deleteById(productId);
+    }
+
+    
  
 }

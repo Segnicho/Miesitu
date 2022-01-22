@@ -12,12 +12,16 @@ import lombok.*;
 @Table(name = "products")
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long productId;
-    private int sugarPrice;
-    private int oilPrice;
+
+    private enum PRODUCT {
+        SUGAR, OIL
+    };
+    private PRODUCT productName;
+    private String productDesc;
+    private int price;
     private Date startDate;
     private Date endDate;
-    private String productDesc;
     
 }

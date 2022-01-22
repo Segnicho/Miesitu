@@ -1,30 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>add Product</title>
 </head>
 <body>
     
 
     <div class="container">
-
-
         <h1>Adding a newly arrived products</h1>
         
-        <form action="#" th:action="/addNewProduct" th:object="@{product}" method="post"></form>
 
-        <div class="container" th:action="@{/addProduct}" th:object = "${product}" method="POST">
-            <input type="text" th:field="*{sugarPrice}" placeholder="price of  a kilo of a sugar for this time">
-            <input type="text" th:field="*{oilPrice}" placeholder="price of  a kilo of a oil for this time">
-            <input type="text" th:field="*{startDate}" placeholder="startin gfrom when is the product goin to be distributed">
-            <input type="text" th:field="*{endDate}" placeholder="Starting from when is the distribution of the products going to stop.">
-            <button type="submit" class="btn btn-info col-2"> Add the product </button>
-        </div>
+        <form  action="#" th:action="@{/product/save}" th:object="${product}" method="post">
+           
+            <label for="productName">Choose a product:</label>
+            <select class="form-control" name="productName" id="productName">
+               <option value="SUGAR">Sugar</option>
+                <option value="OIL">Oil</option>
+              </select>
+            
+<br>
+            <textarea class="form-control" rows="5" type="text" th:field="*{productDesc}" placeholder="Enter the discription"/>
+            <br>
+            <!-- <label for="productId">Product Id</label><br -->
+            <input class="form-control" name="productId" type="number" th:field="*{productId}" placeholder="ID of  a product" hidden>
+            <br>
+            <br>
+            <input class="form-control" type="number" th:field="*{price}" placeholder="price of  a product">
+            <br>
+            <br>
+            <input class="form-control" type="date" th:field="*{startDate}" placeholder="startin gfrom when is the product goin to be distributed">
+           <br>
 
-
+            <input class="form-control" type="date" th:field="*{endDate}" placeholder="Starting from when is the distribution of the products going to stop."><br>
+            <br>
+            <input  type="submit" class="btn btn-info form-control" value = "submit"/> 
+        </form>
     </div>
 
 

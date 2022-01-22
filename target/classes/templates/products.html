@@ -26,11 +26,9 @@
                 productId
                 </th>
                 <th>
-                sugar price
+                price
                 </th>
-                <th>
-                Oil price
-                </th>
+   
                 <th>
                 start date
                 </th>
@@ -47,20 +45,20 @@
 
         </thead>
         <tbody>
-            <tr th:each="product:${productList}">
+            <tr th:each="product:${product}">
                 <td  th:text="${product.productId}"></td>
-                <td  th:text="${product.sugarPrice}"></td>
-                <td th:text="${product.oilPrice}"></td>
+                <td th:text="${product.price}"></td>
                 <td th:text="${product.startDate}"></td>
                 <td th:text="${product.endDate}"></td>
                 <td th:text="${product.productDesc}">
                 </td>
-                <td><a th:href="@{/updateForm}/{productId}(productId=${product.productId})}" class="btn btn-primary">Update</a></td>
+                <td><a th:href="@{/product/edit/{productId}(productId=${product.productId})}" class="btn btn-primary">Update</a></td>
+                <td><a th:href="@{/product/delete/{productId}(productId=${product.productId})}" class="btn btn-danger">Delete</a></td>
             </tr>
         </tbody>
     </table>
 
-    <a th:href="@{/showAddNewProduct}" class="btn btn-primary btn-md">Add Product</a>
+    <a th:href="@{/product/new}" class="btn btn-primary btn-md">Add Product</a>
 
 </div>
 
