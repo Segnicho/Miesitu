@@ -54,6 +54,7 @@ public class SecurityConfig {
                 .antMatchers("/dist", "/dist/**").hasRole("DISTRIBUTER")
                 .antMatchers("/signup").anonymous()
                 .antMatchers("/", "/**").permitAll()
+                .antMatchers("/admin", "/admin/**").permitAll()
             .and()
                 .formLogin()
                     .loginPage("/login")

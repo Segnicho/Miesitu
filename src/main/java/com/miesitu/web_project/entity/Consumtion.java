@@ -20,9 +20,6 @@ public class Consumtion {
 
     @OneToOne
     private User customer;
-
-    @OneToOne
-    private Product product;
     
     private Date date;
 

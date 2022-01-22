@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Anouncements</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container-fluid text-center">
+        <h1>List of Anouncements </h1>
+        <div class="mr-2">
+            <a class="h2" th:href="@{/admin/newAnouncement}">Add new Anouncement</a>
+        </div>
+        <div th:if="${message}" class=" alert alert-success text-center ">
+            [[${message}]]
+        </div>
+        <table class="table table-bordered ">
+            <thead class="table-dark ">
+                <tr>
+                    <th scope="col ">#</th>
+                    <th scope="col ">Subject</th>
+                    <th scope="col ">message</th>
+                    <th scope="col ">date</th>
+                    <th scope="col ">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <th scope="row ">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>fat</td>
+                    <td>
+                        <a>edit</a>
+                        <a>delete</a>
+                    </td>
+                </tr>
+                <th:block th:each=" anouncement : ${anouncementLists} ">
+                    <tr>
+                        <td>[[${anouncement.getAnouncementId}]]</td>
+
+                        <td>[[${anouncement.getSubject}]]</td>
+                        <td>[[${anouncement.getMessage}]]</td>
+                        <td>[[${anouncement.getSentDate}]]</td>
+                        <td>
+                            <a class="h3 mr-3 " th:href="@{ '/admin/editAnouncement/' + ${anouncement.getAnouncementId}} ">edit</a>
+                            <a class="h3 mr-3 " th:href="@{ '/admin/deleteAnouncement/' + ${anouncement.getAnouncementId}} ">delete</a>
+                        </td>
+
+                    </tr>
+                </th:block>
+
+            </tbody>
+        </table>
+
+    </div>
+    <script th:src="@{/js/bootstrap.bundle.min.js} "></script>
+
+</body>
+
+</html>
