@@ -2,6 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
   <head>
+
+    <script th:src="@{https://code.jquery.com/jquery-3.5.1.slim.min.js}" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js}" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css}">
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/footer.css">
+        <link rel="stylesheet" type="text/css" href="css/nav.css">
+        <link rel="stylesheet" type="text/css" href="css/small nav.css">
+        <link rel="stylesheet" type="text/css" href="css/menu.css">
+    <title>Contact</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,12 +24,17 @@
     <link th:href="@{/css/about.css}" rel="stylesheet" />
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
 
+
+
     <title>About Us</title>
+
 </head>
-<body>
+<body style="overflow-x: hidden;">
+    <div th:replace="fragments/nav.html :: nav"></div>
+
 </br></br></br></br></br>
 
-    <section id="about" class="section-padding about-section">
+    <section id="about" class="section-padding about-section" style="margin-bottom: 5vh;">
         <div class="container">
             <div class="row" >
                 <div class="col-sm-8">
@@ -60,4 +77,6 @@ integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+
 crossorigin="anonymous"></script>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
+<div th:replace="fragments/footer.html :: footer"></div>
+
 </html>

@@ -5,18 +5,20 @@
 }
 
 .Sign {
-    background-color: black;
+    /* background-color: black; */
     position: relative;
     border: 2px;
 }
 
 .container {
-    position: absolute;
+    position: relative;
     max-width: 80%;
     height: 60%;
     margin: auto;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-top: 80px;
+    margin-bottom: 80px;
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
 }
 
 .myright {
