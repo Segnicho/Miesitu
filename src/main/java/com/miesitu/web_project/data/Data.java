@@ -19,5 +19,6 @@ public class Data {
         roleRepo.save(new Role(1,"ROLE_ADMIN", "ROLE_ADMIN", null, null));
         roleRepo.save(new Role(2, "ROLE_DISTRIBUTER", "ROLE_DISTRIBUTER", null, null));
         roleRepo.save(new Role(3, "ROLE_CUSTOMER", "ROLE_CUSTOMER", null, null));
+
     }
 }
