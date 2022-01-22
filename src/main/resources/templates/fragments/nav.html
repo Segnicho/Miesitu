@@ -1,29 +1,46 @@
-<header th:fragment="nav">
+<div>
+<link rel="stylesheet" type="text/css" th:href="@{/css/nav.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/small nav.css}">
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}">
+
+</div>
+<div>  
+    
+    <script th:src="@{js/menu.js}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</div>
+
+
+<header th:fragment="normalNav">
     <section class="header header row">
 
-        <div class="header__logo col-2 col-xsm-4"> <a href="index.html"> <img src="images/logo.pn" alt="MIESITU" srcset=""></a> </div>
+        <div class="header__logo col-2 col-xsm-4"> <a th:href="@{/}"> <img style="border-top: 10px;" th:src="@{/images/handwritten-logo-letter-m-vector-22854828-removebg-preview.png}" alt="MIESITU" srcset=""></a> </div>
         <div class="header__logo col-1"></div>
 
         <nav class="header__links hide initial col-5 col-sm-0">
             <ul class="header__links__ul">
                 <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
                     <i class="bi bi-house-fill"></i>
-                    <a href="index.html"> home </a></li>
+                    <a  th:href="@{/home}"> home </a></li>
                 <li class="header__links__ul__li"> 
                     <i class="bi bi-info-circle-fill"></i>
-                    <a href="Html/about.html"> 
+                    <a th:href="@{/about}"> 
                     </i> about </a>    </li>
                 <li class="header__links__ul__li"> 
                     <i class="bi bi-telephone-fill"></i>
-                    <a href="Html/tutorials.html"> Contact Us</a> </li>
+                    <a th:href="@{/contactUs}"> Contact Us</a> </li>
             </ul>
         </nav>
 
         <section class="header__topnav col-3 col-xsm-8">        
             <div class="header__topnav__left">
                 <div class = "header__topnav__left__btn">
-                <a href="" class = "btn btn-primary">Log in</a>
-                <a href="" class = "btn btn-info">Sign up</a>
+                <a th:href="@{/login}" class = "btn btn-primary">Log in</a>
+                <a th:href="@{/signup}"class = "btn btn-info">Sign up</a>
                 </div>
                 <div class="menu">
                     <div class="menu__icon">
@@ -33,7 +50,126 @@
             </div>
         </section>
 
-    <img src="images/Vector(1).svg" alt="Navigation wavy image" srcset="" class="svg col-0">
+    <img th:src="@{/images/Vector(1).svg}" alt="Navigation wavy image" srcset="" class="svg col-0">
+
+    </section>
+</header>
+
+<header th:fragment="custNav">
+    <section class="header header row">
+
+        <div class="header__logo col-2 col-xsm-4"> <a href="index.html"> <img style="border-top: 10px;" th:src="{/images/handwritten-logo-letter-m-vector-22854828-removebg-preview.png}" alt="MIESITU" srcset=""></a> </div>
+        <div class="header__logo col-1"></div>
+
+        <nav class="header__links hide initial col-5 col-sm-0">
+            <ul class="header__links__ul">
+                <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  th:href="@{/home}"> home </a></li>
+                    <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                        <a  th:href="@{/announcement}"> Announcement </a></li>
+                    <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  th:href="@{/product}"> Product </a></li>
+                    <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  th:href="@{/about}"> About </a></li>
+                <li class="header__links__ul__li"> 
+                    <a th:href="@{/contactUs}"> Contact Us</a> </li>
+            </ul>
+        </nav>
+
+        <section class="header__topnav col-3 col-xsm-8">        
+            <div class="header__topnav__left">
+                <div class = "header__topnav__left__btn">
+                <a th:href="@{/login}" class = "btn btn-primary">Log in</a>
+                <a th:href="@{/signup}"class = "btn btn-info">Sign up</a>
+                </div>
+                <div class="menu">
+                    <div class="menu__icon">
+                        <div class="menu__icon__middle"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <img th:src="@{/images/Vector(1).svg}" alt="Navigation wavy image" srcset="" class="svg col-0">
+
+    </section>
+</header>
+
+<header th:fragment="distNav">
+    <section class="header header row">
+
+        <div class="header__logo col-2 col-xsm-4"> <a href="index.html"> <img style="border-top: 10px;" th:src="{images/handwritten-logo-letter-m-vector-22854828-removebg-preview.png}" alt="MIESITU" srcset=""></a> </div>
+        <div class="header__logo col-1"></div>
+
+        <nav class="header__links hide initial col-5 col-sm-0">
+            <ul class="header__links__ul">
+                <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  th:href="@{/home}"> home </a></li>
+                    <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  th:href="@{/user}"> User </a></li>
+                    <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  th:href="@{/product}"> product </a></li>
+                    <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  th:href="@{/announcement}"> Announcement </a></li>
+            </ul>
+        </nav>
+
+        <section class="header__topnav col-3 col-xsm-8">        
+            <div class="header__topnav__left">
+                <div class = "header__topnav__left__btn">
+                <a th:href="@{/login}" class = "btn btn-primary">Log in</a>
+                <a th:href="@{/signup}"class = "btn btn-info">Sign up</a>
+                </div>
+                <div class="menu">
+                    <div class="menu__icon">
+                        <div class="menu__icon__middle"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <img th:src="@{images/Vector(1).svg}" alt="Navigation wavy image" srcset="" class="svg col-0">
+
+    </section>
+</header>
+
+
+<header th:fragment="adminNav">
+    <section class="header header row">
+
+        <div class="header__logo col-2 col-xsm-4"> <a href="index.html"> <img style="border-top: 10px;" th:src="@{/images/handwritten-logo-letter-m-vector-22854828-removebg-preview.png}" alt="MIESITU" srcset=""></a> </div>
+        <div class="header__logo col-1"></div>
+
+        <nav class="header__links hide initial col-5 col-sm-0">
+            <ul class="header__links__ul">
+                <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  th:href="@{/home}"> home </a></li>
+                    <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  th:href="@{/users}"> User </a></li>
+                    <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  th:href="@{/product}"> product </a></li>
+                    <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  th:href="@{/announcement}"> Announcement </a></li>
+                <li class="header__links__ul__li"> 
+                    <a th:href="@{/contactUs}"> Contact Us</a> </li>
+            </ul>
+        </nav>
+
+        <section class="header__topnav col-3 col-xsm-8">        
+            <div class="header__topnav__left">
+                <div class = "header__topnav__left__btn">
+                <a th:href="@{/login}" class = "btn btn-primary">Log in</a>
+                <a th:href="@{/signup}"class = "btn btn-info">Sign up</a>
+                </div>
+                <div class="menu">
+                    <div class="menu__icon">
+                        <div class="menu__icon__middle"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <img th:src="@{/images/Vector(1).svg}" alt="Navigation wavy image" srcset="" class="svg col-0">
 
     </section>
 </header>

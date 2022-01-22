@@ -1,31 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en-US">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css"  th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css}">
-
-    <script th:src="@{https://code.jquery.com/jquery-3.5.1.slim.min.js}" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js}" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" type="text/css" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css}">
-    
-    <link rel="stylesheet" type="text/css" href="css/nav.css">
-    <link rel="stylesheet" type="text/css" href="css/small nav.css">
-    <link rel="stylesheet" type="text/css" href="css/menu.css">
-
-    <link rel="stylesheet" type="text/css" href="css/home.css">
-
-   
+<head >
+    <th:block  th:include="fragments/head.html :: head"/>
     <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="css/footer.css" />
-    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 </head>
+
 <body>
-    <div th:replace="fragments/nav.html :: nav"></div>
+    <div th:replace="fragments/nav.html :: normalNav"></div>
    
 
     <main>
@@ -33,12 +15,15 @@
             <div class="row">
             <section class="intro__welcome col-7">
                 <div class="intro__welcomeTxt">
-                    <h1>Hello</h1>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                    Odio maiores quod debitis, doloribus alias reiciendis. 
-                    Sapiente quo ad consectetur beatae tempore hic ullam laborum 
-                    adipisci natus eveniet iure, esse eligendi.<br><br>
-                    <a href="" class = "btn btn-info">Sign up</a>
+                    <h1>Hello <br> Well come to <strong style="color: orange;">Miesitu</strong></h1>
+                 <section>In Miesitu you can get the information on Oil and Sugar. It is known that products are distributed by a cheaper price at 
+                     your Kebele or other distribution areas. 
+                     
+                     You can get from here the price of the products, the time it is going to be distributed and when the term's distribution is going to end.
+                     by learning these informations you make your life easier.
+                 </section>
+                    <br><br>
+                    <a href="#" style="background-color: orange;"  class = "btn">Sign up</a>
                 </div>
             </section>
 
@@ -52,20 +37,17 @@
         <section class="products row">
             <h1>Products</h1>
             <div class="card col-6" style="width: 18rem; margin:5px;">
-                <img src="images/logo.png" class="card-img-top" alt="...">
+                <img src="images/sugar.2-810x476.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Sugar</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit,.</p>
-                  <a href="#" class = "btn btn-primary">See detail</a>
-        
+                  <p class="card-text">This app will give you the info on the sugar production from places around you.</p>        
                 </div>
               </div>
             <div class="card col-6" style="width: 18rem; margin:5px;">
-            <img src="images/logo.png" class="card-img-top" alt="...">
+            <img src="images/extra-virgin-olive-oil-500x500.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Sugar</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit,.</p>
-                <a href="#" class = "btn btn-primary">See detail</a>
+                <h5 class="card-title">Oil</h5>
+                <p class="card-text">The kind and amount of oil available near your house presented by the distributors will also be shown. </p>
     
             </div>
             </div>
@@ -96,9 +78,6 @@
     </main>
     
     <div th:replace="fragments/footer.html :: footer"></div>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  <script src="js/menu.js"></script>
+    <th:block th:replace="fragments/script :: script"/>
 </body>
 </html>
