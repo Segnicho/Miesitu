@@ -46,13 +46,15 @@ Unable to login. Check your username and password.
     <title>Document</title>
 </head>
 <body class="container">
-    
+
     <div th:if="${param.error}">
         Unable to login. Check your username and password.
     </div>
     <div th:if="${message}">
         [[${message}]]
-    </div>
+    </div>    
+    Unable to login. Check your username and password.
+</div>
 
     <form method="POST" th:action="@{/login}" id="loginForm">
     <fieldset  class="border p-5">
