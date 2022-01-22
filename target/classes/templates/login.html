@@ -26,7 +26,7 @@ login
         </div>    
     </div>
 
-        <form method="post" th:action="@{/login}" id="loginForm">
+        <form method="POST" th:action="@{/login}" id="loginForm">
             <fieldset class="border p-5">
                 <legend style="margin-left: 30%;" class="w-auto"><i class="fas fa-user-circle"></i></legend>
 
@@ -34,12 +34,12 @@ login
 
                     <div class="form">
                         <label for="useername" class="form__label">Username</label></div>
-                        <input type="text" id="username" name = "username" class="form__input form-control" autocomplete="off" placeholder=" ">
+                        <input type="text" id="username" class="form__input form-control" autocomplete="off" placeholder=" ">
                     <div style="margin: 2%;" class="form">
 
                         <label for="password" class="form__labl">password</label> </div>
 
-                        <input type="password" id="password" name = "password" class="form__inpt form-control" autocomplete="off" placeholder=" ">
+                        <input type="password" id="password" class="form__inpt form-control" autocomplete="off" placeholder=" ">
                     <div>
                         <input type="submit" style="margin-top: 1rem;" id="form__button" class="btn btn-primary" value="Login">
                     </div>
