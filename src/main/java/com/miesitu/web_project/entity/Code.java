@@ -1,17 +1,20 @@
 package com.miesitu.web_project.entity;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.*;
 
 import lombok.*;
-
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class Code {
     @Id
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE)
     private long code;
 
     @ManyToMany(cascade = CascadeType.MERGE)
@@ -20,6 +23,6 @@ public class Code {
         joinColumns = @JoinColumn(name = "code", referencedColumnName = "code"),
         inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "roleId")
     )
-    private List<Role> codeRole;
+    private Collection<Role> codeRole;
 
 }

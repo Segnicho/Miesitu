@@ -6,7 +6,8 @@ import javax.persistence.*;
 
 import lombok.*;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -19,9 +20,6 @@ public class Consumtion {
 
     @OneToOne
     private User customer;
-
-    @OneToOne
-    private Product product;
     
     private Date date;
 

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>[[${pageTitle}]]</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div>
+            <div class=" text-center">
+                <h2>[[${pageTitle}]]</h2>
+            </div>
+        </div>
+        <form method="post" th:action="@{/admin/saveAnouncement}" th:object="${anounce}" style="max-width: 500px; margin: 0 auto;">
+            <div class="border border-secondary rounded p-3">
+                <!-- required minLength maxlength -->
+                <input type="hidden" th:field="*{anouncementId}" name="anouncementId">
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label ">Subject</label>
+                    <div class="col-sm-8">
+                        <input type="text" th:field="*{subject}" class="form-control" name="subject" placeholder="subject" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label ">Message</label>
+                    <div class="col-sm-8">
+                        <textarea type="text" th:field="*{message}" class="form-control" name="message" row = "4"/>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button class="btn btn-primary m-2" type="submit">save</button>
+                    <button class="btn btn-secondary m-2" type="button" onclick="cancelForm()">cancel</button>
+                </div>
+            </div>
+            <script type="text/javascript">
+                function cancelForm() {
+                    window.location = "[[@{/admin/Anouncements}]]";
+                }
+            </script>
+        </form>
+
+    </div>
+
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>
