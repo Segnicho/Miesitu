@@ -1,12 +1,21 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en-US">
 
 <head>
-    <title>Users</title>
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <th:block th:include="fragments/head.html :: head" />
+
+    <title>
+        Users
+    </title>
+
+    
+
 </head>
 
 <body>
+    <div th:replace="fragments/nav.html :: adminNav"></div>
+
+
     <div class="container-fluid text-center">
         <h1>List of Users </h1>
         <div class="mr-2">
@@ -64,8 +73,10 @@
             </div>
         </div>
     </div>
-    <script th:src="@{/js/bootstrap.bundle.min.js} "></script>
 
+    <th:block th:replace="fragments/script :: script" />
+
+<div th:replace="fragments/footer.html :: footer"></div>
 </body>
 
 </html>

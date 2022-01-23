@@ -59,20 +59,20 @@
     <section class="header header row">
         <div class="header__logo col-2 col-xsm-4"> <a th:href="@{/}"> <img style="border-top: 10px;" th:src="@{/images/handwritten-logo-letter-m-vector-22854828-removebg-preview.png}" alt="MIESITU" srcset=""></a> </div>
 
+        <div class="header__logo col-2 col-xsm-4"> <a href="index.html"> <img style="border-top: 10px;" th:src="@{/images/handwritten-logo-letter-m-vector-22854828-removebg-preview.png}" alt="MIESITU" srcset=""></a> </div>
         <div class="header__logo col-1"></div>
-
         <nav class="header__links hide initial col-5 col-sm-0">
             <ul class="header__links__ul">
                 <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
-                    <a  th:href="@{/home}"> home </a></li>
+                    <a  th:href="@{/cust}"> home </a></li>
                     <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
-                        <a  th:href="@{/announcement}"> Announcement </a></li>
+                        <a  th:href="@{cust/anouncements}"> Announcement </a></li>
                     <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
-                    <a  th:href="@{/product}"> Product </a></li>
+                    <a  th:href="@{cust/products}"> Product </a></li>
                     <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
-                    <a  th:href="@{/about}"> About </a></li>
+                    <a  th:href="@{cust/about}"> About </a></li>
                 <li class="header__links__ul__li"> 
-                    <a th:href="@{/contactUs}"> Contact Us</a> </li>
+                    <a th:href="@{cust/contact}"> Contact Us</a> </li>
             </ul>
         </nav>
 
@@ -144,15 +144,15 @@
         <nav class="header__links hide initial col-5 col-sm-0">
             <ul class="header__links__ul">
                 <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
-                    <a  th:href="@{/home}"> home </a></li>
+                    <a  th:href="@{/admin/home}"> home </a></li>
                     <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
-                    <a  th:href="@{/users}"> User </a></li>
+                    <a  th:href="@{/admin/user}"> User </a></li>
                     <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
-                    <a  th:href="@{/product}"> product </a></li>
+                    <a  th:href="@{/admin/product}"> product </a></li>
                     <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
-                    <a  th:href="@{/announcement}"> Announcement </a></li>
+                    <a  th:href="@{/admin/anouncement}"> Announcement </a></li>
                 <li class="header__links__ul__li"> 
-                    <a th:href="@{/contactUs}"> Contact Us</a> </li>
+                    <a th:href="@{/admin/messageList}"> Message</a> </li>
             </ul>
         </nav>
 
