@@ -9,6 +9,7 @@ import com.miesitu.web_project.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -47,8 +48,9 @@ public class UserService {
         repo.deleteById(userId);
     }
     // Page<User> findPaginated(int PageNo, int pageSize);
-    public Page<User> findPaginated(int pageNo, int pageSize){
-        PageRequest pageable = PageRequest.of(pageNo - 1, pageSize);
+    public Page<User> findPaginated(int pageNo, int pageSize,String sortField,String sortDirection){
+        Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending():Sort.by(sortField).descending();
+        PageRequest pageable = PageRequest.of(pageNo - 1, pageSize,sort);
         return this.repo.findAll(pageable);
     }
 }

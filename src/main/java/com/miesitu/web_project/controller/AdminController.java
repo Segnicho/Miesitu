@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
@@ -33,7 +34,7 @@ public class AdminController {
         // Iterable<com.miesitu.web_project.entity.User> userLists  = userSaveService.listAll();
         // model.addAttribute("userLists", userLists);
         // return "user";
-        return findPagenated(1, model);
+        return findPagenated(1,"firstName","asc", model);
 
     }
 
@@ -82,14 +83,22 @@ public class AdminController {
     }  
 
     @GetMapping("/admin/user/{pageNo}")
-    public String  findPagenated(@PathVariable(value="pageNo") int pageNo, Model model ) {
+    public String  findPagenated(@PathVariable(value="pageNo") int pageNo,
+    @RequestParam("sortField") String sortField, 
+    @RequestParam("sortDirection") String sortDirection,
+    Model model ) {
         int pageSize = 2;
-        Page<User> page = userSaveService.findPaginated(pageNo,pageSize);
+        Page<User> page = userSaveService.findPaginated(pageNo,pageSize,sortField,sortDirection);
         List<User> userLists = page.getContent();
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages", page.getTotalPages());
         model.addAttribute("totalItems", page.getTotalElements());
         model.addAttribute("userLists", userLists);
+
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDirection", sortDirection);
+        model.addAttribute("reverseSortDirection", sortDirection.equals("asc") ? ("desc"):("asc"));
+
         return "user";
     } 
 
