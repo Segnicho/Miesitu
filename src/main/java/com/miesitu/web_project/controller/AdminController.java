@@ -141,7 +141,7 @@ public class AdminController {
         return "user";
     } 
 
-    //Anouncement
+    //Anouncement.
 
 
     @GetMapping("/admin/Anouncements")
