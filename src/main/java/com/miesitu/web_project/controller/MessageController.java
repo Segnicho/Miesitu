@@ -25,6 +25,8 @@ public class MessageController {
 
     }
 
+   
+
 @PostMapping("/contactUs")
 public String submitForm(@Valid @ModelAttribute("message") ContactUs message,
         BindingResult bindingResult,RedirectAttributes ra) {
