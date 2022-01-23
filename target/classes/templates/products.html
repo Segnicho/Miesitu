@@ -1,75 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="stylesheet" type="text/css" href="css/nav.css">
-    <link rel="stylesheet" type="text/css" href="css/small nav.css">
-    <link rel="stylesheet" type="text/css" href="css/menu.css">
-    
+
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:th="http://www.thymeleaf.org">
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="css/nav.css">
+    <link rel="stylesheet" type="text/css" href="css/small nav.css">
+    <link rel="stylesheet" type="text/css" href="css/menu.css">
 </head>
 <div th:replace="fragments/nav.html :: nav"></div>
+
 <body>
 
-    
-  
 
 
 
-<div class="container">
 
 
-    <table border="1" class="table table-striped table-responsive-md">
-        <thead>
-            <tr>
-                <th>
-                productId
-                </th>
-                <th>
-                price
-                </th>
-   
-                <th>
-                start date
-                </th>
-                <th>
-                end date
-                </th>
-                <th>
-                product description
-                </th>
-                 <th>
-             Action
-                </th>
-            </tr>
+    <div class="container">
 
-        </thead>
-        <tbody>
-            <tr th:each="product:${product}">
-                <td  th:text="${product.productId}"></td>
-                <td th:text="${product.price}"></td>
-                <td th:text="${product.startDate}"></td>
-                <td th:text="${product.endDate}"></td>
-                <td th:text="${product.productDesc}">
-                </td>
-                <td><a th:href="@{/product/edit/{productId}(productId=${product.productId})}" class="btn btn-primary">Update</a></td>
-                <td><a th:href="@{/product/delete/{productId}(productId=${product.productId})}" class="btn btn-danger">Delete</a></td>
-            </tr>
-        </tbody>
-    </table>
 
-    <a th:href="@{/product/new}" class="btn btn-primary btn-md">Add Product</a>
+        <table border="1" class="table table-striped table-responsive-md">
+            <thead>
+                <tr>
+                    <th>
+                        productId
+                    </th>
+                    <th>
+                        price
+                    </th>
 
-</div>
+                    <th>
+                        start date
+                    </th>
+                    <th>
+                        end date
+                    </th>
+                    <th>
+                        product description
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr th:each="product:${product}">
+                    <td th:text="${product.productId}"></td>
+                    <td th:text="${product.price}"></td>
+                    <td th:text="${product.startDate}"></td>
+                    <td th:text="${product.endDate}"></td>
+                    <td th:text="${product.productDesc}">
+                    </td>
+                    <td><a th:href="@{/product/edit/{productId}(productId=${product.productId})}" class="btn btn-primary">Update</a></td>
+                    <td><a th:href="@{/product/delete/{productId}(productId=${product.productId})}" class="btn btn-danger">Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a th:href="@{/product/new}" class="btn btn-primary btn-md">Add Product</a>
+
+    </div>
 
 
 
 
 </body>
+
+<th:block th:replace="fragments/script :: script" />
+
 <div th:replace="fragments/footer.html :: footer"></div>
+
 </html>

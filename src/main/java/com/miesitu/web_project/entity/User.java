@@ -22,19 +22,25 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+
 public class User implements UserDetails {//implements UserDetails{
     @Id
     @GeneratedValue(
         strategy = GenerationType.SEQUENCE)
     private long userId;
     
+    @Column(unique = true)
     private String username;
     @NotBlank
     private String firstName;
     @NotBlank
     private String lastName;
     @NotBlank
+
+    @Column(unique = true)
     private String email;
+
+    @Column(unique = true)
     private int phone;
     private String password;
 
@@ -50,7 +56,7 @@ public class User implements UserDetails {//implements UserDetails{
     )
     private Collection<Role> userRole;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "code", referencedColumnName = "code")
     private Code code;
 

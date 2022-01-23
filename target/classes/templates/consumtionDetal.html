@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Consumtion</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+</head>
+
+<body>
+    <h4>[[${user.getUsername}]]</h4>
+
+    <div class="container-fluid" th:each="product : ${products}">
+        <form method="post" th:action="@{distr/user/{userId}(userId=${user.getUserId})}" style="max-width: 500px; margin: 0 auto;">
+            <h4>[[${product.getProductName}]]</h4>
+
+            <label class="col-sm-4 col-form-label ">amount</label>
+            <input type="number" class="form-control" name="amount" placeholder="amount" />
+            <input type="number" name="productId" value="${product.getProductId}" hidden>
+
+            <button class="btn btn-primary m-2" type="submit">Sold</button>
+        </form>
+    </div>
+
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>

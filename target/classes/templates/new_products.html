@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <th:block  th:include="fragments/head.html :: head"/>
+
     <title>add Product</title>
 </head>
 <body>
+    <div th:replace="fragments/nav.html :: normalNav"></div>
     
 
-    <div class="container">
+    <div style="margin-top: 5vh; margin-bottom: 2vh;" class="container">
         <h1>Adding a newly arrived products</h1>
         
 
-        <form  action="#" th:action="@{/product/save}" th:object="${product}" method="post">
+        <form  action="#" th:action="@{/admin/product/save}" th:object="${product}" method="post">
            
             <label for="productName">Choose a product:</label>
             <select class="form-control" name="productName" id="productName">
@@ -32,10 +31,10 @@
             <input class="form-control" type="number" th:field="*{price}" placeholder="price of  a product">
             <br>
             <br>
-            <input class="form-control" type="date" th:field="*{startDate}" placeholder="startin gfrom when is the product goin to be distributed">
+            <input class="form-control" type="date" th:field="*{startDate}" pattern="yyyy-MM-dd" placeholder="startin gfrom when is the product goin to be distributed">
            <br>
 
-            <input class="form-control" type="date" th:field="*{endDate}" placeholder="Starting from when is the distribution of the products going to stop."><br>
+            <input class="form-control" type="date" th:field="*{endDate}" pattern="yyyy-MM-dd" placeholder="Starting from when is the distribution of the products going to stop."><br>
             <br>
             <input  type="submit" class="btn btn-info form-control" value = "submit"/> 
         </form>
@@ -44,4 +43,8 @@
 
 
 </body>
+
+<th:block th:replace="fragments/script :: script"/>
+
+<div th:replace="fragments/footer.html :: footer"></div>
 </html>

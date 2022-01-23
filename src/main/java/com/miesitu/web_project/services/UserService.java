@@ -29,6 +29,7 @@ public class UserService {
         repo.save(user1);
 
     }
+    
     public User get (long userId) throws UsernameNotFoundException {
        Optional<User> result = repo.findById(userId);
        if (result.isPresent()) {
