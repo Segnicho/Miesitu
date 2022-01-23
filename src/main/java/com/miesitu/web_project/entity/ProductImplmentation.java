@@ -57,7 +57,6 @@ public class ProductImplmentation implements ProductService{
     public Page<Product> findProductPaginated(int pageNo, int pageSize){
         PageRequest pageable = PageRequest.of(pageNo - 1, pageSize);
         // Pageable pageable2 = PageRequest.of(0, 10);
-        return this.productRepository.    // List<Product> findByEndDateBefore(Date date);
-        (new Date(), pageable);
+        return productRepository.findAllByEndDateBefore(new Date(), pageable);
     }
 }

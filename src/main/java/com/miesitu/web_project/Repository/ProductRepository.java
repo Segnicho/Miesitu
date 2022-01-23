@@ -25,6 +25,6 @@ public interface ProductRepository extends JpaRepository<Product, Long>{
 
 
     Page<Product> findAllByEndDateBefore(Date date, PageRequest pageable);
-    List<Product> findByEndDateBefore(Date date);
+    // List<Product> findByEndDateBefore(Date date);
 
 }
