@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en-US">
+<head>
+   
+
+      <th:block  th:include="fragments/head.html :: head"/>
+<title>Home User</title>
+</head>
+<body>
+
+      <div th:replace="fragments/nav.html :: normalNav"></div>
+
+<div class="container">
+
+
+            <p th:block th:each=" product: ${product}">
+                  <p>
+                        <h3>You have the following </h3>
+                  </p>
+                  <div class="card">
+                        <h4 class="card-title">product description posted.</h4>
+                   <p class="card-text">
+                        [[${product.getProductDesc}]]
+                   </p>     
+                  </div>
+                  <div class="card">
+                The goods described above will be distributed from date [[${product.getProductStartDate}]] upto [[${product.getProductEndDate}]]
+            </div>
+            </div>
+            
+<div th:replace="fragments/footer.html :: footer"></div>
+
+    <th:block th:replace="fragments/script :: script"/>
+</body>
+
+
+    
+    
+    </html>

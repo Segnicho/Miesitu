@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en-US">
+<head>
+   
+
+      <th:block  th:include="fragments/head.html :: head"/>
+<title>Home User</title>
+</head>
+<body>
+
+      <div th:replace="fragments/nav.html :: normalNav"></div>
+
+<div class="container">
+
+
+                  
+<div th:each="product:${productlist}" hidden class="row">
+    <div class = "col-6">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+            <h5 class="card-title"> name: [[${product.getProductName}]] <span>$[[${product.getPrice}]]</span> </h5>
+
+            <h6 class="card-subtitle mb-2 text-muted"> start date: [[${product.getStartDate}]] &Tab;&Tab; [[${product.getEndDate}]]</h6>
+            <p class="card-text">S[[${product.getProductDesc}]]</p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/footer.html :: footer"></div>
+
+</body>
+
+<<<<<<< HEAD:src/main/resources/templates/UserViewProduct.html
+</html>
+=======
+<div th:replace="fragments/footer.html :: footer"></div>
+
+    <th:block th:replace="fragments/script :: script"/></html>
+>>>>>>> d42fdce02ba22d6ce71f387406b41e74023b0d1f:src/main/resources/templates/UserViewHome.html

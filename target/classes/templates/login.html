@@ -34,19 +34,24 @@ login
 
                     <div class="form">
                         <label for="useername" class="form__label">Username</label></div>
-                        <input type="text" id="username" class="form__input form-control" autocomplete="off" placeholder=" ">
+                        <input type="text" id="username" name = "username" class="form__input form-control" autocomplete="off" placeholder=" ">
                     <div style="margin: 2%;" class="form">
 
                         <label for="password" class="form__labl">password</label> </div>
 
-                        <input type="password" id="password" class="form__inpt form-control" autocomplete="off" placeholder=" ">
+                        <input type="password" id="password" name = "password" class="form__inpt form-control" autocomplete="off" placeholder=" ">
                     <div>
                         <input type="submit" style="margin-top: 1rem;" id="form__button" class="btn btn-primary" value="Login">
                     </div>
             </fieldset>
         </form>
         </div>
-    </body>
-    <div th:replace="fragments/footer.html :: footer"></div>
+        <div th:replace="fragments/footer.html :: footer"></div>
     <th:block th:replace="fragments/script :: script"/>
+<<<<<<< HEAD
+    </body>
+    
     </html>
+=======
+    </html>
+>>>>>>> 4edce606017086cdd4f55e6803bd518a3df6c8cc
