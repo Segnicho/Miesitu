@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users</title>
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <th:block th:include="fragments/head.html :: head" />
+<title>
+    User List
+</title>
 
 </head>
 <body>
+    <div th:replace="fragments/nav.html :: adminNav"></div>
+
     <th:block th:each="user : ${users} ">
         <div class="card">
             <div class="card-body">
@@ -20,6 +21,10 @@
             </div>
         </div>
     </th:block>
+
+
+    <th:block th:replace="fragments/script :: script" />
+    <div th:replace="fragments/footer.html :: footer"></div>
 
 </body>
 </html>

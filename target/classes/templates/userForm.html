@@ -1,12 +1,21 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en-US">
 
-<head>
-    <title>[[${pageTitle}]]</title>
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
-</head>
+        <head>
+            <th:block th:include="fragments/head.html :: head" />
+            <title>Home</title>
+            <style>
+                .header {
+                    margin-bottom: 0px;
+                    /* border: 2px solid red; */
+                }
+            </style>
+            <title>Edit User</title>
 
-<body>
+        </head>
+        
+        <body>
+            <div th:replace="fragments/nav.html :: adminNav"></div>
     <div class="container-fluid">
         <div>
             <div class=" text-center">
@@ -74,6 +83,9 @@
     </div>
 
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+    <th:block th:replace="fragments/script :: script" />
+    <div th:replace="fragments/footer.html :: footer"></div>
 </body>
 
 </html>

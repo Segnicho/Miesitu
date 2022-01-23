@@ -6,6 +6,8 @@
     <title>Document</title>
 </head>
 <body>
+    <div th:replace="fragments/nav.html :: normalNav"></div>
+
     <form action="" th:action = "@{}" method="post">
         <input type="text" hidden>
         <input type="submit" class = "btn btn-primary" value="Log Out">
