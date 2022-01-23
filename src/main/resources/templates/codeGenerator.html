@@ -7,6 +7,11 @@
     <title>Document</title>
 </head>
 <body>
+
+    <div th:if="${code}">
+        Code Generated Successfully!
+        [[${code.isStatus}]]
+    </div>
     <form action="#" th:action="@{/admin/generateCode}" method="post">
         <label for="Admin">Admin</label>
         <input type="checkbox" name="id1" value = "1" id="Admin"><br>

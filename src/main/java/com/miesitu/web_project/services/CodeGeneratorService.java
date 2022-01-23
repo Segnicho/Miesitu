@@ -22,8 +22,8 @@ public class CodeGeneratorService {
 
     private Collection<Role> roles = new ArrayList();
 
-    public boolean generate(CodeGeneratorForm form) {
-        boolean saved = false;
+    public Code generate(CodeGeneratorForm form) {
+        Code saved = null;
         System.out.print(form);
         if (form.getId1() == 1){
             roles.add(roleRepo.findByRoleId(1));
@@ -35,7 +35,7 @@ public class CodeGeneratorService {
             roles.add(roleRepo.findByRoleId(3));
         }
         if(roles.isEmpty()){
-            return false;
+            return null;
         }
         // codeRepo.save(new Code(1, roles));
         // roles.clear();
@@ -51,8 +51,8 @@ public class CodeGeneratorService {
             int random_int = (int)Math.floor(Math.random()*(max-min+1)+min);
 
             if(codeRepo.findByCode(random_int) == null ){
-                codeRepo.save(new Code(random_int, roles));
-                saved = true;
+                saved = new Code(random_int, true, roles);
+                codeRepo.save(saved);
                 roles.clear();
                 break;
             }

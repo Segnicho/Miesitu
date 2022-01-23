@@ -13,9 +13,10 @@ import lombok.*;
 @Entity
 public class Code {
     @Id
-    @GeneratedValue(
-        strategy = GenerationType.SEQUENCE)
     private long code;
+
+    private boolean status = true;
+    
 
     @ManyToMany(cascade = CascadeType.REMOVE)
     @JoinTable(

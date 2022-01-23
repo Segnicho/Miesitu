@@ -4,15 +4,22 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @SessionAttributes
 @Controller
 public class AboutController {
+    
+    @ModelAttribute
+    public void addAttributes(Model model) {
+        model.addAttribute("msg", "Welcome to the Netherlands!");
+    }
 
     @GetMapping("/about")
-    public String about(){
+    public String about(Model model){
         String username = "Not Both";
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 

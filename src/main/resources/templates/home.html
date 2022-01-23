@@ -21,9 +21,11 @@
 
     <main>
 
-        <div sec:authorize="isAuthenticated()">
-            Authenticated as <span sec:authentication="name"></span></div>
+        <div th:text="${msg}">
+
+        </div>
         <section class="intro">
+            <span th:text ="${#authentication.getPrincipal().getUser().getFirstName()}">Hello</span>
             <div class="row">
                 <section class="intro__welcome col-7">
                     <div class="intro__welcomeTxt"style="z-index:20">

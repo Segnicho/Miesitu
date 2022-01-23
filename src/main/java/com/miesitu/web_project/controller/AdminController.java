@@ -3,6 +3,7 @@ package com.miesitu.web_project.controller;
 
 import com.miesitu.web_project.services.AnouncementService;
 import com.miesitu.web_project.services.UserService;
+import com.miesitu.web_project.services.getLoggedUser;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +31,33 @@ public class AdminController {
     @Autowired
     private AnouncementService anouncementSaveService;
 
+    @Autowired
+    private getLoggedUser LogedUser;
+
+    @ModelAttribute
+    public void addAttributes(Model model) {
+        User user = LogedUser.get_User();
+        if(user != null){
+            if(user.getAuthorities().contains("ADMIN")){
+                model.addAttribute("user","admin");
+            }
+            else if(user.getAuthorities().contains("DISTRIBUTER")){
+                model.addAttribute("user","dist");
+            }else if(user.getAuthorities().contains("ROLE_CUSTOMER")){
+                model.addAttribute("user","cust");
+            }else{
+                model.addAttribute("user",false);
+            }
+        model.addAttribute("user",false);
+        }
+
+        model.addAttribute("user",false);
+    }
+
+    @GetMapping("/admin")
+    public String  adminPage(Model model) {
+        return "home";
+    }
 
     //Admin Users Edit, View and Delete
 
@@ -164,6 +193,5 @@ public class AdminController {
         return "redirect:/admin/Anouncements";
 
     } 
-
 }
 

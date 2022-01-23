@@ -5,7 +5,7 @@
     <th:block th:include="fragments/head.html :: head" />
 
     <title>
-        Add  Products
+        Products
     </title>
 
     
@@ -15,60 +15,56 @@
 <body>
     <div th:replace="fragments/nav.html :: adminNav"></div>
 
-
-
-
-
-
-
-    <div class="container">
-
-
-        <table border="1" class="table table-striped table-responsive-md">
-            <thead>
-                <tr>
-                    <th>
-                        productId
-                    </th>
-                    <th>
-                        price
-                    </th>
-
-                    <th>
-                        start date
-                    </th>
-                    <th>
-                        end date
-                    </th>
-                    <th>
-                        product description
-                    </th>
-                    <th>
-                        Action
-                    </th>
-                </tr>
-
-            </thead>
-            <tbody>
-                <tr th:each="product:${product}">
-                    <td th:text="${product.productId}"></td>
-                    <td th:text="${product.price}"></td>
-                    <td th:text="${product.startDate}"></td>
-                    <td th:text="${product.endDate}"></td>
-                    <td th:text="${product.productDesc}">
-                    </td>
-                    <td><a th:href="@{/admin/product/edit/{productId}(productId=${product.productId})}" class="btn btn-primary">Update</a></td>
-                    <td><a th:href="@{/admin/product/delete/{productId}(productId=${product.productId})}" class="btn btn-danger">Delete</a></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <a th:href="@{/admin/product/new}" class="btn btn-primary btn-md">Add Product</a>
-
-    </div>
-
-
-
+    <main style="margin:6rem 0;">
+        <div class="container">
+            <div th:if ="${product.isEmpty}" class="container">
+                <h1>No Products available</h1>
+            </div>
+                <table border="1" class="table table-striped table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th>
+                                productId
+                            </th>
+                            <th>
+                                price
+                            </th>
+        
+                            <th>
+                                start date
+                            </th>
+                            <th>
+                                end date
+                            </th>
+                            <th>
+                                product description
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                        </tr>
+        
+                    </thead>
+                    <tbody>
+                        <tr th:each="product:${product}">
+                            <td th:text="${product.productId}"></td>
+                            <td th:text="${product.price}"></td>
+                            <td th:text="${product.startDate}"></td>
+                            <td th:text="${product.endDate}"></td>
+                            <td th:text="${product.productDesc}">
+                            </td>
+                            <td><a th:href="@{/admin/product/edit/{productId}(productId=${product.productId})}" class="btn btn-primary">Update</a></td>
+                            <td><a th:href="@{/admin/product/delete/{productId}(productId=${product.productId})}" class="btn btn-danger">Delete</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+        
+                <a th:href="@{/admin/product/new}" class="btn btn-primary btn-md">Add Product</a>
+        
+            </div>
+        
+    </main>
+    
     <th:block th:replace="fragments/script :: script" />
 
     <div th:replace="fragments/footer.html :: footer"></div>

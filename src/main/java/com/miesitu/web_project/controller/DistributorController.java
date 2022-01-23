@@ -40,6 +40,28 @@ public class DistributorController {
     @Autowired
     private approveConsumtionService approveConsumtionserv;
 
+    @Autowired
+    private getLoggedUser LogedUser;
+
+    @ModelAttribute
+    public void addAttributes(Model model) {
+        User user = LogedUser.get_User();
+        if(user != null){
+            if(user.getAuthorities().contains("ADMIN")){
+                model.addAttribute("user","admin");
+            }
+            else if(user.getAuthorities().contains("DISTRIBUTER")){
+                model.addAttribute("user","dist");
+            }else if(user.getAuthorities().contains("ROLE_CUSTOMER")){
+                model.addAttribute("user","cust");
+            }else{
+                model.addAttribute("user",false);
+            }
+        model.addAttribute("user",false);
+        }
+
+        model.addAttribute("user",false);
+    }
 
     @GetMapping("distr/user")
     public String usersInDistributerArea(Model model, Consumtion consumtion, RedirectAttributes ra){

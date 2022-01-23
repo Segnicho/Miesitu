@@ -27,6 +27,8 @@ public class ProductController {
     @Autowired
     private ConsumtionService consServ;
 
+    
+
     @RequestMapping("/admin/products")
     public String product(Model model){
 

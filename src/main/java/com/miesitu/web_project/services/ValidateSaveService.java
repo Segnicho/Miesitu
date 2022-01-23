@@ -68,8 +68,7 @@ public class ValidateSaveService {
             if(user != null){
                 // System.out.println("\n\nhi\n\n");
                 userRepo.save(user);
-                
-                codeRepo.deleteById(code.getCode());
+                code.setStatus(false);//used code
                 return true;
             }
             return false;
