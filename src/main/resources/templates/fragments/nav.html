@@ -72,6 +72,8 @@
                     <a  th:href="@{/cust/about}"> About </a></li>
                 <li class="header__links__ul__li"> 
                     <a th:href="@{/cust/contact}"> Contact Us</a> </li>
+                    <li class="header__links__ul__li"> 
+                        <a th:href="@{/account/update}" sec:authentication="principal.id" class="fas fa-user fa2x"> EditAccount</a> </li>
             </ul>
         </nav>
 
@@ -152,6 +154,7 @@
                     <a  th:href="@{/admin/anouncement}"> Announcement </a></li>
                 <li class="header__links__ul__li"> 
                     <a th:href="@{/admin/messageList}"> Message</a> </li>
+                   
             </ul>
         </nav>
 
