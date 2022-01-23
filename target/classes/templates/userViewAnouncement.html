@@ -5,23 +5,36 @@
     <th:block th:include="fragments/head.html :: head" />
     
 
-    <title>User View Anouncement</title>
+    <title>Anouncements</title>
+    <style>
+        main{
+            margin-top: 6rem;
+            margin-bottom: 4rem;
+        }
+    </style>
 </head>
 
 <body>
+
+    
     <div th:replace="fragments/nav.html :: custNav"></div>
 
-    <th:block th:each=" anounce : ${anouncementlist} ">
-        <div class="card">
+    <main>
+
+        <div align="center">
+            <h1>Anouncements</h1>
+        </div>
+    <div th:each=" anounce : ${anouncementlist} " align="center" style="margin-top: 3rem;">
+        <div class="card" style="width: min(80vw, 800px); text-align:start; ">
             <h5 class="card-header">Title: [[${anounce.getSubject}]]</h5>
             <td></td>
             <div class="card-body">
                 <p class="card-text">[[${anounce.getMessage}]]</p>
             </div>
         </div>
-    </th:block>
+    </div>
 
-    <div th:if="${totalPages > 1}" style="background-color: black;">
+    <div th:if="${totalPages > 1}" style="background-color: black; margin-top:2rem;">
         <div class="row col-sm-10">
             <div class="col-sm-2">
                 Total Rows: [[${totalItems}]]
@@ -52,6 +65,9 @@
             </div>
         </div>
     </div>
+
+    </main>
+
     <div th:replace="fragments/footer.html :: footer"></div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

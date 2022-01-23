@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages</title>
+</head>
+<body>
+    <div th:each="message:${messagelist}" class="row">
+        <div class = "col-6">
+            <div class="card">
+                <div class="card-body">
+                <h5 class="card-title"> name: [[${message.getFullname}]] </h5>
+
+                <h6 class="card-subtitle mb-2 text-muted"> start date: [[${message.getSentDate}]]</h6>
+                <p class="card-text">S[[${message.getUserMessage}]]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

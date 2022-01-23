@@ -1,18 +1,18 @@
-<div>
-<link rel="stylesheet" type="text/css" th:href="@{/css/nav.css}">
-<link rel="stylesheet" type="text/css" th:href="@{/css/small nav.css}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 
-<link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}">
-
-</div>
-<div>  
-    
-    <script th:src="@{js/menu.js}"></script>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</div>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/nav.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/small nav.css}">
+        
+    <link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}">
+        
+</head>
+<body>
 
 
 <header th:fragment="normalNav">
@@ -59,20 +59,19 @@
     <section class="header header row">
         <div class="header__logo col-2 col-xsm-4"> <a th:href="@{/}"> <img style="border-top: 10px;" th:src="@{/images/handwritten-logo-letter-m-vector-22854828-removebg-preview.png}" alt="MIESITU" srcset=""></a> </div>
 
-        <div class="header__logo col-2 col-xsm-4"> <a href="index.html"> <img style="border-top: 10px;" th:src="@{/images/handwritten-logo-letter-m-vector-22854828-removebg-preview.png}" alt="MIESITU" srcset=""></a> </div>
         <div class="header__logo col-1"></div>
         <nav class="header__links hide initial col-5 col-sm-0">
             <ul class="header__links__ul">
                 <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
                     <a  th:href="@{/cust}"> home </a></li>
                     <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
-                        <a  th:href="@{cust/anouncements}"> Announcement </a></li>
+                        <a  th:href="@{/cust/anouncements}"> Announcement </a></li>
                     <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
-                    <a  th:href="@{cust/products}"> Product </a></li>
+                    <a  th:href="@{/cust/products}"> Product </a></li>
                     <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
-                    <a  th:href="@{cust/about}"> About </a></li>
+                    <a  th:href="@{/cust/about}"> About </a></li>
                 <li class="header__links__ul__li"> 
-                    <a th:href="@{cust/contact}"> Contact Us</a> </li>
+                    <a th:href="@{/cust/contact}"> Contact Us</a> </li>
             </ul>
         </nav>
 
@@ -174,3 +173,11 @@
 
     </section>
 </header>
+
+<script th:src="@{js/menu.js}"></script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

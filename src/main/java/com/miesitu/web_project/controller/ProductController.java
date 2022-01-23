@@ -94,7 +94,7 @@ public class ProductController {
 
         List<Product> product = consServ.activeProducts();
         model.addAttribute("productlist", product);
-        return findProductPagenated(1, model);
+        return "productlist";
 
     }
 
@@ -111,9 +111,3 @@ public class ProductController {
     }
     
 }
-
-
-    
-
-
-

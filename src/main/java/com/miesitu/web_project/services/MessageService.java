@@ -8,6 +8,7 @@ import com.miesitu.web_project.entity.ContactUs;
 import com.miesitu.web_project.entity.Product;
 
 import org.apache.logging.log4j.message.Message;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 // import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class MessageService {
 
+    @Autowired
     MessageRepository repo;
    
     public Page<ContactUs> findMessagePaginated(int pageNo, int pageSize){

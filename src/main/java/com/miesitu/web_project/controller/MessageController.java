@@ -40,7 +40,6 @@ public class MessageController {
         System.out.println(message);
         
         if (bindingResult.hasErrors()) {       
-            
             return "redirect:/contactUs?error=invalid";
         } else {
             mesRepo.save(message);

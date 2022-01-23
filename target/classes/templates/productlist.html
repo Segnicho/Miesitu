@@ -8,29 +8,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>products</title>
+    <th:block  th:include="fragments/head.html :: head"/>
+
 </head>
 <body>
 
-      <div th:replace="fragments/nav.html :: normalNav"></div>
+      <div th:replace="fragments/nav.html :: normalNav"></div> 
 
-<div class="container">
-
-
-                  
-<div th:each="product:${productlist}" hidden class="row">
-    <div class = "col-6">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-            <h5 class="card-title"> name: [[${product.getProductName}]] <span>$[[${product.getPrice}]]</span> </h5>
-
-            <h6 class="card-subtitle mb-2 text-muted"> start date: [[${product.getStartDate}]] &Tab;&Tab; [[${product.getEndDate}]]</h6>
-            <p class="card-text">S[[${product.getProductDesc}]]</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+<main style="margin-bottom: 4rem; margin-top:6rem;">
+    <div align="center">
+        <h1 style="background-color: #23869C; width:fit-content; padding:0 10rem; font-weight:bold; ">Currently Available Products</h1>
+    </div>
+    <div class="row" align = "center" style="margin-top:3rem;">
+        <div th:each="product:${productlist}"  class="col-5" align = "center">
+                <div class="card" style="width: 19rem;">
+                    <div class="card-body">
+                    <h5 class="card-title"> name: [[${product.getProductName}]] <span>$[[${product.getPrice}]]</span> </h5>
+        
+                    <h6 class="card-subtitle mb-2 text-muted"> start date: [[${product.getStartDate}]] &Tab;&Tab; <br> End date: [[${product.getEndDate}]]</h6>
+                    <p class="card-text">S[[${product.getProductDesc}]]</p>
+                    </div>
             </div>
         </div>
-    </div>
-</div>
+        
+        </div>
+</main>
 <div th:replace="fragments/footer.html :: footer"></div>
 
 </body>

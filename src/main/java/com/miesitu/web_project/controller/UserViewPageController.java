@@ -25,6 +25,7 @@ public class UserViewPageController {
         return userViewAnouncement(model);
     }
 
+    
 
     @GetMapping("/ViewAnouncement")
     public String userViewAnouncement(Model model){

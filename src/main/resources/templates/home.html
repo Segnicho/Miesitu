@@ -9,24 +9,30 @@
             margin-bottom: 0px;
             /* border: 2px solid red; */
         }
+        .btn{
+            z-index: 500;
+        }
     </style>
 </head>
 
 <body>
-    <div th:replace="fragments/nav.html :: a"></div>
+    <div th:replace="fragments/nav.html :: custNav"></div>
 
 
     <main>
+
+        <div sec:authorize="isAuthenticated()">
+            Authenticated as <span sec:authentication="name"></span></div>
         <section class="intro">
             <div class="row">
                 <section class="intro__welcome col-7">
-                    <div class="intro__welcomeTxt">
+                    <div class="intro__welcomeTxt"style="z-index:20">
                         <h1>Hello <br> Well come to <strong style="color: orange;">Miesitu</strong></h1>
                         <section>In Miesitu you can get the information on Oil and Sugar. It is known that products are distributed by a cheaper price at your Kebele or other distribution areas. You can get from here the price of the products, the time it is going
                             to be distributed and when the term's distribution is going to end. by learning these informations you make your life easier.
                         </section>
                         <br><br>
-                        <a href="#" style="background-color: orange;" class="btn">Sign up</a>
+                        <a th:href="@{signup}" style="background-color: orange; z-index:20" class="btn">Sign up</a>
                     </div>
                 </section>
 

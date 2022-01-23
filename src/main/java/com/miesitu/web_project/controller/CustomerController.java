@@ -37,6 +37,7 @@ public class CustomerController {
     @Autowired
     private ProductController proController;
 
+
     @Autowired
     private getLoggedUser logeduserService;
 
@@ -55,12 +56,12 @@ public class CustomerController {
 
     @GetMapping("/cust/contact")
     public String custcontact(Model model){
-        return commonController.userViewAnouncement(model);
+        return "message";
     }
 
     @GetMapping("/cust/about")
     public String custAbout(Model model){
-        return commonController.userViewAnouncement(model);
+        return "about";
     }
 
     @GetMapping("/cust/anouncements")
