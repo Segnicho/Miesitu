@@ -58,14 +58,14 @@ public class SecurityConfig {
             .and()
                 .formLogin()
                     .loginPage("/login")
-                    .defaultSuccessUrl("/about")
+                    .defaultSuccessUrl("/hh")
                     .failureUrl("/login?error").permitAll()
             .and()
             // .csrf((csrf) -> csrf.disable())
             .logout()
                 .logoutUrl("/logout")
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/about")
+                .logoutSuccessUrl("/")
             .and()
             .build();
     }

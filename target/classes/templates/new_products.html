@@ -31,10 +31,10 @@
             <input class="form-control" type="number" th:field="*{price}" placeholder="price of  a product">
             <br>
             <br>
-            <input class="form-control" type="date" th:field="*{startDate}" placeholder="startin gfrom when is the product goin to be distributed">
+            <input class="form-control" type="date" th:field="*{startDate}" pattern="yyyy-MM-dd" placeholder="startin gfrom when is the product goin to be distributed">
            <br>
 
-            <input class="form-control" type="date" th:field="*{endDate}" placeholder="Starting from when is the distribution of the products going to stop."><br>
+            <input class="form-control" type="date" th:field="*{endDate}" pattern="yyyy-MM-dd" placeholder="Starting from when is the distribution of the products going to stop."><br>
             <br>
             <input  type="submit" class="btn btn-info form-control" value = "submit"/> 
         </form>

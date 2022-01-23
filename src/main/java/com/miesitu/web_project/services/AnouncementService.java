@@ -9,6 +9,8 @@ import com.miesitu.web_project.entity.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
     
@@ -55,5 +57,10 @@ public class AnouncementService {
     }
     public void delete(long anouncementId) {
         anouncementRepo.deleteById(anouncementId);
+    }
+    
+    public Page<Anouncement> findAnouncementPaginated(int pageNo, int pageSize){
+        PageRequest pageable = PageRequest.of(pageNo - 1, pageSize);
+        return this.anouncementRepo.findAll(pageable);
     }
 }

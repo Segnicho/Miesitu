@@ -27,8 +27,11 @@ public class Consumtion {
     private User customer;
 
     @NotNull
-    private int amount;
+    private float amount;
     
-    private Date date;
+    private java.util.Date date;
+
+    @OneToOne
+    private Product product;
 
 }

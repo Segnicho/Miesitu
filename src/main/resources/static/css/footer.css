@@ -32,22 +32,22 @@ footer {
     text-align: center
 }
 
-a:link {
+.footer-link a:link {
     color: #fff;
     text-decoration: none;
 }
 
-a:visited {
+.footer-link a:visited {
     color: #fff;
     text-decoration: none;
 }
 
-a:hover {
+.footer-link a:hover {
     color: #fff;
     text-decoration: none;
 }
 
-a:active {
+.footer-link a:active {
     color: #fff;
     text-decoration: none;
 }
