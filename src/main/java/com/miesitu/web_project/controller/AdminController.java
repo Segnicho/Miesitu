@@ -28,7 +28,10 @@ public class AdminController {
     @Autowired
     private AnouncementService anouncementSaveService;
 
-    @GetMapping("/admin/user")
+
+    //Admin Users Edit, View and Delete
+
+    @GetMapping("/admin/users")
     public String  showUserList(Model model) {
         // Iterable<com.miesitu.web_project.entity.User> userLists  = userSaveService.listAll();
         // model.addAttribute("userLists", userLists);
@@ -49,7 +52,7 @@ public class AdminController {
     public String  saveUser(User user1, RedirectAttributes ra) {
        userSaveService.saveUser(user1);
        ra.addFlashAttribute("message", "User has been saved succesfully.");
-        return "redirect:/admin/user";
+        return "redirect:/admin/users";
     }
 
     @GetMapping("/admin/editUser/{userId}")
@@ -62,7 +65,7 @@ public class AdminController {
 
     } catch (UsernameNotFoundException e) {
         ra.addFlashAttribute("message", e.getMessage());
-        return "redirect:/admin/user";
+        return "redirect:/admin/users";
     }
 
     }
@@ -77,7 +80,7 @@ public class AdminController {
     } catch (UsernameNotFoundException e) {
         ra.addFlashAttribute("message", e.getMessage());
     }
-    return "redirect:/admin/user";
+    return "redirect:/admin/users";
 
     }  
 
@@ -152,5 +155,6 @@ public class AdminController {
         return "redirect:/admin/Anouncements";
 
     } 
+
 }
 

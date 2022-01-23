@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>products</title>
 </head>
 <body>
 
@@ -16,15 +16,23 @@
 <div class="container">
 
 
-            <p th:each="product:${product}" hidden>
-                  <p>
-                        Hello there we have received <p th:text="${product.productDesc}"></p>
-                 
-                 which will be sold from <span th:text="${product.startDate}"></span> to <span th:text="${product.endDate}"></span>
-                  </p>
+                  
+<div th:each="product:${productlist}" hidden class="row">
+    <div class = "col-6">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+            <h5 class="card-title"> name: [[${product.getProductName}]] <span>$[[${product.getPrice}]]</span> </h5>
+
+            <h6 class="card-subtitle mb-2 text-muted"> start date: [[${product.getStartDate}]] &Tab;&Tab; [[${product.getEndDate}]]</h6>
+            <p class="card-text">S[[${product.getProductDesc}]]</p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+            </div>
+        </div>
+    </div>
 </div>
+<div th:replace="fragments/footer.html :: footer"></div>
 
 </body>
 
-<div th:replace="fragments/footer.html :: footer"></div>
 </html>

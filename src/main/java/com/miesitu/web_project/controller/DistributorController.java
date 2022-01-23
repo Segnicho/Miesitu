@@ -42,7 +42,7 @@ public class DistributorController {
 
 
     @GetMapping("distr/user")
-    public String usersInDistributerArea(Model model, Consumtion consumtion){
+    public String usersInDistributerArea(Model model, Consumtion consumtion, RedirectAttributes ra){
         // consupSer
         User dist;
         try {
