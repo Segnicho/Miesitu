@@ -6,7 +6,6 @@
 
 
     <title>products</title>
-    <th:block  th:include="fragments/head.html :: head"/>
 
 </head>
 <body>
@@ -32,7 +31,7 @@
         </div>
 </main>
 <div th:replace="fragments/footer.html :: footer"></div>
-
+    <th:block th:replace="fragments/script :: script" />
 </body>
 
 </html>

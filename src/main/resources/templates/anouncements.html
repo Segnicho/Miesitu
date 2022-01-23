@@ -3,10 +3,13 @@
 
 <head>
     <title>Anouncements</title>
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <th:block th:include="fragments/head.html :: head" />
 </head>
 
 <body>
+
+    <div th:replace="fragments/nav.html :: adminNav"></div>
+
     <div class="container-fluid text-center">
         <h1>List of Anouncements </h1>
         <div class="mr-2">

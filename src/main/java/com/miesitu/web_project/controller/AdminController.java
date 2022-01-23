@@ -32,6 +32,13 @@ public class AdminController {
 
     //Admin Users Edit, View and Delete
 
+    
+    @GetMapping("/admin")
+    public String adminHome(){
+        return "adminHome";
+    }
+
+
     @GetMapping("/admin/users")
     public String  showUserList(Model model) {
         // Iterable<com.miesitu.web_project.entity.User> userLists  = userSaveService.listAll();

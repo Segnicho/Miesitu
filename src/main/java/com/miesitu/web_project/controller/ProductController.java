@@ -65,7 +65,6 @@ public class ProductController {
         model.addAttribute("product", product);
         return "new_products";
     }
-
     @GetMapping("admin/product/delete/{productId}")
     public String deleteProduct(@PathVariable(value = "productId") long productId,Model model){
         productService.delete(productId);

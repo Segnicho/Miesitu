@@ -3,10 +3,13 @@
 
 <head>
     <title>Consumtion</title>
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <th:block th:include="fragments/head.html :: head" />
+
 </head>
 
 <body>
+    <div th:replace="fragments/nav.html :: adminNav"></div>
+
     <h4>[[${user.getUsername}]]</h4>
 
     <div class="container-fluid" th:each="product : ${products}">
@@ -21,7 +24,7 @@
         </form>
     </div>
 
-    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-</body>
+    <div th:replace="fragments/footer.html :: footer"></div>
+    <th:block th:replace="fragments/script :: script" /></body>
 
 </html>
