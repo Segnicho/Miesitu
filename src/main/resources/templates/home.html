@@ -23,9 +23,11 @@
 
         <div th:text="${msg}">
 
+            <div >
+                    
+            </div>
         </div>
-        <section class="intro">
-            <span th:text ="${#authentication.getPrincipal().getUser().getFirstName()}">Hello</span>
+        <section class="intro" sec:authorize = "isAuthenticated()" >
             <div class="row">
                 <section class="intro__welcome col-7">
                     <div class="intro__welcomeTxt"style="z-index:20">

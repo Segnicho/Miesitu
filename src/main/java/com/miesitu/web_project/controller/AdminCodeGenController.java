@@ -23,11 +23,6 @@ public class AdminCodeGenController {
     @Autowired
     CodeGeneratorService codeGenerator;
 
-    @ModelAttribute
-    public void addAttributes(Model model) {
-        model.addAttribute("msg", "Welcome to the Netherlands!");
-    }
-
     @GetMapping("/admin/generateCode")
     public String codeGen(Model model){
         return "codeGenerator";
