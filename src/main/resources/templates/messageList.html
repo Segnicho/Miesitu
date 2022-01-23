@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Messages</title>
+    <th:block th:include="fragments/head.html :: head" />
+
 </head>
 <body>
+    <div th:replace="fragments/nav.html :: adminNav"></div>
+
     <div th:each="message:${messagelist}" class="row">
         <div class = "col-6">
             <div class="card">
@@ -19,5 +19,7 @@
             </div>
         </div>
     </div>
+    <div th:replace="fragments/footer.html :: footer"></div>
+    <th:block th:replace="fragments/script :: script" />
 </body>
 </html>

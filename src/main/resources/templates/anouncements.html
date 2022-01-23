@@ -11,6 +11,12 @@
 <body>
     <main style="margin:6rem 0;">
         
+</head>
+
+<body>
+
+    <div th:replace="fragments/nav.html :: adminNav"></div>
+
     <div class="container-fluid text-center">
         <h1>List of Anouncements </h1>
         <div class="mr-2">
@@ -56,6 +62,8 @@
 </main>
     <script th:src="@{/js/bootstrap.bundle.min.js} "></script>
 
+    <div th:replace="fragments/footer.html :: footer"></div>
+    <th:block th:replace="fragments/script :: script" />
 </body>
 
 </html>
