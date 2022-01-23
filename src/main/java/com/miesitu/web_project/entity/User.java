@@ -92,4 +92,8 @@ public class User implements UserDetails {//implements UserDetails{
     public boolean isEnabled() {
     return true;
     }
+
+    // public User(int userId2, String username2, String firstName2, String lastName2, String email2, int phone2,
+    //         String password2, String area2, int i, String string, int j) {
+    // }
 }
