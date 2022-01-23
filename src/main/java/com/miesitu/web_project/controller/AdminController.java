@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
@@ -28,12 +29,15 @@ public class AdminController {
     @Autowired
     private AnouncementService anouncementSaveService;
 
-    @GetMapping("/admin/user")
+
+    //Admin Users Edit, View and Delete
+
+    @GetMapping("/admin/users")
     public String  showUserList(Model model) {
         // Iterable<com.miesitu.web_project.entity.User> userLists  = userSaveService.listAll();
         // model.addAttribute("userLists", userLists);
         // return "user";
-        return findPagenated(1, model);
+        return findPagenated(1,"firstName","asc", model);
 
     }
 
@@ -49,7 +53,7 @@ public class AdminController {
     public String  saveUser(User user1, RedirectAttributes ra) {
        userSaveService.saveUser(user1);
        ra.addFlashAttribute("message", "User has been saved succesfully.");
-        return "redirect:/admin/user";
+        return "redirect:/admin/users";
     }
 
     @GetMapping("/admin/editUser/{userId}")
@@ -62,7 +66,7 @@ public class AdminController {
 
     } catch (UsernameNotFoundException e) {
         ra.addFlashAttribute("message", e.getMessage());
-        return "redirect:/admin/user";
+        return "redirect:/admin/users";
     }
 
     }
@@ -77,19 +81,27 @@ public class AdminController {
     } catch (UsernameNotFoundException e) {
         ra.addFlashAttribute("message", e.getMessage());
     }
-    return "redirect:/admin/user";
+    return "redirect:/admin/users";
 
     }  
 
     @GetMapping("/admin/user/{pageNo}")
-    public String  findPagenated(@PathVariable(value="pageNo") int pageNo, Model model ) {
+    public String  findPagenated(@PathVariable(value="pageNo") int pageNo,
+    @RequestParam("sortField") String sortField, 
+    @RequestParam("sortDirection") String sortDirection,
+    Model model ) {
         int pageSize = 2;
-        Page<User> page = userSaveService.findPaginated(pageNo,pageSize);
+        Page<User> page = userSaveService.findPaginated(pageNo,pageSize,sortField,sortDirection);
         List<User> userLists = page.getContent();
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages", page.getTotalPages());
         model.addAttribute("totalItems", page.getTotalElements());
         model.addAttribute("userLists", userLists);
+
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDirection", sortDirection);
+        model.addAttribute("reverseSortDirection", sortDirection.equals("asc") ? ("desc"):("asc"));
+
         return "user";
     } 
 
@@ -152,5 +164,6 @@ public class AdminController {
         return "redirect:/admin/Anouncements";
 
     } 
+
 }
 

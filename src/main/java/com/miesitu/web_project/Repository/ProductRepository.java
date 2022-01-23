@@ -7,11 +7,15 @@ import java.util.Optional;
 import com.miesitu.web_project.entity.Anouncement;
 import com.miesitu.web_project.entity.Product;
 
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProductRepository extends CrudRepository<Product, Long>{
+public interface ProductRepository extends JpaRepository<Product, Long>{
 
     List<Product> findByProductId(long productId);
 
@@ -19,6 +23,8 @@ public interface ProductRepository extends CrudRepository<Product, Long>{
     // List<Article> findAllWithCreationDateTimeBefore(
     //   @Param("creationDateTime") Date creationDateTime);
 
-    List<Product> findByEndDateBefore(Date date);
+
+    Page<Product> findAllByEndDateBefore(Date date, PageRequest pageable);
+    // List<Product> findByEndDateBefore(Date date);
 
 }

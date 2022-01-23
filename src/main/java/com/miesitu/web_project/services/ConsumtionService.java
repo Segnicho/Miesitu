@@ -41,7 +41,7 @@ public class ConsumtionService {
         return userRepo.findByArea(area);
     }
     public List<Product> activeProducts(){
-        return productRepo.findByEndDateBefore((new Date()));
+        return null;
     }
 
     public boolean checkExistance(User user, Product prod){

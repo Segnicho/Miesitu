@@ -1,9 +1,13 @@
 package com.miesitu.web_project.controller;
+import java.util.List;
+
 import com.miesitu.web_project.Repository.ProductRepository;
 import com.miesitu.web_project.entity.Product;
 import com.miesitu.web_project.entity.ProductImplmentation;
+import com.miesitu.web_project.services.ConsumtionService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,13 +20,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ProductController {
 
     @Autowired
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
     @Autowired 
-    ProductImplmentation productService;
-    
+    private ProductImplmentation productService;
 
+    @Autowired
+    private ConsumtionService consServ;
 
-    @RequestMapping("/admin/product")
+    @RequestMapping("/admin/products")
     public String product(Model model){
 
         model.addAttribute("product", productService.getAllProducts());
@@ -40,7 +45,7 @@ public class ProductController {
     public String addNewProduct(@ModelAttribute("product") Product product){
 
         productService.addProduct(product);
-        return "redirect:/admin/product";
+        return "redirect:/admin/products";
 }
 
     @GetMapping("/admin/product/new")
@@ -64,7 +69,45 @@ public class ProductController {
     @GetMapping("admin/product/delete/{productId}")
     public String deleteProduct(@PathVariable(value = "productId") long productId,Model model){
         productService.delete(productId);
-        return "redirect:/admin/product";
+        return "redirect:/admin/products";
+    }
+
+    ///customer Product list
+
+    
+    @GetMapping("dist/productList")
+    public String distProductList(Model model){
+        return productList(model);
+    }
+
+    @GetMapping("cust/productList/{pageNo}")
+    public String  custProductPagenated(@PathVariable(value="pageNo") int pageNo, Model model ) {
+        return productList(model);  //correct the html
+    }
+    @GetMapping("dist/productList/{pageNo}")
+    public String  distProductPagenated(@PathVariable(value="pageNo") int pageNo, Model model ) {
+        return productList( model);  //correct the html
+    }
+
+    @GetMapping("/productList")
+    public String productList(Model model){
+
+        List<Product> product = consServ.activeProducts();
+        model.addAttribute("productlist", product);
+        return findProductPagenated(1, model);
+
+    }
+
+    @GetMapping("/productList/{pageNo}")
+    public String  findProductPagenated(@PathVariable(value="pageNo") int pageNo, Model model ) {
+        int pageSize = 1;
+        Page<Product> page = productService.findProductPaginated(pageNo,pageSize);
+        List<Product> productlist = page.getContent();
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems", page.getTotalElements());
+        model.addAttribute("productlist", productlist);
+        return "productlist";  //correct the html
     }
     
 }

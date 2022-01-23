@@ -1,5 +1,6 @@
 package com.miesitu.web_project.entity;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,6 +8,10 @@ import com.miesitu.web_project.Repository.ProductRepository;
 import com.miesitu.web_project.services.ProductService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+// import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 // import net.bytebuddy.dynamic.DynamicType.Builder.FieldDefinition.Optional;
@@ -49,6 +54,9 @@ public class ProductImplmentation implements ProductService{
         productRepository.deleteById(productId);
     }
 
-    
- 
+    public Page<Product> findProductPaginated(int pageNo, int pageSize){
+        PageRequest pageable = PageRequest.of(pageNo - 1, pageSize);
+        // Pageable pageable2 = PageRequest.of(0, 10);
+        return productRepository.findAllByEndDateBefore(new Date(), pageable);
+    }
 }

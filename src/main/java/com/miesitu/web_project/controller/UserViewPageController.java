@@ -20,6 +20,12 @@ public class UserViewPageController {
     @Autowired
     AnouncementService anouncementRepository;
 
+    @GetMapping("/dist/Anouncements")
+    public String distAnounce(Model model){
+        return userViewAnouncement(model);
+    }
+
+
     @GetMapping("/ViewAnouncement")
     public String userViewAnouncement(Model model){
         return findPagenated(1, model);
