@@ -1,16 +1,9 @@
 package com.miesitu.web_project;
 
-// import static org.junit.jupiter.api.Assertions.assertEquals;
-// import static org.junit.jupiter.api.Assertions.assertNotNull;
-// import static org.mockito.ArgumentMatchers.notNull;
-
-// import java.util.Set;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 
 import com.miesitu.web_project.Repository.UserRepository;
-// import com.miesitu.web_project.entity.Code;
 import com.miesitu.web_project.entity.User;
 
 import org.junit.jupiter.api.Test;
@@ -23,19 +16,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-// import com.miesitu.web_project.Repository.UserRepository;
-// import com.miesitu.web_project.entity.User;
-
-// import org.assertj.core.api.Assertions;
-// import org.junit.jupiter.api.Test;
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-// import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-// import org.springframework.test.annotation.Rollback;
-
-// @DataJpaTest
-// @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-// @Rollback(false)
 @DataJpaTest
 @Rollback(false)
 @ExtendWith(SpringExtension.class)

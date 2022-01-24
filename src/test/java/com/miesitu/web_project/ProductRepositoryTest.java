@@ -3,14 +3,9 @@ package com.miesitu.web_project;
 import com.miesitu.web_project.Repository.ProductRepository;
 import com.miesitu.web_project.entity.Product;
 import static org.assertj.core.api.Assertions.assertThat;
-// import static org.mockito.ArgumentMatchers.anyLong;
-// import static org.mockito.Mockito.when;
-
-// import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-// import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
@@ -42,27 +37,7 @@ public class ProductRepositoryTest {
         Product exitProduct = entityManager.find(Product.class, savedProduct.getProductId());
         assertThat(product.getProductId()).isEqualTo(exitProduct.getProductId());
     }
-    // @Test
-    // public void whenGivenId_shouldDeleteProduct_ifFound(){
-    //     Product product = new Product();
-    //     product.setProductId(12);
-    //     product.setProductDesc("Sold");
-
-    //     when(repo.findById(product.getProductId())).thenReturn(Optional.of(product));
-
-    //     entityManager.deleteProduct(product.getProductId());
-    //     verify(productRepository).deleteById(product.getProductId());
-    // }
-
-    // @Test
-    // public void should_throw_exception_when_product_doesnt_exist() {
-    //     Product product = new Product();
-    //     product.setProductId(8L);
-    //     product.setProductDesc("Sold Out");
-
-    //     given(productRepository.findById(anyLong())).willReturn(Optional.ofNullable(null));
-    //     deleteProduct.deleteProduct(product.getProductId());
-    // }
+   
 }
 
 
