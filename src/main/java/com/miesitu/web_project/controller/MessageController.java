@@ -57,7 +57,7 @@ public class MessageController {
 
     @GetMapping("admin/messageList/{pageNo}")
     public String  findMessagePagenated(@PathVariable(value="pageNo") int pageNo, Model model ) {
-        int pageSize = 1;
+        int pageSize = 10;
         Page<ContactUs> page = mesServ.findMessagePaginated(pageNo,pageSize);
         List<ContactUs> messagelist = page.getContent();
         model.addAttribute("currentPage", pageNo);

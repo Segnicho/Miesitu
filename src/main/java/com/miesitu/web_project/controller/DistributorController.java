@@ -1,5 +1,7 @@
 package com.miesitu.web_project.controller;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -13,17 +15,21 @@ import com.miesitu.web_project.services.UserService;
 import com.miesitu.web_project.services.approveConsumtionService;
 import com.miesitu.web_project.services.getLoggedUser;
 
+import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import net.bytebuddy.asm.Advice.FieldValue;
 
 @Controller
 public class DistributorController {
@@ -112,13 +118,21 @@ public class DistributorController {
 
         List<Product> activeProducs = consupServ.activeProducts();
         List<Product> active = consupServ.activeProducts();
+        Collection<Product> usedProducs= new ArrayList<>();
+
         if(activeProducs != null){
             for(Product product : active){
-                if(consupServ.checkExistance(user, product)){
+                if(consupServ.checkExistance(user.getUserId(), product.getProductId())){
                     activeProducs.remove(product);
+                    usedProducs.add(product);
                 }
+                System.out.print("\n\n\n");
+                System.out.print(activeProducs);
+                System.out.print("\n\n\n");
+
             }
             model.addAttribute("products", activeProducs);
+            model.addAttribute("usedProducs", usedProducs);
         }
         return "consumtionDetal";
     }
@@ -130,7 +144,7 @@ public class DistributorController {
 
         if (bindingResult.hasErrors()){
             ra.addFlashAttribute("message", bindingResult.getFieldError());
-            return "redirect:/distr/poductSold/"+userId;
+            return "redirect:/distr/user/"+userId;
         }
 
         //User
@@ -158,9 +172,31 @@ public class DistributorController {
         }
 
         ra.addFlashAttribute("success", "user comsumtion updated successfully");
-        return "redirect:/distr/poductSold/"+userId;
+        return "redirect:/distr/user/"+userId;
 
     }
+
+    @PostMapping("/distr/poductSold/undo/{productId}")
+    public String undoProductSold(@PathVariable("productId") long productId, @RequestParam("userId") long userId  , RedirectAttributes ra){
+
+        if(approveConsumtionserv.delete(productId, userId)){
+            ra.addFlashAttribute("success", "Undo Operation successfully");
+        }else{
+        ra.addFlashAttribute("er", "Undo Operation failed, please try again!");}
+
+        return "redirect:/distr/user/"+ userId;
+    }
+    @GetMapping("/distr/about")
+    public String distAbout(){
+        return "about";
+    }
+
+    @GetMapping("/distr/contact")
+    public String distContact(){
+        return "message";
+    }
+
+    
 
     
 }

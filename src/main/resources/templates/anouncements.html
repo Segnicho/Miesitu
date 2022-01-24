@@ -3,24 +3,27 @@
 
 <head>
     <title>Anouncements</title>
-    <th:block th:include="fragments/head.html :: head" />
 
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <th:block th:include="fragments/head.html :: head" />
+
 </head>
 
 <body>
-    <main style="margin:6rem 0;">
+    
         
-</head>
 
-<body>
+    <div th:replace="fragments/nav.html :: navbar"></div>
 
-    <div th:replace="fragments/nav.html :: adminNav"></div>
-
+    <main style="margin:6rem 0;">
     <div class="container-fluid text-center">
-        <h1>List of Anouncements </h1>
-        <div class="mr-2">
-            <a class="h2 btn btn-primary btn-md" th:href="@{/admin/newAnouncement}">Add new Anouncement</a>
+        <div align="center">
+            <h1 style="background-color: #23869C; width:fit-content; padding:0 10rem; font-weight:bold;"> List of Anouncements </h1>
+        </div>
+
+        <div class="mr-2" align="right">
+            <a class="h2 btn btn-primary btn-md" th:href="@{/admin/newAnouncement}"> 
+                <span style="background-color: #23869C; width:fit-content; padding:0 1rem; font-weight:bold; border-radius:100%;">+</span>  Add new Anouncement</a>
         </div>
 
         <div th:if="${message}" class=" alert alert-success text-center ">

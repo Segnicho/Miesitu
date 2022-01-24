@@ -20,19 +20,21 @@ public class UserViewPageController {
     @Autowired
     AnouncementService anouncementRepository;
 
-    @GetMapping("/dist/Anouncements")
+    @GetMapping("/distr/anouncement")
     public String distAnounce(Model model){
         return userViewAnouncement(model);
     }
+    @GetMapping("/distr/anouncement/{pageNo}")
+    public String distAnouncePage(@PathVariable(value="pageNo") int pageNo, Model model){
+        return findPagenated(pageNo, model);
+    }
 
-    
-
-    @GetMapping("/ViewAnouncement")
+    // @GetMapping("/ViewAnouncement")
     public String userViewAnouncement(Model model){
         return findPagenated(1, model);
     }
 
-    @GetMapping("/ViewAnouncement/{pageNo}")
+    // @GetMapping("/ViewAnouncement/{pageNo}")
     public String  findPagenated(@PathVariable(value="pageNo") int pageNo, Model model ) {
         int pageSize = 1;
         Page<Anouncement> page = anouncementRepository.findAnouncementPaginated(pageNo,pageSize);

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en-US">
-
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en-US" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <th:block th:include="fragments/head.html :: head" />
     <title>Home</title>
@@ -16,7 +15,7 @@
 </head>
 
 <body>
-    <div th:replace="fragments/nav.html :: custNav"></div>
+    <div th:replace="fragments/nav.html :: navbar"></div>
 
 
     <main>
@@ -27,16 +26,18 @@
                     
             </div>
         </div>
-        <section class="intro" sec:authorize = "isAuthenticated()" >
+            
+            <section class="intro" >
             <div class="row">
                 <section class="intro__welcome col-7">
                     <div class="intro__welcomeTxt"style="z-index:20">
-                        <h1>Hello <br> Well come to <strong style="color: orange;">Miesitu</strong></h1>
-                        <section>In Miesitu you can get the information on Oil and Sugar. It is known that products are distributed by a cheaper price at your Kebele or other distribution areas. You can get from here the price of the products, the time it is going
+                        <h1>Hello <br>
+                        Well come to <strong style="color: orange;">Miesitu</strong></h1>
+                        <section sec:authorize = "!isAuthenticated()">In Miesitu you can get the information on Oil and Sugar. It is known that products are distributed by a cheaper price at your Kebele or other distribution areas. You can get from here the price of the products, the time it is going
                             to be distributed and when the term's distribution is going to end. by learning these informations you make your life easier.
                         </section>
                         <br><br>
-                        <a th:href="@{signup}" style="background-color: orange; z-index:20" class="btn">Sign up</a>
+                        <a sec:authorize = "!isAuthenticated()" th:href="@{signup}" style="background-color: orange; z-index:20" class="btn">Sign up</a>
                     </div>
                 </section>
 
@@ -68,7 +69,7 @@
 
         </section>
 
-        <section class="sellStatus">
+        <section class="sellStatus" sec:authorize = "!isAuthenticated()" >
 
             <h2>Sell Status</h2>
             <div class="card container row sellStatus__item" style="height: 9rem; margin:5px;">

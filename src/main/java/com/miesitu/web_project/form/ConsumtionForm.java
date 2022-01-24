@@ -12,10 +12,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ConsumtionForm {
-    @NotNull
+    @NotNull(message = "Error, amount cannot be empty")
     public float amount;
 
-    @NotNull
+    @NotNull(message = "Unknown error, please try again")
     public int productId;
 
     private java.util.Date date = new java.util.Date();

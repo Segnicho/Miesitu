@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.*;
 
@@ -28,7 +29,7 @@ public class ContactUs {
     // @NotBlank(message = "Please enter a message")
     private String UserMessage;
 
-    // @DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
     private Instant sentDate = Instant.now();
     
     @OneToOne

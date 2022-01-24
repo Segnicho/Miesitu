@@ -65,4 +65,8 @@ public class CodeGeneratorService {
         }
         return saved;
     }
+
+    public Collection<Code> codeLists(){
+        return codeRepo.findAllByStatus(true);
+    }
 }

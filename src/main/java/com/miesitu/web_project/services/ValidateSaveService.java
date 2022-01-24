@@ -43,6 +43,7 @@ public class ValidateSaveService {
     }
     public boolean passwordMacher(String pass1, String pass2){
         return pass1.equals(pass2);
+
     }
 
     @Transactional
@@ -55,6 +56,9 @@ public class ValidateSaveService {
         Code code = codeRepo.findByCode(codeNum);
         if ( code != null){
             // System.out.println("\n\nhi\n\n");
+            if(!code.isStatus()){
+                return false;
+            }
 
             Collection<Role> role = code.getCodeRole();
             if(role != null)
@@ -67,13 +71,33 @@ public class ValidateSaveService {
             User user = toUser(form, passwordEncoder, code, realrole );
             if(user != null){
                 // System.out.println("\n\nhi\n\n");
-                userRepo.save(user);
-                code.setStatus(false);//used code
-                return true;
+                try {
+                    userRepo.save(user);
+                    code.setStatus(false);//used code
+                    return true;
+                } catch (Exception e) {
+                    return false;
+                }
             }
             return false;
         }
         return false;  //call ValidSaveService and to User above, then save to db using above cmd
+    }
+
+    public boolean userEmailExists(String email){
+        User user = userRepo.findByEmail(email);
+        if(user != null){
+            return true;
+        }else{
+            return false;
+        }
+    }  
+
+    public boolean userPhoneExists(int phone){
+        User user = userRepo.findByPhone(phone);
+        if(user != null){
+            return true;
+        }else return false;
     }
     
 }

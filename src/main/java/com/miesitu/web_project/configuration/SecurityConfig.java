@@ -58,7 +58,7 @@ public class SecurityConfig {
             .and()
                 .formLogin()
                     .loginPage("/login")
-                    .defaultSuccessUrl("/hh")
+                    .defaultSuccessUrl("/")
                     .failureUrl("/login?error").permitAll()
             .and()
             // .csrf((csrf) -> csrf.disable())

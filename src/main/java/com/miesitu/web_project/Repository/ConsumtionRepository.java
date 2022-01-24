@@ -18,7 +18,13 @@ public interface ConsumtionRepository extends JpaRepository<Consumtion, Long>{
 
     @Query(
         nativeQuery = true,
-        value = "select * from consumtion where customer =: cust and product =: prod"
+        value = "select * from consumtion where customer_user_id =:cust and product_product_id =:prod"
     )
-    List<Consumtion> checkExistance(@Param("cust") User cust, @Param("prod") Product prod);
+    List<Consumtion> checkExistance(@Param("cust") long cust, @Param("prod") long prod);
+
+    @Query(
+        nativeQuery = true,
+        value = "delete from consumtion where customer_user_id =:userId and product_product_id =:prodId"
+    )
+    void deleteConsumtion( @Param("prodId") long prodId, @Param("userId") long userId);
 }

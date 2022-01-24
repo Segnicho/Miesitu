@@ -13,10 +13,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 public class AboutController {
     
-    @ModelAttribute
-    public void addAttributes(Model model) {
-        model.addAttribute("msg", "Welcome to the Netherlands!");
-    }
 
     @GetMapping("/about")
     public String about(Model model){

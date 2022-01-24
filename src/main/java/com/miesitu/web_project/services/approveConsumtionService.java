@@ -1,5 +1,6 @@
 package com.miesitu.web_project.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.miesitu.web_project.Repository.ConsumtionRepository;
@@ -36,5 +37,17 @@ public class approveConsumtionService {
             
         }
         return false;
+    }
+
+    public boolean delete(long productId, long userId) {
+        
+        try {
+            List<Consumtion> cons = consRepo.checkExistance(userId, productId);
+            consRepo.deleteAll(cons);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
     }
 }

@@ -67,13 +67,6 @@ public class SignUpController{
     public String processRegistration(@Valid SignUpForm form, BindingResult bindingResult, Model model, RedirectAttributes errmsg ) {
         errmsg.addFlashAttribute("form", form);
         if (bindingResult.hasErrors()) {   
-            // model.addAttribute( "error", bindingResult.getAllErrors());
-            // bindingResult.getAllErrors().forEach(e -> {
-            //     e.
-            // } );
-            // System.out.println(form);
-            // System.out.println("\n\n");
-            // System.out.println(bindingResult.getFieldError().getDefaultMessage());
             errmsg.addFlashAttribute("er", bindingResult.getFieldError().getDefaultMessage());
             return "redirect:signup?error";
             
@@ -81,6 +74,14 @@ public class SignUpController{
             // System.out.println(form);
             if(!valsave.passwordMacher(form.getPassword(), form.getConfirm_Password())){
                 errmsg.addFlashAttribute("er", "Password Does Not Match");
+                return "redirect:/signup?error";
+            }
+            if(valsave.userEmailExists(form.getEmail())){
+                errmsg.addFlashAttribute("er", "Email Already exists");
+                return "redirect:/signup?error";
+            }
+            if(valsave.userPhoneExists(form.getPhone())){
+                errmsg.addFlashAttribute("er", "Phone number Already Exists");
                 return "redirect:/signup?error";
             }
             if(valsave.doSave(form)){

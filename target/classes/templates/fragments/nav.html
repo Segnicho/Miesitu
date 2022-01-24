@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en-US" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,8 +14,93 @@
 </head>
 <body>
 
+<header th:fragment="navbar">
+    <section class="header header row">
+        <div class="header__logo col-2 col-xsm-4"> <a href="index.html"> <img style="border-top: 10px;" th:src="@{/images/handwritten-logo-letter-m-vector-22854828-removebg-preview.png}" alt="MIESITU" srcset=""></a> </div>
+        <div class="header__logo col-1"></div>
+        <nav class="header__links hide initial col-5 col-sm-0">
+            <ul class="header__links__ul" sec:authorize = "!isAuthenticated()">
+                <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <i class="bi bi-house-fill"></i>
+                    <a  class = "nav__link" th:href="@{/home}"> home </a></li>
+                <li class="header__links__ul__li"> 
+                    <i class="bi bi-info-circle-fill"></i>
+                    <a class = "nav__link" th:href="@{/about}"> 
+                    </i> about </a>    </li>
+                <li class="header__links__ul__li"> 
+                    <i class="bi bi-telephone-fill"></i>
+                    <a class = "nav__link" th:href="@{/contactUs}"> Contact Us</a> </li>
+            </ul>
 
-<header th:fragment="normalNav">
+            <ul class="header__links__ul" sec:authorize="hasAuthority('ROLE_ADMIN')" >
+                <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  class = "nav__link" th:href="@{/admin}"> home </a></li>
+                <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  class = "nav__link" th:href="@{/admin/users}"> User </a></li>
+                <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  class = "nav__link" th:href="@{/admin/products}"> products </a></li>
+                <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  class = "nav__link" th:href="@{/admin/Anouncements}"> Announcement </a></li>
+                <li class="header__links__ul__li"> 
+                    <a class = "nav__link" th:href="@{/admin/messageList}"> Message</a> </li>
+            </ul>
+
+            <ul class="header__links__ul" sec:authorize="!hasAuthority('ROLE_ADMIN') && hasAuthority('ROLE_DISTRIBUTER')">
+                <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  class = "nav__link" th:href="@{/distr}"> home </a></li>
+                    <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  class = "nav__link" th:href="@{/distr/user}"> User </a></li>
+                    <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  class = "nav__link" th:href="@{/distr/product}"> product </a></li>
+                    <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  class = "nav__link" th:href="@{/distr/anouncement}"> Announcement </a></li>
+                    <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  class = "nav__link" th:href="@{/distr/about}"> About </a></li>
+                    <li class="header__links__ul__li"> 
+                    <a class = "nav__link" th:href="@{/distr/contact}"> Contact Us</a> </li>
+            </ul>
+
+            <ul class="header__links__ul" sec:authorize="!hasAuthority('ROLE_ADMIN') && !hasAuthority('ROLE_DISTRIBUTER') && hasAuthority('ROLE_CUSTOMER')">
+                <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  class = "nav__link" th:href="@{/cust}"> home </a></li>
+                    <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                        <a  th:href="@{/cust/anouncements}"> Announcement </a></li>
+                    <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  class = "nav__link" th:href="@{/cust/products}"> Product </a></li>
+                    <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
+                    <a  class = "nav__link" th:href="@{/cust/about}"> About </a></li>
+                    <li class="header__links__ul__li"> 
+                    <a class = "nav__link" th:href="@{/cust/contact}"> Contact Us</a> </li>
+            </ul>
+
+        </nav>
+
+        <section class="header__topnav col-3 col-xsm-8">        
+            <div class="header__topnav__left">
+                <div class = "header__topnav__left__btn" sec:authorize = "!isAuthenticated()">
+                <a th:href="@{/login}" class = "btn btn-primary nav__link">Log in</a>
+                <a th:href="@{/signup}"class = "btn btn-info nav__link">Sign up</a>
+                </div>
+
+                <div sec:authorize = "isAuthenticated()">
+                    <a th:href="@{/logout}" class = "btn btn-danger nav__link">Log out</a>
+                </div>
+
+                <div class="menu">
+                    <div class="menu__icon">
+                        <div class="menu__icon__middle"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <img th:src="@{/images/Vector(1).svg}" alt="Navigation wavy image" srcset="" class="svg col-0">
+
+    </section>
+</header>
+    
+
+<!--  {% comment %} <header th:fragment="normalNav">
     <section class="header header row">
 
         <div class="header__logo col-2 col-xsm-4"> <a th:href="@{/}"> <img style="border-top: 10px;" th:src="@{/images/handwritten-logo-letter-m-vector-22854828-removebg-preview.png}" alt="MIESITU" srcset=""></a> </div>
@@ -53,9 +138,9 @@
     <img th:src="@{/images/Vector(1).svg}" alt="Navigation wavy image" srcset="" class="svg col-0">
 
     </section>
-</header>
+</header> {% endcomment %}
 
-<header th:fragment="custNav">
+{% comment %} <header th:fragment="custNav" sec:authorize = "isAuthenticated()" >
     <section class="header header row">
         <div class="header__logo col-2 col-xsm-4"> <a th:href="@{/}"> <img style="border-top: 10px;" th:src="@{/images/handwritten-logo-letter-m-vector-22854828-removebg-preview.png}" alt="MIESITU" srcset=""></a> </div>
 
@@ -92,9 +177,9 @@
     <img th:src="@{/images/Vector(1).svg}" alt="Navigation wavy image" srcset="" class="svg col-0">
 
     </section>
-</header>
+</header> {% endcomment %}
 
-<header th:fragment="distNav">
+{% comment %} <header th:fragment="distNav" sec:authorize = "isAuthenticated()">
     <section class="header header row">
 
         <div class="header__logo col-2 col-xsm-4"> <a th:href="@{/}"> <img style="border-top: 10px;" th:src="@{/images/handwritten-logo-letter-m-vector-22854828-removebg-preview.png}" alt="MIESITU" srcset=""></a> </div>
@@ -131,48 +216,9 @@
     <img th:src="@{images/Vector(1).svg}" alt="Navigation wavy image" srcset="" class="svg col-0">
 
     </section>
-</header>
+</header> {% endcomment %} -->
 
 
-<header th:fragment="adminNav">
-    <section class="header header row">
-
-        <div class="header__logo col-2 col-xsm-4"> <a href="index.html"> <img style="border-top: 10px;" th:src="@{/images/handwritten-logo-letter-m-vector-22854828-removebg-preview.png}" alt="MIESITU" srcset=""></a> </div>
-        <div class="header__logo col-1"></div>
-
-        <nav class="header__links hide initial col-5 col-sm-0">
-            <ul class="header__links__ul">
-                <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
-                    <a  th:href="@{/admin}"> home </a></li>
-                    <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
-                    <a  th:href="@{/admin/users}"> User </a></li>
-                    <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
-                    <a  th:href="@{/admin/products}"> products </a></li>
-                    <li class="header__links__ul__li header__topnav__left__socialMediaIcons__links--active">
-                    <a  th:href="@{/admin/anouncement}"> Announcement </a></li>
-                <li class="header__links__ul__li"> 
-                    <a th:href="@{/admin/messageList}"> Message</a> </li>
-            </ul>
-        </nav>
-
-        <section class="header__topnav col-3 col-xsm-8">        
-            <div class="header__topnav__left">
-                <div class = "header__topnav__left__btn">
-                <a th:href="@{/login}" class = "btn btn-primary">Log in</a>
-                <a th:href="@{/signup}"class = "btn btn-info">Sign up</a>
-                </div>
-                <div class="menu">
-                    <div class="menu__icon">
-                        <div class="menu__icon__middle"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    <img th:src="@{/images/Vector(1).svg}" alt="Navigation wavy image" srcset="" class="svg col-0">
-
-    </section>
-</header>
 
 <script th:src="@{js/menu.js}"></script>
 

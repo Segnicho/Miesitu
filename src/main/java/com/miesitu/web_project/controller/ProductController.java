@@ -76,16 +76,16 @@ public class ProductController {
     ///customer Product list
 
     
-    @GetMapping("dist/productList")
+    @GetMapping("distr/product")
     public String distProductList(Model model){
         return productList(model);
     }
 
-    @GetMapping("cust/productList/{pageNo}")
+    @GetMapping("cust/product/{pageNo}")
     public String  custProductPagenated(@PathVariable(value="pageNo") int pageNo, Model model ) {
         return productList(model);  //correct the html
     }
-    @GetMapping("dist/productList/{pageNo}")
+    @GetMapping("distr/product/{pageNo}")
     public String  distProductPagenated(@PathVariable(value="pageNo") int pageNo, Model model ) {
         return productList( model);  //correct the html
     }

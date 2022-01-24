@@ -5,6 +5,8 @@ import java.time.Instant;
 
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.*;
 
 @Getter
@@ -24,6 +26,7 @@ public class Anouncement {
     @OneToOne
     private User byUser;
     
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Instant sentDate = Instant.now();
 
 }

@@ -25,6 +25,7 @@ public class AdminCodeGenController {
 
     @GetMapping("/admin/generateCode")
     public String codeGen(Model model){
+        
         return "codeGenerator";
     }
 

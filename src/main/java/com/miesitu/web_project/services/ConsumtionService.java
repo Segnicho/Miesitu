@@ -44,11 +44,11 @@ public class ConsumtionService {
         return productRepo.findByEndDateAfter((new Date()));
     }
 
-    public boolean checkExistance(User user, Product prod){
-        if(consRepo.checkExistance(user, prod) != null){
-            return true;
+    public boolean checkExistance(long user, long prod){
+        if(consRepo.checkExistance(user, prod).isEmpty()){
+            return false;
         }
-        return false;
+        return true;
     }
 
 }

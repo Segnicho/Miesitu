@@ -3,7 +3,6 @@
 
 <head>
     <th:block th:include="fragments/head.html :: head" />
-<<<<<<< HEAD
     
 
     <title>Anouncements</title>
@@ -17,20 +16,17 @@
 
 <body>
 
-    
-=======
-    <title>User View Anouncement</title>
-</head>
-
-<body >
->>>>>>> 84de4e4d20cdc65f9f75100907d2154c80736526
-    <div th:replace="fragments/nav.html :: custNav"></div>
+    <div th:replace="fragments/nav.html :: navbar"></div>
 
     <main>
 
-        <div align="center">
-            <h1>Anouncements</h1>
+        <div align="center" th:if="${!anouncementlist.isEmpty()}">
+            <h1 style="background-color: #23869C; width:fit-content; padding:0 10rem; font-weight:bold;">Currently Available Anouncements</h1>
         </div>
+
+        <div th:if="${anouncementlist.isEmpty()}" >
+            <p style="color: #23869C;">No Anouncements Currently</p>
+       </div>
     <div th:each=" anounce : ${anouncementlist} " align="center" style="margin-top: 3rem;">
         <div class="card" style="width: min(80vw, 800px); text-align:start; ">
             <h5 class="card-header">Title: [[${anounce.getSubject}]]</h5>

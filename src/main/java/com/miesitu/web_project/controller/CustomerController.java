@@ -69,7 +69,7 @@ public class CustomerController {
 
     @GetMapping("/cust")
     public String custHome(Model model){
-        return commonController.userViewAnouncement(model);
+        return "home";
     }
 
     @GetMapping("cust/products")

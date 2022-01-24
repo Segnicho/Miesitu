@@ -1,0 +1,13 @@
+<p th:each="authority : ${#authentication.getAuthorities()}"
+                th:if="${authority.getAuthority().contains('ROLE_ADMIN') && authority.getAuthority().contains('ROLE_ADMIN')}"
+                th:text="${authority.getAuthority().replaceFirst('ROLE_', '')}">
+            
+            </p>
+
+<div sec:authentication = 'principal.authorities' > </div>
+
+sec:authorize = "isAuthenticated()"
+
+            <div sec:authorize="hasAuthority('ROLE_ADMIN')" > Has Authority USER </div>
+            <div sec:authorize="hasAuthority('ROLE_CUSTOMER')" > Has Authority USER </div>
+            <div sec:authorize="hasAuthority('ROLE_DISTRIBUTER')" > Has Authority USER </div>

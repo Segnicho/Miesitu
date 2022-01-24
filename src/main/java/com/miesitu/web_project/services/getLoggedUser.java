@@ -16,7 +16,7 @@ public class getLoggedUser {
     private UserRepository userRepo;
     
     public String get_Username(){
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal() ;
 
         if (principal instanceof UserDetails) {
 		    return ((UserDetails)principal).getUsername();

@@ -6,16 +6,26 @@
 
 
     <title>products</title>
-
+    <style>
+        main{
+            margin-top: 6rem;
+            margin-bottom: 4rem;
+        }
+    </style>
 </head>
 <body>
 
-      <div th:replace="fragments/nav.html :: normalNav"></div> 
+      <div th:replace="fragments/nav.html :: navbar"></div> 
 
 <main style="margin-bottom: 4rem; margin-top:6rem;">
     <div align="center">
-        <h1 style="background-color: #23869C; width:fit-content; padding:0 10rem; font-weight:bold; ">Currently Available Products</h1>
+        <h1 style="background-color: #23869C; width:fit-content; padding:0 10rem; font-weight:bold; "> Currently Available Products</h1>
     </div>
+
+    <div th:if="${productlist.isEmpty()}" >
+         <p style="color: #23869C;">No active products available Currently</p>
+    </div>
+
     <div class="row" align = "center" style="margin-top:3rem;">
         <div th:each="product:${productlist}"  class="col-5" align = "center">
                 <div class="card" style="width: 19rem;">

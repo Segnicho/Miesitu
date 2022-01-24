@@ -5,6 +5,8 @@ import java.sql.Date;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.*;
 
 @Getter
@@ -29,6 +31,7 @@ public class Consumtion {
     @NotNull
     private float amount;
     
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private java.util.Date date;
 
     @OneToOne
