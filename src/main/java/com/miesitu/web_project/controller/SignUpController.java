@@ -1,6 +1,8 @@
 package com.miesitu.web_project.controller;
 
+import com.miesitu.web_project.Repository.CodeRepository;
 import com.miesitu.web_project.Repository.UserRepository;
+import com.miesitu.web_project.entity.Code;
 import com.miesitu.web_project.entity.User;
 import com.miesitu.web_project.form.SignUpForm;
 
@@ -38,6 +40,9 @@ public class SignUpController{
     // private VarifyCodeService varifyCode;
     @Autowired
     private ValidateSaveService valsave;
+
+    @Autowired
+    private CodeRepository codeRepo;
 
     @GetMapping
     public String signup(HttpServletRequest request, Model model, SignUpForm form, RedirectAttributes reatr) {
@@ -81,7 +86,20 @@ public class SignUpController{
             if(valsave.doSave(form)){
                 errmsg.addFlashAttribute("message", "Signup Successfull. Please Log In");
                 return "redirect:login?signupsuccess";
-            }   
-    
+            }else{
+                long codeNum = form.getCode();
+                Code code = codeRepo.findByCode(codeNum);
+                if ( code != null && !code.isStatus()){
+                    errmsg.addFlashAttribute("er", "Error, The code is already used by another user");
+                    return "redirect:/signup?error";
+                }else if(code != null){
+                    errmsg.addFlashAttribute("er", "Error, code not found, please contact the admin to get one");
+                    return "redirect:/signup?error";
+                }
+            }
+            errmsg.addFlashAttribute("er", "Error, Please try again");
+            return "redirect:/signup?error";
+        }
+    }
 
 }
