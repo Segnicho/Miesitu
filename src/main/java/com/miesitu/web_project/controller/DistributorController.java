@@ -46,35 +46,19 @@ public class DistributorController {
     @Autowired
     private approveConsumtionService approveConsumtionserv;
 
-    @Autowired
-    private getLoggedUser LogedUser;
 
-    @ModelAttribute
-    public void addAttributes(Model model) {
-        User user = LogedUser.get_User();
-        if(user != null){
-            if(user.getAuthorities().contains("ADMIN")){
-                model.addAttribute("user","admin");
-            }
-            else if(user.getAuthorities().contains("DISTRIBUTER")){
-                model.addAttribute("user","dist");
-            }else if(user.getAuthorities().contains("ROLE_CUSTOMER")){
-                model.addAttribute("user","cust");
-            }else{
-                model.addAttribute("user",false);
-            }
-        model.addAttribute("user",false);
-        }
-
-        model.addAttribute("user",false);
+    @GetMapping("/distr")
+    public String distHome(){
+        return "home";
     }
 
     @GetMapping("distr/user")
     public String usersInDistributerArea(Model model, Consumtion consumtion, RedirectAttributes ra){
         // consupSer
         User dist;
+        User loggedUser;
         try {
-            User loggedUser = logeduserService.get_User();
+            loggedUser = logeduserService.get_User();
             if(loggedUser != null){
                 dist = loggedUser;
             }else{
@@ -84,15 +68,16 @@ public class DistributorController {
             return "redirect:/consumtion";
         }
 
-        User loggedUser = logeduserService.get_User();
-        if( loggedUser != null){
+        try {
             String area = loggedUser.getArea();
             List<User> users = (List<User>) consupServ.getUsersByArea(area);
             users.remove(dist);
             model.addAttribute("users", users);
             return "usersListinArea";
+        } catch (Exception e) {
+            ra.addFlashAttribute("message", e.getMessage());
+            return "redirect:/consumtion";
         }
-        return "redirect:/logout";
     }
 
     @GetMapping("distr/user/{userId}")
@@ -143,7 +128,7 @@ public class DistributorController {
         User dist;
 
         if (bindingResult.hasErrors()){
-            ra.addFlashAttribute("message", bindingResult.getFieldError());
+            ra.addFlashAttribute("er", bindingResult.getFieldError().getDefaultMessage());
             return "redirect:/distr/user/"+userId;
         }
 

@@ -6,8 +6,6 @@ import com.miesitu.web_project.entity.Code;
 import com.miesitu.web_project.entity.User;
 import com.miesitu.web_project.form.SignUpForm;
 
-import java.text.Normalizer.Form;
-import java.util.Collection;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,10 +31,6 @@ import org.springframework.stereotype.Controller;
 @RequestMapping("/signup")
 public class SignUpController{
 
-    @Autowired
-    private UserRepository userRepo;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
     // private VarifyCodeService varifyCode;
     @Autowired
     private ValidateSaveService valsave;
@@ -56,8 +50,6 @@ public class SignUpController{
         } catch (NullPointerException e) {
             model.addAttribute("form", form);
         }
-
-        
         return "signup";
     
     }

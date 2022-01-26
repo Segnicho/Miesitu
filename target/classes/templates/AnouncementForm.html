@@ -15,7 +15,18 @@
                 <h2>[[${pageTitle}]]</h2>
             </div>
         </div>
-        <form method="post" th:action="@{/admin/saveAnouncement}" th:object="${anounce}" style="max-width: 500px; margin: 0 auto;">
+    </div>
+
+        <form method="post" th:action="@{/admin/saveAnouncement}" th:object="${anounce}" style="max-width: 500px; margin: 50px auto;">
+            <div th:if="${er}" class = "alert alert-danger text-center">
+                [[${er}]]
+            </div>
+            <div th:if="${message}" class = "alert alert-success text-center">
+                [[${message}]]
+            </div>
+            <div th:if="${success}" class = "alert alert-success text-center">
+                [[${success}]]
+            </div>
             <div class="border border-secondary rounded p-3">
                 <!-- required minLength maxlength -->
                 <input type="hidden" th:field="*{anouncementId}" name="anouncementId">
@@ -30,7 +41,7 @@
                 <div class="form-group row">
                     <label class="col-sm-4 col-form-label ">Message</label>
                     <div class="col-sm-8">
-                        <textarea type="text" th:field="*{message}" class="form-control" name="message" row = "4"/>
+                        <textarea type="text" th:field="*{message}" class="form-control" name="message" row = "10"/>
                     </div>
                 </div>
 

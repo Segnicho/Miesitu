@@ -9,6 +9,15 @@
     <div th:replace="fragments/nav.html :: navbar"></div>
 
     <main style="margin-bottom: 4rem; margin-top:6rem;" align = "center">
+        <div th:if="${er}" class = "alert alert-danger text-center">
+            [[${er}]]
+        </div>
+        <div th:if="${message}" class = "alert alert-success text-center">
+            [[${message}]]
+        </div>
+        <div th:if="${success}" class = "alert alert-success text-center">
+            [[${success}]]
+        </div>
         <div align="center">
             <h1 style="background-color: #23869C; width:fit-content; padding:0 10rem; font-weight:bold; "> Messages</h1>
         </div>

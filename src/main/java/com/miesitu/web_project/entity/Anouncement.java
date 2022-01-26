@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.time.Instant;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,6 +22,7 @@ public class Anouncement {
     private long anouncementId;
 
     private String subject;
+    @NotEmpty(message = "message is empty! can not send anouncement with no content")
     private String message;
 
     @OneToOne

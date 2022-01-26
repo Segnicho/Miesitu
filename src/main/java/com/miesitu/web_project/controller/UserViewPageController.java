@@ -33,10 +33,13 @@ public class UserViewPageController {
     public String userViewAnouncement(Model model){
         return findPagenated(1, model);
     }
+    public String userViewAnouncement(int pageNo, Model model){
+        return findPagenated(pageNo, model);
+    }
 
     // @GetMapping("/ViewAnouncement/{pageNo}")
-    public String  findPagenated(@PathVariable(value="pageNo") int pageNo, Model model ) {
-        int pageSize = 1;
+    public String  findPagenated(int pageNo, Model model ) {
+        int pageSize = 5;
         Page<Anouncement> page = anouncementRepository.findAnouncementPaginated(pageNo,pageSize);
         List<Anouncement> anouncementlist = page.getContent();
         model.addAttribute("currentPage", pageNo);

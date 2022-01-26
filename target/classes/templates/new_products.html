@@ -10,8 +10,16 @@
     
 
     <div style="margin-top: 5vh; margin-bottom: 2vh;" class="container">
-        <h1>Adding a newly arrived products</h1>
-        
+        <h1>Add a newly arrived products</h1>
+        <div th:if="${er}" class = "alert alert-danger text-center">
+            [[${er}]]
+        </div>
+        <div th:if="${message}" class = "alert alert-success text-center">
+            [[${message}]]
+        </div>
+        <div th:if="${success}" class = "alert alert-success text-center">
+            [[${success}]]
+        </div>
 
         <form  action="#" th:action="@{/admin/product/save}" th:object="${product}" method="post">
            

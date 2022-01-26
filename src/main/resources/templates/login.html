@@ -23,9 +23,15 @@
             <div th:if="${param.error}" class=" alert alert-danger text-center ">
                 Unable to login. Check your username and password.
             </div>
-            <div th:if="${message}" class=" alert alert-success text-center ">
+            <div th:if="${er}" class = "alert alert-danger text-center">
+                [[${er}]]
+            </div>
+            <div th:if="${message}" class = "alert alert-success text-center">
                 [[${message}]]
-            </div> 
+            </div>
+            <div th:if="${success}" class = "alert alert-success text-center">
+                [[${success}]]
+            </div>
 
             <div align = "center">
                 <i class="fas fa-user-circle"></i></br>

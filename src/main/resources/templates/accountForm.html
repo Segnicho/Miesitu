@@ -15,21 +15,17 @@
 
 <body>
     <div th:replace="fragments/nav.html :: custNav"></div>
-
-
-
-
-    
-
-
-
-
     <div align = "center" style="margin-bottom: 3rem;">
         
-        
-
-
-
+        <div th:if="${er}" class = "alert alert-danger text-center">
+            [[${er}]]
+        </div>
+        <div th:if="${message}" class = "alert alert-success text-center">
+            [[${message}]]
+        </div>
+        <div th:if="${success}" class = "alert alert-success text-center">
+            [[${success}]]
+        </div>
         <form method="post" th:action="@{/account/update}" th:object="${user1}" style="max-width: 500px; margin: 0 auto;">
             <div class="border border-secondary rounded p-3">
                 <!-- required minLength maxlength -->
@@ -82,15 +78,7 @@
                 </div>
             </div>
             
-        </form>
-
-
-
-
-
-
-
-    
+        </form>    
     </div>
     <div th:replace="fragments/footer.html :: footer"></div>
 <th:block th:replace="fragments/script :: script"/>

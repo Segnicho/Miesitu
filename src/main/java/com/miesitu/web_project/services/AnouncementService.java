@@ -22,9 +22,6 @@ public class AnouncementService {
     private AnouncementRepository anouncementRepo;
 
     @Autowired
-    private UserRepository userRepo;
-
-    @Autowired
     private getLoggedUser logedUser;
     
 

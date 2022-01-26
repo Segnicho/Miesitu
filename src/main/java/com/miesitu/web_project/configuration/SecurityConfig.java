@@ -16,7 +16,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder();
     }
 
     @Bean
@@ -51,17 +51,15 @@ public class SecurityConfig {
             .authorizeRequests()
                 // .antMatchers("/admin", "/admin/**").hasRole("ADMIN")
                 // .antMatchers("/cust", "/cust/**").hasRole("CUSTOMER")
-                // .antMatchers("/distr", "/distr/**").hasRole("DISTRIBUTER")
+                // .antMatchers("/dist", "/dist/**").hasRole("DISTRIBUTER")
                 .antMatchers("/signup").anonymous()
                 .antMatchers("/", "/**").permitAll()
-                .antMatchers("/admin", "/admin/**").permitAll()
             .and()
                 .formLogin()
                     .loginPage("/login")
                     .defaultSuccessUrl("/")
                     .failureUrl("/login?error").permitAll()
             .and()
-            // .csrf((csrf) -> csrf.disable())
             .logout()
                 .logoutUrl("/logout")
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

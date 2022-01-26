@@ -24,25 +24,31 @@
             <a class="h2 btn btn-primary btn-md" th:href="@{/admin/newUser}">Add new user</a>
             <a class="h2 btn btn-primary btn-md" th:href="@{/admin/generateCode}">Generate Code For User</a>
         </div>
-        <div th:if="${message}" class=" alert alert-success text-center ">
+        <div th:if="${er}" class = "alert alert-danger text-center">
+            [[${er}]]
+        </div>
+        <div th:if="${message}" class = "alert alert-success text-center">
             [[${message}]]
+        </div>
+        <div th:if="${success}" class = "alert alert-success text-center">
+            [[${success}]]
         </div>
         <table class="table table-bordered ">
             <thead class="table-dark ">
             </thead>
             <tr>
                 <th>
-                    <a th:href="@{'/admin/user/' +${currentPage} + '?sortField=firstName&sortDirection=' +${reverseSortDirection}}" th:if="${currentPage != i}">user Id</a>
+                    <a th:href="@{'/admin/user/' +${currentPage} + '?sortField=userId&sortDirection=' +${reverseSortDirection}}" th:if="${currentPage != i}">user Id</a>
                 </th>
                 <th>
                     <a th:href="@{'/admin/user/' +${currentPage} + '?sortField=firstName&sortDirection=' +${reverseSortDirection}}" th:if="${currentPage != i}">First Name</a>
                 </th>
 
                 <th>
-                    <a th:href="@{'/admin/user/' +${currentPage} + '?sortField=firstName&sortDirection=' +${reverseSortDirection}}" th:if="${currentPage != i}">Last Name</a>
+                    <a th:href="@{'/admin/user/' +${currentPage} + '?sortField=lastName&sortDirection=' +${reverseSortDirection}}" th:if="${currentPage != i}">Last Name</a>
                 </th>
                 <th>
-                    <a th:href="@{'/admin/user/' +${currentPage} + '?sortField=firstName&sortDirection=' +${reverseSortDirection}}" th:if="${currentPage != i}">Email</a>
+                    <a th:href="@{'/admin/user/' +${currentPage} + '?sortField=email&sortDirection=' +${reverseSortDirection}}" th:if="${currentPage != i}">Email</a>
                 </th>
                 <th>
                     Phone

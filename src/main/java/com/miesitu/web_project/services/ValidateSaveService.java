@@ -30,7 +30,7 @@ public class ValidateSaveService {
     @Autowired
     private RoleRepository roleRepo;
 
-    Collection<Role> realrole = new ArrayList();
+    Collection<Role> realrole = new ArrayList<Role>();
 
 
 
