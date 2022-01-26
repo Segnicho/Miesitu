@@ -3,14 +3,13 @@ package com.miesitu.web_project;
 import com.miesitu.web_project.Repository.ProductRepository;
 import com.miesitu.web_project.entity.Product;
 import static org.assertj.core.api.Assertions.assertThat;
-// import static org.mockito.ArgumentMatchers.anyLong;
-// import static org.mockito.Mockito.when;
 
-// import java.util.Optional;
+import java.util.List;
+import java.util.Optional;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-// import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
@@ -18,6 +17,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
 @Rollback(false)
 @ExtendWith (SpringExtension.class)
 @DataJpaTest
@@ -30,11 +30,13 @@ public class ProductRepositoryTest {
     @Autowired
     private ProductRepository repo;
 
+    // Test For Adding Product
     @Test
     public void testAddProduct() {
+
         Product product = new Product();
-        product.setProductDesc("Newly Arrived Sugar");
-        product.setPrice(300);
+        product.setProductDesc(" New Sugar");
+        product.setPrice(500);
         product.getStartDate();
         product.getEndDate();
 
@@ -42,27 +44,52 @@ public class ProductRepositoryTest {
         Product exitProduct = entityManager.find(Product.class, savedProduct.getProductId());
         assertThat(product.getProductId()).isEqualTo(exitProduct.getProductId());
     }
-    // @Test
-    // public void whenGivenId_shouldDeleteProduct_ifFound(){
-    //     Product product = new Product();
-    //     product.setProductId(12);
-    //     product.setProductDesc("Sold");
 
-    //     when(repo.findById(product.getProductId())).thenReturn(Optional.of(product));
+    // Test for Getting Product
+    @Test
+    public void getProductTest() {
 
-    //     entityManager.deleteProduct(product.getProductId());
-    //     verify(productRepository).deleteById(product.getProductId());
-    // }
+        Product product = repo.findById(7L).get();
+        Assertions.assertThat(product.getProductId()).isEqualTo(7L);
 
-    // @Test
-    // public void should_throw_exception_when_product_doesnt_exist() {
-    //     Product product = new Product();
-    //     product.setProductId(8L);
-    //     product.setProductDesc("Sold Out");
+    }
 
-    //     given(productRepository.findById(anyLong())).willReturn(Optional.ofNullable(null));
-    //     deleteProduct.deleteProduct(product.getProductId());
-    // }
+    // Test for Getting List Of Products
+    @Test
+    public void getListOfProductsTest() {
+
+       List<Product> products = repo.findAll();
+       Assertions.assertThat(products.size()).isGreaterThan(0);
+
+    }
+
+    //Test for Updating Products
+    @Test
+    public void updateProductTest() {
+
+        Product product = repo.findById(33L).get();
+        product.setPrice(300);
+
+        Product productUpdated = repo.save(product);
+        Assertions.assertThat(productUpdated.getPrice()).isEqualTo(300);
+
+    }
+
+    // Test For Deleting Products
+    @Test
+    public void deleteProductTest() {
+        
+        Product product = repo.findById(7L).get();
+        repo.deleteById(7L);
+        Product product1 = null;
+
+        Optional<Product> optionalProduct = repo.findById(7L);
+        if(optionalProduct.isPresent()) {
+            product1 = optionalProduct.get();
+        }
+        Assertions.assertThat(product1).isNull();
+    }
+    
 }
 
 

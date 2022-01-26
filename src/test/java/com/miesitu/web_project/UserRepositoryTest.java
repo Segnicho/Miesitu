@@ -1,18 +1,14 @@
 package com.miesitu.web_project;
 
-// import static org.junit.jupiter.api.Assertions.assertEquals;
-// import static org.junit.jupiter.api.Assertions.assertNotNull;
-// import static org.mockito.ArgumentMatchers.notNull;
-
-// import java.util.Set;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
+import java.util.Optional;
 
 import com.miesitu.web_project.Repository.UserRepository;
-// import com.miesitu.web_project.entity.Code;
 import com.miesitu.web_project.entity.User;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,84 +19,77 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-// import com.miesitu.web_project.Repository.UserRepository;
-// import com.miesitu.web_project.entity.User;
-
-// import org.assertj.core.api.Assertions;
-// import org.junit.jupiter.api.Test;
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-// import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-// import org.springframework.test.annotation.Rollback;
-
-// @DataJpaTest
-// @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-// @Rollback(false)
 @DataJpaTest
 @Rollback(false)
 @ExtendWith(SpringExtension.class)
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 public class UserRepositoryTest {
 
-    // @Test
-    // public void testAddNew() {
-    //     User user = new User();
-
-    //     user.setEmail("j@gemail.com");
-    //     user.setUsername("jj");
-    //     user.setFirstName("aduu");
-    //     user.setFirstName("oum");
-
-    //     User savedUser = repo.save(user);
-    //     Assertions.assertThat(savedUser).isNotNull();
-    //     Assertions.assertThat(savedUser.getUserId()).isGreaterThan(0);
-
-    // }
     @Autowired
     private TestEntityManager entityManager;
     @Autowired
     private UserRepository repo;
 
+    // Test For Adding User
     @Test
-    public void testAddUser() {
+    public void testAddingUser() {
+
         User user = new User();
-        user.setEmail("felm@gmail.com");
-        user.setPassword("felm");
-        user.setFirstName("Felmeta");
-        user.setLastName("Muktar");
+        user.setEmail("obs@gmail.com");
+        user.setPassword("felme");
+        user.setFirstName("Hassan");
+        user.setLastName("Mah");
+        user.setArea("Bole");
 
         User savedUser = repo.save(user);
         User existUser = entityManager.find(User.class, savedUser.getUserId());
         assertThat(user.getEmail()).isEqualTo(existUser.getEmail());
     }
-    
-    
 
-        // User user = new User(123, "Felm", "Felmeta", "Muktar", "felm@gmail.com", 93212, "1234", "oro", ,null,;
-    //     repo.save(user);
-    //     assertNotNull(user);
-    //     assertEquals(user.getUsername(), user.getUsername());
-    //     assertEquals(user.getFirstName(), user.getFirstName());
-    // }
-    // @Test
-    // public void testDeleteUser() {
-    // User user = new User(2,"Jab", "jabir", "has", "jab@mail.com", 63537, "3425", "oroo",null, null,Code;
-    // repo.save(user);
-    // repo.delete(user);
-    // }
-    // @Test
-    // public void findAllUsers() {
-    // User user = new User(2,"Jab", "jabir", "has", "jab@mail.com", 63537, "3425", "Addis", 1, "Admin", 12);
-    // repo.save(user);
-    // assertNotNull(user);
-    // }
-    // @Test
-    // public void deleteByUserIdTest() {
-    // User user = new User(2,"Jab", "jabir", "has", "jab@mail.com", 63537, "3425", "Addis", 1, "Admin", "Code");
-    // User use = repo.save(user);
-    // repo.deleteById(use.getUserId());
-    // }
+    // Test For Getting User
+    @Test
+    public void getUserTest() {
 
+        User user = repo.findById(32L).get();
+        Assertions.assertThat(user.getUserId()).isEqualTo(32L);
 
-    
+    }
+
+    // Test for Getting List Of Users
+    @Test
+    public void getListOfUsersTest() {
+
+       List<User> users = repo.findAll();
+       Assertions.assertThat(users.size()).isGreaterThan(0);
+
+    }
+
+    //Test for Updating Users
+    @Test
+    public void updateUserTest() {
+
+        User user = repo.findById(32L).get();
+
+        user.setFirstName("Mah");
+
+        User userUpdated = repo.save(user);
+        Assertions.assertThat(userUpdated.getFirstName()).isEqualTo("Mah");
+
+    }
+
+    // Test For Deleting User
+    @Test
+    public void deleteUserTest() {
+        
+        User user = repo.findById(10L).get();
+        repo.deleteById(10L);
+        User user1 = null;
+
+        Optional<User> optionalUser = repo.findById(10L);
+        if(optionalUser.isPresent()) {
+            user1 = optionalUser.get();
+        }
+        Assertions.assertThat(user1).isNull();
+    }
+        
 }

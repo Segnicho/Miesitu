@@ -14,6 +14,7 @@ public interface UserRepository extends JpaRepository<User, Long>{
     User findByPhone(int phone);   
     User findByUsername(String username);
     Iterable<User> findByArea(String area);
+    Optional<User> findByFirstName(String firstname);
     
 
     public Long countByUserId(long userId);

@@ -11,6 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import lombok.*;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
