@@ -55,7 +55,7 @@ public class ConsumtionServiceTest {
         
         Consumtion consumtion = Consumtion.builder()
         .ConsumtionId(12L)
-        .amount(12.5f)
+        .amount(10.5f)
         .build();
 
         consRepo.save(consumtion);

@@ -26,9 +26,9 @@ public class MessageRepositoryTest {
     @Test
     public void saveMessageTest() {
         ContactUs contactUs = ContactUs.builder()
-        .fullname("Obsa")
-        .email("obs@gmail.com")
-        .UserMessage("This website is good!")
+        .fullname("Vbsa")
+        .email("obsg@gmail.com")
+        .UserMessage("This website is very good!")
         .build();
 
         messageRepository.save(contactUs);
