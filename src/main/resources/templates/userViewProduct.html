@@ -11,22 +11,31 @@
       <div th:replace="fragments/nav.html :: navbar"></div>
 
 <div class="container">
+      <div th:if="${er}" class = "alert alert-danger text-center">
+            [[${er}]]
+        </div>
+        <div th:if="${message}" class = "alert alert-success text-center">
+            [[${message}]]
+        </div>
+        <div th:if="${success}" class = "alert alert-success text-center">
+            [[${success}]]
+        </div>
 
 
-            <p th:block th:each=" product: ${product}">
-                  <p>
-                        <h3>You have the following </h3>
-                  </p>
-                  <div class="card">
-                        <h4 class="card-title">product description posted.</h4>
-                   <p class="card-text">
-                        [[${product.getProductDesc}]]
-                   </p>     
-                  </div>
-                  <div class="card">
-                The goods described above will be distributed from date [[${product.getProductStartDate}]] upto [[${product.getProductEndDate}]]
+      <th:block th:each=" product: ${product}">
+            <p>
+                  <h3>You have the following </h3>
+            </p>
+            <div class="card">
+                  <h4 class="card-title">product description posted.</h4>
+                  <p class="card-text">
+                  [[${product.getProductDesc}]]
+                  </p>     
             </div>
+            <div class="card">
+            The goods described above will be distributed from date [[${product.getProductStartDate}]] upto [[${product.getProductEndDate}]]
             </div>
+      </:block>
             
 <div th:replace="fragments/footer.html :: footer"></div>
     

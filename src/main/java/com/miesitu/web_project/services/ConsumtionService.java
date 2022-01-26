@@ -37,6 +37,10 @@ public class ConsumtionService {
         return consRepo.findAll();
     }
 
+    public Iterable<Consumtion> getConsumtionByUser(User user){
+        return consRepo.findAllByCustomer(user);
+    }
+
     public Iterable<User> getUsersByArea(String area){
         return userRepo.findByArea(area);
     }

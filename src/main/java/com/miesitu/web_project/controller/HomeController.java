@@ -37,14 +37,6 @@ public class HomeController {
                 return "redirect:/cust";
             }
         }
-        
-
-        return "home";
-
-    }
-
-    @GetMapping("/distr")
-    public String distHome(){
         return "home";
     }
     

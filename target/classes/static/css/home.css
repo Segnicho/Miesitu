@@ -54,7 +54,7 @@ body{
     z-index: 2;
 }
 .card:hover{
-    box-shadow: 2px 2px 20px black;
+    box-shadow: 4px 4px 10px #0c4b59, -4px -4px 10px white;
 }
 .sellStatus__item:hover{
     box-shadow: 2px 2px 10px white;

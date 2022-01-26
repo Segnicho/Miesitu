@@ -20,7 +20,7 @@ public class CodeGeneratorService {
     @Autowired
     private CodeRepository codeRepo;
 
-    private Collection<Role> roles = new ArrayList();
+    private Collection<Role> roles = new ArrayList<Role>();
 
     public Code generate(CodeGeneratorForm form) {
         Code saved = null;

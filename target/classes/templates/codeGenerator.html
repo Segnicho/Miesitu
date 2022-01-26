@@ -14,14 +14,15 @@
     <div align="center">
 
     <form action="#" th:action="@{/admin/generateCode}" method="post" style="max-width: 500px; margin: 4rem 0rem;">
-        <div th:if="${code}" class = "alert alert-success">
-            Code Generated Successfully!
-            [[${code.getCode}]]
+        <div th:if="${param.error}" class = "alert alert-danger text-center">
+            can not generate code please try again
         </div>
-
-        <div th:if="${er}" class = "alert alert-success">
-            Code Generation Error!
-            [[${er}]]
+        <div th:if="${code}" class = "alert alert-success text-center">
+            the code generated is: [[${code.getCode()}]]<br>
+            please take screenshot or write it down
+        </div>
+        <div th:if="${success}" class = "alert alert-success text-center">
+            [[${success}]]
         </div>
 
         <div class="border border-secondary rounded p-3">

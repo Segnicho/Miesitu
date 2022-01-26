@@ -27,4 +27,6 @@ public interface ConsumtionRepository extends JpaRepository<Consumtion, Long>{
         value = "delete from consumtion where customer_user_id =:userId and product_product_id =:prodId"
     )
     void deleteConsumtion( @Param("prodId") long prodId, @Param("userId") long userId);
+
+    Iterable<Consumtion> findAllByCustomer(User user);
 }

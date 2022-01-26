@@ -4,6 +4,7 @@ import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
+//no validation is needed for this form
 @Data
 public class CodeGeneratorForm {
     public long id1;

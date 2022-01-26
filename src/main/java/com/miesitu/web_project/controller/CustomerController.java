@@ -30,42 +30,10 @@ public class CustomerController {
 
 
     @Autowired
-    private ConsumtionService consupServ;
-
-    @Autowired
     private UserViewPageController commonController;
 
     @Autowired
     private ProductController proController;
-
-
-    @Autowired
-    private getLoggedUser logeduserService;
-
-    @Autowired
-    private approveConsumtionService approveConsumtionserv;
-    @Autowired
-    private getLoggedUser LogedUser;
-
-    @ModelAttribute
-    public void addAttributes(Model model) {
-        User user = LogedUser.get_User();
-        if(user != null){
-            if(user.getAuthorities().contains("ADMIN")){
-                model.addAttribute("user","admin");
-            }
-            else if(user.getAuthorities().contains("DISTRIBUTER")){
-                model.addAttribute("user","dist");
-            }else if(user.getAuthorities().contains("ROLE_CUSTOMER")){
-                model.addAttribute("user","cust");
-            }else{
-                model.addAttribute("user",false);
-            }
-        model.addAttribute("user",false);
-        }
-
-        model.addAttribute("user",false);
-    }
 
     @GetMapping("/cust")
     public String custHome(Model model){
@@ -90,6 +58,10 @@ public class CustomerController {
     @GetMapping("/cust/anouncements")
     public String custAnounce(Model model){
         return commonController.userViewAnouncement(model);
+    }
+    @GetMapping("/cust/anouncements/{pageNo}")
+    public String custAnounce(@PathVariable(value="pageNo") int pageNo, Model model){
+        return commonController.userViewAnouncement(pageNo, model);
     }
 
     

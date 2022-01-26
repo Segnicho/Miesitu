@@ -18,19 +18,22 @@
     <div th:replace="fragments/nav.html :: navbar"></div>
 
 
-    <main>
-
-        <div th:text="${msg}">
-
-            <div >
-                    
-            </div>
-        </div>
-            
-            <section class="intro" >
+    <main>  
+        <section class="intro" >
             <div class="row">
                 <section class="intro__welcome col-7">
                     <div class="intro__welcomeTxt"style="z-index:20">
+                        
+                        <div th:if="${er}" class = "alert alert-danger text-center">
+                            [[${er}]]
+                        </div>
+                        <div th:if="${message}" class = "alert alert-success text-center">
+                            [[${message}]]
+                        </div>
+                        <div th:if="${success}" class = "alert alert-success text-center">
+                            [[${success}]]
+                        </div>
+
                         <h1>Hello <br>
                         Well come to <strong style="color: orange;">Miesitu</strong></h1>
                         <section sec:authorize = "!isAuthenticated()">In Miesitu you can get the information on Oil and Sugar. It is known that products are distributed by a cheaper price at your Kebele or other distribution areas. You can get from here the price of the products, the time it is going

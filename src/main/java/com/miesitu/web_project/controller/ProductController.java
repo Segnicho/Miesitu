@@ -1,13 +1,18 @@
 package com.miesitu.web_project.controller;
+import java.util.Collection;
 import java.util.List;
 
 import com.miesitu.web_project.Repository.ProductRepository;
+import com.miesitu.web_project.entity.Consumtion;
 import com.miesitu.web_project.entity.Product;
 import com.miesitu.web_project.entity.ProductImplmentation;
+import com.miesitu.web_project.entity.User;
 import com.miesitu.web_project.services.ConsumtionService;
+import com.miesitu.web_project.services.getLoggedUser;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,13 +24,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ProductController {
 
-    @Autowired
-    private ProductRepository productRepository;
     @Autowired 
     private ProductImplmentation productService;
 
     @Autowired
     private ConsumtionService consServ;
+    @Autowired
+    private getLoggedUser logeduser;
 
     
 
@@ -90,25 +95,52 @@ public class ProductController {
         return productList( model);  //correct the html
     }
 
-    @GetMapping("/productList")
+    // @GetMapping("/productList")
     public String productList(Model model){
 
         List<Product> product = consServ.activeProducts();
         model.addAttribute("productlist", product);
+        User user = logeduser.get_User();
+        Collection<? extends GrantedAuthority> auth = user.getAuthorities();
+        System.out.println("\n\n\n\n");
+        System.out.println(auth.toString());
+        System.out.println("\n\n\n\n");
+        if(auth.toString().contains("ROLE_CUSTOMER")){
+            Iterable<Consumtion> cons = consServ.getConsumtionByUser(user);
+            System.out.println("\n\n\n\n");
+            System.out.println(cons);
+            System.out.println("\n\n\n\n");
+            model.addAttribute("cons", cons);
+        }
         return "productlist";
 
     }
 
-    @GetMapping("/productList/{pageNo}")
+    // @GetMapping("/productList/{pageNo}")
     public String  findProductPagenated(@PathVariable(value="pageNo") int pageNo, Model model ) {
-        int pageSize = 1;
+        int pageSize = 5;
+        System.out.println("\n\n\n\n");
+        // System.out.println(auth);
+        System.out.println("\n\n\n\n");
         Page<Product> page = productService.findProductPaginated(pageNo,pageSize);
         List<Product> productlist = page.getContent();
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages", page.getTotalPages());
         model.addAttribute("totalItems", page.getTotalElements());
         model.addAttribute("productlist", productlist);
-        return "productlist";  //correct the html
+
+        User user = logeduser.get_User();
+        Collection<? extends GrantedAuthority> auth = user.getAuthorities();
+        
+        if(auth.contains("ROLE_CUSTOMER")){
+            Iterable<Consumtion> cons = consServ.getConsumtionByUser(user);
+            System.out.println("\n\n\n\n");
+            System.out.println(cons);
+            System.out.println("\n\n\n\n");
+            model.addAttribute("cons", cons);
+        }
+
+        return "productlist";  
     }
     
 }

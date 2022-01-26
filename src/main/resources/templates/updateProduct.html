@@ -16,7 +16,16 @@
     <div class="container">
 
 
-        <h1>Updating the products</h1>
+        <h1>Update the products</h1>
+        <div th:if="${er}" class = "alert alert-danger text-center">
+            [[${er}]]
+        </div>
+        <div th:if="${message}" class = "alert alert-success text-center">
+            [[${message}]]
+        </div>
+        <div th:if="${success}" class = "alert alert-success text-center">
+            [[${success}]]
+        </div>
         
         <form action="#" th:action="/admin/addNewProduct" th:object="@{product}" method="post"></form>
             <input type="text" th:field="*{sugarPrice}">

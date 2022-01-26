@@ -7,16 +7,19 @@ import com.miesitu.web_project.services.getLoggedUser;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.miesitu.web_project.entity.Anouncement;
 import com.miesitu.web_project.entity.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,27 +35,7 @@ public class AdminController {
     private AnouncementService anouncementSaveService;
 
     @Autowired
-    private getLoggedUser LogedUser;
-
-    @ModelAttribute
-    public void addAttributes(Model model) {
-        User user = LogedUser.get_User();
-        if(user != null){
-            if(user.getAuthorities().contains("ADMIN")){
-                model.addAttribute("user","admin");
-            }
-            else if(user.getAuthorities().contains("DISTRIBUTER")){
-                model.addAttribute("user","dist");
-            }else if(user.getAuthorities().contains("ROLE_CUSTOMER")){
-                model.addAttribute("user","cust");
-            }else{
-                model.addAttribute("user",false);
-            }
-        model.addAttribute("user",false);
-        }
-
-        model.addAttribute("user",false);
-    }
+    private PasswordEncoder encoder;
 
     @GetMapping("/admin")
     public String  adminPage(Model model) {
@@ -79,9 +62,17 @@ public class AdminController {
     }
 
     @PostMapping("/admin/saveUser")
-    public String  saveUser(User user1, RedirectAttributes ra) {
-       userSaveService.saveUser(user1);
-       ra.addFlashAttribute("message", "User has been saved succesfully.");
+    public String  saveUser(@Valid User user1, @RequestParam(value = "userRl") String role, RedirectAttributes ra, BindingResult error) {
+        if(error.hasErrors()){
+            ra.addFlashAttribute("er", error.getFieldError());
+        }
+        try {
+            user1.setPassword(encoder.encode(user1.getPassword()));
+            userSaveService.saveUser(user1, role);
+            ra.addFlashAttribute("message", "User has been saved succesfully.");
+        } catch (Exception e) {
+            ra.addFlashAttribute("message", "User has been saved succesfully.");
+        }
         return "redirect:/admin/users";
     }
 
@@ -90,14 +81,13 @@ public class AdminController {
         try {
         User user = userSaveService.get(userId);
         model.addAttribute("user1", user);
-        model.addAttribute("pageTitle","Edit User(Id:" + user.getUserId() + ")");
+        model.addAttribute("pageTitle","Edit User");
         return "userForm";
 
-    } catch (UsernameNotFoundException e) {
-        ra.addFlashAttribute("message", e.getMessage());
-        return "redirect:/admin/users";
-    }
-
+        } catch (UsernameNotFoundException e) {
+            ra.addFlashAttribute("message", e.getMessage());
+            return "redirect:/admin/users";
+        }
     }
 
 
@@ -119,7 +109,7 @@ public class AdminController {
     @RequestParam("sortField") String sortField, 
     @RequestParam("sortDirection") String sortDirection,
     Model model ) {
-        int pageSize = 2;
+        int pageSize = 5;
         Page<User> page = userSaveService.findPaginated(pageNo,pageSize,sortField,sortDirection);
         List<User> userLists = page.getContent();
         model.addAttribute("currentPage", pageNo);
@@ -143,7 +133,7 @@ public class AdminController {
             Iterable<Anouncement> anouncement_Lists  = anouncementSaveService.listAll();
             model.addAttribute("anouncementLists", anouncement_Lists);
         } catch (Exception e) {
-            //TODO: handle exception
+            model.addAttribute("er", "Error please try again!");
         }
         
         return "anouncements";
@@ -155,13 +145,22 @@ public class AdminController {
         model.addAttribute("anounce", new Anouncement());
         model.addAttribute("pageTitle", "Add New Anouncement");
         return "AnouncementForm";
-
     }
 
     @PostMapping("/admin/saveAnouncement")//    Anouncement anouncement
-    public String  saveAnouncement(Anouncement anouncement, RedirectAttributes ra) {
-        anouncementSaveService.saveAnouncement(anouncement);
-        ra.addFlashAttribute("message", "Anouncement has been Posted Succesfully.");
+    public String  saveAnouncement(@Valid Anouncement anouncement, RedirectAttributes ra, BindingResult error) {
+        if(error.hasErrors()){
+            ra.addFlashAttribute("er", error.getFieldError());
+            return "redirect:/admin/Anouncements";
+        }
+
+        try {
+            anouncementSaveService.saveAnouncement(anouncement);
+            ra.addFlashAttribute("message", "Anouncement has been Posted Succesfully.");
+        } catch (Exception e) {
+            ra.addFlashAttribute("er", "Error! - Could not save, Please try again.");
+        }
+        
         return "redirect:/admin/Anouncements";
     }
 
@@ -169,13 +168,12 @@ public class AdminController {
     @GetMapping("/admin/editAnouncement/{anouncementId}")
     public String  editAnouncement(@PathVariable("anouncementId") long anouncementId, Model model, RedirectAttributes ra) {
         try {
-        Anouncement anouncement = anouncementSaveService.getAnouncements(anouncementId);
-        model.addAttribute("anouncement", anouncement);
-        model.addAttribute("pageTitle","Edit anouncement(Id:" + anouncement.getSubject() + ")");
-        return "AnouncementForm";
-
+            Anouncement anouncement = anouncementSaveService.getAnouncements(anouncementId);
+            model.addAttribute("anounce", anouncement);
+            model.addAttribute("pageTitle","Edit anouncement");
+            return "AnouncementForm";
         } catch (UsernameNotFoundException e) {
-            ra.addFlashAttribute("message", e.getMessage());
+            ra.addFlashAttribute("er", e.getMessage());
             return "redirect:/admin/Anouncements";
         }
 
@@ -188,7 +186,7 @@ public class AdminController {
             ra.addFlashAttribute("message","The Anouncement ID:"+anouncementId+"has been deleted.");
 
         } catch (UsernameNotFoundException e) {
-            ra.addFlashAttribute("message", e.getMessage());
+            ra.addFlashAttribute("er", e.getMessage());
         }
         return "redirect:/admin/Anouncements";
 

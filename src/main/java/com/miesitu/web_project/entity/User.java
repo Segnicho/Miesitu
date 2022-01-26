@@ -4,6 +4,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Optional;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -68,7 +69,7 @@ public class User implements UserDetails {//implements UserDetails{
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
-        Collection <SimpleGrantedAuthority> user_authorities = new ArrayList();
+        Collection <SimpleGrantedAuthority> user_authorities = new ArrayList<SimpleGrantedAuthority>();
         Collection <Role> user_roles = this.getUserRole();
         for (Role role : user_roles){
             user_authorities.add(new SimpleGrantedAuthority(role.getName()));
