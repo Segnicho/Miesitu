@@ -49,9 +49,9 @@ public class SecurityConfig {
         return http
 
             .authorizeRequests()
-                // .antMatchers("/admin", "/admin/**").hasRole("ADMIN")
-                // .antMatchers("/cust", "/cust/**").hasRole("CUSTOMER")
-                // .antMatchers("/dist", "/dist/**").hasRole("DISTRIBUTER")
+                .antMatchers("/admin", "/admin/**", "/admin/**/**").hasRole("ADMIN")
+                .antMatchers("/cust", "/cust/**").hasRole("CUSTOMER")
+                .antMatchers("/dist", "/dist/**").hasRole("DISTRIBUTER")
                 .antMatchers("/signup").anonymous()
                 .antMatchers("/", "/**").permitAll()
             .and()

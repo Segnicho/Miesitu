@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 import com.miesitu.web_project.Repository.ConsumtionRepository;
-import com.miesitu.web_project.Repository.ProductRepository;
+// import com.miesitu.web_project.Repository.ProductRepository;
 import com.miesitu.web_project.entity.Consumtion;
 import com.miesitu.web_project.entity.User;
 import com.miesitu.web_project.services.getLoggedUser;
@@ -21,9 +21,6 @@ public class HomeController {
 
     @Autowired
     private getLoggedUser logedUserclass;
-
-    @Autowired
-    private ProductRepository proRepo;
 
     @Autowired
     private ConsumtionRepository consRepo;
@@ -58,7 +55,7 @@ public class HomeController {
         }
         return "home";
     }
-    
+
     @GetMapping("/about")
     public String about(Model model){
         
