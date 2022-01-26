@@ -1,13 +1,10 @@
 package com.miesitu.web_project.services;
 
-import java.util.List;
 
 import com.miesitu.web_project.Repository.MessageRepository;
 import com.miesitu.web_project.entity.ContactUs;
 // import com.miesitu.web_project.Repository.ProductRepository;
-import com.miesitu.web_project.entity.Product;
 
-import org.apache.logging.log4j.message.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

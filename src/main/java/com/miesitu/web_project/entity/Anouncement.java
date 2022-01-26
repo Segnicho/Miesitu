@@ -1,6 +1,6 @@
 package com.miesitu.web_project.entity;
 
-import java.sql.Date;
+
 import java.time.Instant;
 
 import javax.persistence.*;

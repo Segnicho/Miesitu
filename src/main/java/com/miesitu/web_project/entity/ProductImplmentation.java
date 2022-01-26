@@ -8,7 +8,6 @@ import com.miesitu.web_project.Repository.ProductRepository;
 import com.miesitu.web_project.services.ProductService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 // import org.springframework.data.domain.PageRequest;

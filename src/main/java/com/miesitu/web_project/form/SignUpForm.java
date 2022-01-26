@@ -1,9 +1,9 @@
 package com.miesitu.web_project.form;
 
-import javax.persistence.UniqueConstraint;
+
 import javax.validation.constraints.*;
 
-import com.miesitu.web_project.entity.Code;
+
 
 import org.springframework.lang.Nullable;
 

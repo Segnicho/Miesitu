@@ -2,7 +2,6 @@ package com.miesitu.web_project.controller;
 
 import com.miesitu.web_project.Repository.MessageRepository;
 import com.miesitu.web_project.entity.ContactUs;
-import com.miesitu.web_project.entity.Product;
 import com.miesitu.web_project.services.MessageService;
 
 import java.util.List;

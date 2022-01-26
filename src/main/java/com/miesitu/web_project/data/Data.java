@@ -1,7 +1,7 @@
 package com.miesitu.web_project.data;
 
 import com.miesitu.web_project.Repository.RoleRepository;
-import com.miesitu.web_project.Repository.UserRepository;
+
 import com.miesitu.web_project.entity.Role;
 
 import org.springframework.beans.factory.annotation.Autowired;

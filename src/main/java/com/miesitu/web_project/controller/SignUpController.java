@@ -1,9 +1,8 @@
 package com.miesitu.web_project.controller;
 
 import com.miesitu.web_project.Repository.CodeRepository;
-import com.miesitu.web_project.Repository.UserRepository;
+
 import com.miesitu.web_project.entity.Code;
-import com.miesitu.web_project.entity.User;
 import com.miesitu.web_project.form.SignUpForm;
 
 import java.util.Map;
@@ -21,11 +20,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
-import org.springframework.web.servlet.view.RedirectView;
-import org.apache.tomcat.util.http.fileupload.RequestContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Controller;
 
 @Controller
 @RequestMapping("/signup")

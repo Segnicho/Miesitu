@@ -79,7 +79,6 @@ public class ProductRepositoryTest {
     @Test
     public void deleteProductTest() {
         
-        Product product = repo.findById(7L).get();
         repo.deleteById(7L);
         Product product1 = null;
 

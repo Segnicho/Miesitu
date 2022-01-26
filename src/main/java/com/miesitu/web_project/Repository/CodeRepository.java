@@ -5,7 +5,7 @@ import java.util.Collection;
 import com.miesitu.web_project.entity.Code;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
+
 import org.springframework.stereotype.Repository;
 
 @Repository

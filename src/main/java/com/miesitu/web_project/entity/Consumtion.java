@@ -1,6 +1,6 @@
 package com.miesitu.web_project.entity;
 
-import java.sql.Date;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

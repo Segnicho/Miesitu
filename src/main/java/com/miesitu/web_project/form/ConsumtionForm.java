@@ -1,8 +1,6 @@
 package com.miesitu.web_project.form;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NegativeOrZero;
-import javax.validation.constraints.NotBlank;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 

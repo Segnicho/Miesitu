@@ -71,7 +71,7 @@ public class AnouncementRepositoryTest {
     @Test
     public void deleteAnouncementTest() {
         
-        Anouncement anouncement = anouncementRepository.findById(12L).get();
+        // Anouncement anouncement = anouncementRepository.findById(12L).get();
         anouncementRepository.deleteById(12L);
         Anouncement anouncement1 = null;
 

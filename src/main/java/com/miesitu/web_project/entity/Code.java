@@ -1,7 +1,7 @@
 package com.miesitu.web_project.entity;
 
 import java.util.Collection;
-import java.util.List;
+
 
 import javax.persistence.*;
 

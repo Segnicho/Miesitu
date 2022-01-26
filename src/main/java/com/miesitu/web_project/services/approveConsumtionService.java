@@ -1,7 +1,6 @@
 package com.miesitu.web_project.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.miesitu.web_project.Repository.ConsumtionRepository;
 import com.miesitu.web_project.Repository.ProductRepository;

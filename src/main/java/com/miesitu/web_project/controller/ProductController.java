@@ -1,8 +1,7 @@
 package com.miesitu.web_project.controller;
+
 import java.util.Collection;
 import java.util.List;
-
-import com.miesitu.web_project.Repository.ProductRepository;
 import com.miesitu.web_project.entity.Consumtion;
 import com.miesitu.web_project.entity.Product;
 import com.miesitu.web_project.entity.ProductImplmentation;

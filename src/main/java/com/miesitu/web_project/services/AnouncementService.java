@@ -3,12 +3,10 @@ package com.miesitu.web_project.services;
 import java.util.Optional;
 
 import com.miesitu.web_project.Repository.AnouncementRepository;
-import com.miesitu.web_project.Repository.UserRepository;
 import com.miesitu.web_project.entity.Anouncement;
 import com.miesitu.web_project.entity.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
