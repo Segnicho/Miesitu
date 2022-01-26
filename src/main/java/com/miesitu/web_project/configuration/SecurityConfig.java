@@ -49,10 +49,10 @@ public class SecurityConfig {
         return http
 
             .authorizeRequests()
-                .antMatchers("/admin", "/admin/**", "/admin/**/**").hasRole("ADMIN")
-                .antMatchers("/cust", "/cust/**").hasRole("CUSTOMER")
-                .antMatchers("/dist", "/dist/**").hasRole("DISTRIBUTER")
-                .antMatchers("/signup").anonymous()
+                .antMatchers("/admin", "/admin/**", "/admin/**/**", "/admin/**/**/**").hasRole("ADMIN")
+                .antMatchers("/cust", "/cust/**",  "/cust/**/**", "/dist/**/**/**").hasRole("CUSTOMER")
+                .antMatchers("/dist", "/dist/**", "/dist/**/**", "/dist/**/**/**").hasRole("DISTRIBUTER")
+                .antMatchers("/signup", "/login").anonymous()
                 .antMatchers("/", "/**").permitAll()
             .and()
                 .formLogin()
