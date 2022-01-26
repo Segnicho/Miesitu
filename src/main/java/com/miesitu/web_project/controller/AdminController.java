@@ -3,7 +3,6 @@ package com.miesitu.web_project.controller;
 
 import com.miesitu.web_project.services.AnouncementService;
 import com.miesitu.web_project.services.UserService;
-import com.miesitu.web_project.services.getLoggedUser;
 
 import java.util.List;
 
