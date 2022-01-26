@@ -78,8 +78,8 @@
             <div class="card container row sellStatus__item" style="height: 9rem; margin:5px;">
                 <div class="col-4">
                     <img src="images/logo.png" class="sellStatus__item__img" alt="..." style="height: 9rem;"></div>
-                <div class="col-8">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos dolores doloremque.
+                <div class="col-8" th:if="${product_number}">
+                    Miesitu have sold more than [[${product_number}]] products these can be either sugar or oil. Miesitu works very hard to satisfy users wants.
                 </div>
             </div>
 
@@ -87,8 +87,8 @@
                 <div class="col-4">
                     <img src="images/logo.png" class="sellStatus__item__img" alt="..." style="height: 9rem;">
                 </div>
-                <div class="col-8">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos dolores doloremque.
+                <div class="col-8"> 
+                    Miesitu have sold more than $[[${price}]].  these can be either sugar or oil. Miesitu works very hard to provide best and affordable prices.
                 </div>
             </div>
         </section>
