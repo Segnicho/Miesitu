@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 public interface AnouncementRepository extends JpaRepository<Anouncement, Long>{
 
     Long countByAnouncementId(long anouncementId);
+    Optional<Anouncement> findByMessage(String message);
 
     // Page<Anouncement> findPaginated(int pageNo, int pageSize);
 

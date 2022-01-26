@@ -10,7 +10,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MessageRepository extends JpaRepository<ContactUs, String>{
-    ContactUs findBymessageId(String messageId);
+    ContactUs findBymessageId(Long messageId);
+    ContactUs findByEmail(String email);
+    
+
 
     // Page<Product> findProductPaginated(int pageNo, int pageSize);   
    

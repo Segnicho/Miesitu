@@ -23,7 +23,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-
+@Builder
 public class User implements UserDetails {//implements UserDetails{
     @Id
     @GeneratedValue(
@@ -100,7 +100,4 @@ public class User implements UserDetails {//implements UserDetails{
     return true;
     }
 
-    // public User(int userId2, String username2, String firstName2, String lastName2, String email2, int phone2,
-    //         String password2, String area2, int i, String string, int j) {
-    // }
 }

@@ -58,11 +58,14 @@ public class HomeController {
             }
         }
         return "home";
+<<<<<<< HEAD
     }
     @GetMapping("/about")
     public String about(Model model){
         
         return "about";
+=======
+>>>>>>> 1e62a6a3b732507388bd1a4b127f0f7f56acaa4d
     }
     
 }
