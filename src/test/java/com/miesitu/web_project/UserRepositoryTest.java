@@ -81,7 +81,7 @@ public class UserRepositoryTest {
     @Test
     public void deleteUserTest() {
         
-        User user = repo.findById(10L).get();
+        // User user = repo.findById(10L).get();
         repo.deleteById(10L);
         User user1 = null;
 

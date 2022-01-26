@@ -27,8 +27,8 @@ public class AnouncementRepositoryTest {
     public void saveAnouncementTest() {
 
         Anouncement anouncement = Anouncement.builder()
-        .message("new sugar")
-        .subject("sweety Sugar")
+        .message("new oil")
+        .subject("sweety oil")
         .build();
         
         anouncementRepository.save(anouncement);
@@ -40,8 +40,8 @@ public class AnouncementRepositoryTest {
     @Test
     public void getAnouncementTest() {
 
-        Anouncement anouncement = anouncementRepository.findById(12L).get();
-        Assertions.assertThat(anouncement.getAnouncementId()).isEqualTo(12L);
+        Anouncement anouncement = anouncementRepository.findByMessage("new oil").get();
+        Assertions.assertThat(anouncement.getMessage()).isEqualTo("new oil");
 
     }
 
@@ -58,7 +58,7 @@ public class AnouncementRepositoryTest {
     @Test
     public void updateAnouncementTest() {
 
-        Anouncement anouncement = anouncementRepository.findById(12L).get();
+        Anouncement anouncement = anouncementRepository.findByMessage("new oil").get();
 
         anouncement.setMessage("Sweeaty sugar that is produced from sweet sugarcane");
 
@@ -68,18 +68,18 @@ public class AnouncementRepositoryTest {
     }
     
     // Unit Test for Deleting Announcement
-    @Test
-    public void deleteAnouncementTest() {
+    // @Test
+    // public void deleteAnouncementTest() {
         
-        Anouncement anouncement = anouncementRepository.findById(12L).get();
-        anouncementRepository.deleteById(12L);
-        Anouncement anouncement1 = null;
+    //     Anouncement anouncement = anouncementRepository.findByMessage("new sugar").get();
+    //     anouncementRepository.deleteById(12L);;
+    //     Anouncement anouncement1 = null;
 
-        Optional<Anouncement> optionalAnouncement = anouncementRepository.findById(12L);
-        if(optionalAnouncement.isPresent()) {
-            anouncement1 = optionalAnouncement.get();
-        }
-        Assertions.assertThat(anouncement1).isNull();
-    }
+    //     Optional<Anouncement> optionalAnouncement = anouncementRepository.findByMessage("new sugar");
+    //     if(optionalAnouncement.isPresent()) {
+    //         anouncement1 = optionalAnouncement.get();
+    //     }
+    //     Assertions.assertThat(anouncement1).isNull();
+    // }
     
 }
