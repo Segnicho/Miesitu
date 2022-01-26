@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Consumtion</title>
+    <th:block th:include="fragments/head.html :: head" />
+
+</head>
+
+<body>
+    <div th:replace="fragments/nav.html :: navbar"></div>
+
+    
+    <div align="center">
+        <h1 style="background-color: #23869C; width:fit-content; padding:0 10rem; font-weight:bold;">user: [[${user.getUsername}]] </h1>
+    </div>
+
+    <div th:if="${er}" class = "alert alert-danger text-center">
+        [[${er}]]
+    </div>
+    <div th:if="${message}" class = "alert alert-success text-center">
+        [[${message}]]
+    </div>
+    <div th:if="${success}" class = "alert alert-success text-center">
+        [[${success}]]
+    </div>
+
+    <div class="container-fluid" th:each="product : ${products}">
+        <form method="post" th:action="@{/distr/poductSold/{userId}(userId=${user.getUserId})}" style="max-width: 500px; margin: 0 auto;">
+            <h4>[[${product.getProductName}]]</h4>
+
+            <label class="col-sm-4 col-form-label ">amount</label>
+            <input type="number" class="form-control" name="amount" placeholder="amount" />
+            <input type="number" name="productId" th:value="${product.getProductId}" hidden>
+
+            <button class="btn btn-primary m-2" type="submit">Sold</button>
+        </form>
+    </div>
+
+    <div th:each="usedp : ${usedProducs}">
+        <h2>Active Products Bought By This Customer</h2>
+        <h4>[[${usedp.getProductName}]]</h4>
+        <form action="#" th:action = "@{/distr/poductSold/undo/{productId}(productId=${usedp.getProductId})}" method="post">
+            <input type="number" hidden name="userId" th:value="${user.getUserId}">
+            <input type="submit" class = "btn btn-danger" value="Undo">
+        </form>
+    </div>
+
+    <div th:replace="fragments/footer.html :: footer"></div>
+    <th:block th:replace="fragments/script :: script" /></body>
+
+</html>

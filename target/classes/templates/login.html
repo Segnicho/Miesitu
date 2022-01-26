@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <style>
+        .fas {
+            color: black;
+            font-size: 300%;
+        }
+    </style>
+        
+    <th:block  th:include="fragments/head.html :: head"/>
+    <title>login</title>
+</head>
+
+<body>
+    <div th:replace="fragments/nav.html :: navbar"></div>
+
+    
+    <div align = "center" style="margin-bottom: 5rem;">
+    <form method="POST" th:action="@{/login}" id="loginForm" style="margin-top: 6rem; width:36rem">
+        <fieldset class="border p-5">
+            <div th:if="${param.error}" class=" alert alert-danger text-center ">
+                Unable to login. Check your username and password.
+            </div>
+            <div th:if="${er}" class = "alert alert-danger text-center">
+                [[${er}]]
+            </div>
+            <div th:if="${message}" class = "alert alert-success text-center">
+                [[${message}]]
+            </div>
+            <div th:if="${success}" class = "alert alert-success text-center">
+                [[${success}]]
+            </div>
+
+            <div align = "center">
+                <i class="fas fa-user-circle"></i></br>
+                <h2 style="color:#23869C">LOGIN</h2>
+            </div> 
+
+            <div class="container">
+
+                <div class="form" align = "left">
+                    <label for="useername" class="form__label">Phone/Email</label></div>
+                    <input type="text" id="username" name = "username" class="form__input form-control" autocomplete="off" placeholder=" ">
+                <div style="margin: 2%;" class="form" align = "left">
+                
+                    <label for="password" class="form__labl">Password</label> </div>
+                    <input type="password" id="password" name = "password" class="form__inpt form-control" autocomplete="off" placeholder=" ">
+                <div>
+                    <input type="submit" style="margin-top: 1rem;" id="form__button" class="btn btn-primary" value="Login">
+                </div>
+        </fieldset>
+    </form>
+    </div>
+    <div th:replace="fragments/footer.html :: footer"></div>
+<th:block th:replace="fragments/script :: script"/>
+
+</body>
+
+</html>

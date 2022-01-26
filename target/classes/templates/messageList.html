@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="fragments/head.html :: head" />
+
+</head>
+<body>
+    <div th:replace="fragments/nav.html :: navbar"></div>
+
+    <main style="margin-bottom: 4rem; margin-top:6rem;" align = "center">
+        <div th:if="${er}" class = "alert alert-danger text-center">
+            [[${er}]]
+        </div>
+        <div th:if="${message}" class = "alert alert-success text-center">
+            [[${message}]]
+        </div>
+        <div th:if="${success}" class = "alert alert-success text-center">
+            [[${success}]]
+        </div>
+        <div align="center">
+            <h1 style="background-color: #23869C; width:fit-content; padding:0 10rem; font-weight:bold; "> Messages</h1>
+        </div>
+        <div th:if="${messagelist.isEmpty()}" >
+            <p style="color: #23869C;">No active messages available Currently</p>
+       </div>
+
+        <div>
+
+        </div>
+
+        <div align = "center">
+        <div th:each="message:${messagelist}" class="row" style="margin:3rem 0;">
+            <div class = "col-7" align = "left">
+                <div class="card">
+                    <div class="card-body">
+                    <h5 class="card-title"> name: [[${message.getFullname}]] </h5>
+    
+                    <h6 class="card-subtitle mb-2 text-muted"> Sent Time: [[${message.getSentDate}]]</h6>
+                    <p class="card-text">S[[${message.getUserMessage}]]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
+
+    <div th:replace="fragments/footer.html :: footer"></div>
+    <th:block th:replace="fragments/script :: script" />
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="fragments/head.html :: head" />
+
+    <title>Document</title>
+</head>
+<body>
+
+    
+    <div th:replace="fragments/nav.html :: navbar"></div>
+
+    <div align="center">
+
+    <form action="#" th:action="@{/admin/generateCode}" method="post" style="max-width: 500px; margin: 4rem 0rem;">
+        <div th:if="${param.error}" class = "alert alert-danger text-center">
+            can not generate code please try again
+        </div>
+        <div th:if="${code}" class = "alert alert-success text-center">
+            the code generated is: [[${code.getCode()}]]<br>
+            please take screenshot or write it down
+        </div>
+        <div th:if="${success}" class = "alert alert-success text-center">
+            [[${success}]]
+        </div>
+
+        <div class="border border-secondary rounded p-3">
+            <h4>Please Select Roles To generate The code</h4>
+        <div class="border border-secondary rounded p-3">
+
+            <div class="form-group">
+            <label class="col-form-label" for="Admin">Admin</label>
+            <input type="checkbox" class="form-checkbox" name="id1" value = "1" id="Admin"><br>
+            </div>
+
+            <div class="form-group">
+            <label class="col-form-label" for="Distributer">Distributer</label>
+            <input type="checkbox" class="form-contro" name="id2" value = "2" id="Distributer"><br>
+            </div>
+
+            <div class="form-group">
+            <label class="col-form-label" for="Customer">Customer</label>
+            <input type="checkbox" class="form" name="id3" value = "3" id="Customer"><br>
+            <div class="form-group row">
+            </div>
+            </div>
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-primary m-2" type="submit">Generate</button>
+                <button class="btn btn-secondary m-2" type="button" onclick="cancelForm()">cancel</button>
+            </div>
+            <script type="text/javascript">
+                function cancelForm() {
+                    window.location = "[[@{/admin/users}]]";
+                }
+            </script>
+        </div>
+        </div>
+        </div>
+
+    </form>
+
+    <div th:replace="fragments/footer.html :: footer"></div>
+    <th:block th:replace="fragments/script :: script" />
+</body>
+</html>

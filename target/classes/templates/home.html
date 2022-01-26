@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en-US" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <th:block th:include="fragments/head.html :: head" />
+    <title>Home</title>
+    <style>
+        .header {
+            margin-bottom: 0px;
+            /* border: 2px solid red; */
+        }
+        .btn{
+            z-index: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <div th:replace="fragments/nav.html :: navbar"></div>
+
+
+    <main>  
+        <section class="intro" >
+            <div class="row">
+                <section class="intro__welcome col-7">
+                    <div class="intro__welcomeTxt"style="z-index:20">
+                        
+                        <div th:if="${er}" class = "alert alert-danger text-center">
+                            [[${er}]]
+                        </div>
+                        <div th:if="${message}" class = "alert alert-success text-center">
+                            [[${message}]]
+                        </div>
+                        <div th:if="${success}" class = "alert alert-success text-center">
+                            [[${success}]]
+                        </div>
+
+                        <h1>Hello <br>
+                        Well come to <strong style="color: orange;">Miesitu</strong></h1>
+                        <section sec:authorize = "!isAuthenticated()">In Miesitu you can get the information on Oil and Sugar. It is known that products are distributed by a cheaper price at your Kebele or other distribution areas. You can get from here the price of the products, the time it is going
+                            to be distributed and when the term's distribution is going to end. by learning these informations you make your life easier.
+                        </section>
+                        <br><br>
+                        <a sec:authorize = "!isAuthenticated()" th:href="@{signup}" style="background-color: orange; z-index:20" class="btn">Sign up</a>
+                    </div>
+                </section>
+
+                <section class="intro__image col-5">
+                    <img src="images/logo.png" alt="MIESITU" srcset="" class="intro__img">
+                </section>
+            </div>
+            <img src="images/Vector(2).svg" alt="Wavy Image" srcset="" class="wavy">
+        </section>
+
+        <section class="products row">
+            <h1>Products</h1>
+            <div class="card col-6" style="width: 18rem; margin:5px;">
+                <img src="images/sugar.2-810x476.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Sugar</h5>
+                    <p class="card-text">This app will give you the info on the sugar production from places around you.</p>
+                </div>
+            </div>
+            <div class="card col-6" style="width: 18rem; margin:5px;">
+                <img src="images/extra-virgin-olive-oil-500x500.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Oil</h5>
+                    <p class="card-text">The kind and amount of oil available near your house presented by the distributors will also be shown. </p>
+
+                </div>
+            </div>
+            <img src="images/Vector(3).svg" alt="Wavy Image" srcset="" class="wavy">
+
+        </section>
+
+        <section class="sellStatus" sec:authorize = "!isAuthenticated()" >
+
+            <h2>Sell Status</h2>
+            <div class="card container row sellStatus__item" style="height: 9rem; margin:5px;">
+                <div class="col-4">
+                    <img src="images/logo.png" class="sellStatus__item__img" alt="..." style="height: 9rem;"></div>
+                <div class="col-8">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos dolores doloremque.
+                </div>
+            </div>
+
+            <div class="card container row sellStatus__item" style="height: 9rem; margin:5px;">
+                <div class="col-4">
+                    <img src="images/logo.png" class="sellStatus__item__img" alt="..." style="height: 9rem;">
+                </div>
+                <div class="col-8">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos dolores doloremque.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div th:replace="fragments/footer.html :: footer"></div>
+    <th:block th:replace="fragments/script :: script" />
+</body>
+
+</html>

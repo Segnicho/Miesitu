@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block  th:include="fragments/head.html :: head"/>
+
+    <title>add Product</title>
+</head>
+<body>
+    <div th:replace="fragments/nav.html :: navbar"></div>
+    
+
+    <div style="margin-top: 5vh; margin-bottom: 2vh;" class="container">
+        <h1>Add a newly arrived products</h1>
+        <div th:if="${er}" class = "alert alert-danger text-center">
+            [[${er}]]
+        </div>
+        <div th:if="${message}" class = "alert alert-success text-center">
+            [[${message}]]
+        </div>
+        <div th:if="${success}" class = "alert alert-success text-center">
+            [[${success}]]
+        </div>
+
+        <form  action="#" th:action="@{/admin/product/save}" th:object="${product}" method="post">
+           
+            <label for="productName">Choose a product:</label>
+            <select class="form-control" name="productName" id="productName">
+               <option value="SUGAR">Sugar</option>
+                <option value="OIL">Oil</option>
+              </select>
+            
+<br>
+            <textarea class="form-control" rows="5" type="text" th:field="*{productDesc}" placeholder="Enter the discription"/>
+            <br>
+            <!-- <label for="productId">Product Id</label><br -->
+            <input class="form-control" name="productId" type="number" th:field="*{productId}" placeholder="ID of  a product" hidden>
+            <br>
+            <br>
+            <input class="form-control" type="number" th:field="*{price}" placeholder="price of  a product">
+            <br>
+            <br>
+            <input class="form-control" type="date" th:field="*{startDate}" pattern="yyyy-MM-dd" placeholder="startin gfrom when is the product goin to be distributed">
+           <br>
+
+            <input class="form-control" type="date" th:field="*{endDate}" pattern="yyyy-MM-dd" placeholder="Starting from when is the distribution of the products going to stop."><br>
+            <br>
+            <input  type="submit" class="btn btn-info form-control" value = "submit"/> 
+        </form>
+    </div>
+
+
+
+</body>
+
+<th:block th:replace="fragments/script :: script"/>
+
+<div th:replace="fragments/footer.html :: footer"></div>
+</html>

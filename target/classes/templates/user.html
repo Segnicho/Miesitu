@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en-US">
+
+<head>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+
+    <th:block th:include="fragments/head.html :: head" />
+
+    <title>
+        Users
+    </title>
+
+    
+
+</head>
+
+<body>
+    <div th:replace="fragments/nav.html :: navbar"></div>
+
+
+    <div class="container-fluid text-center">
+        <h1>List of Users </h1>
+        <div class="mr-2">
+            <a class="h2 btn btn-primary btn-md" th:href="@{/admin/newUser}">Add new user</a>
+            <a class="h2 btn btn-primary btn-md" th:href="@{/admin/generateCode}">Generate Code For User</a>
+        </div>
+        <div th:if="${er}" class = "alert alert-danger text-center">
+            [[${er}]]
+        </div>
+        <div th:if="${message}" class = "alert alert-success text-center">
+            [[${message}]]
+        </div>
+        <div th:if="${success}" class = "alert alert-success text-center">
+            [[${success}]]
+        </div>
+        <table class="table table-bordered ">
+            <thead class="table-dark ">
+            </thead>
+            <tr>
+                <th>
+                    <a th:href="@{'/admin/user/' +${currentPage} + '?sortField=userId&sortDirection=' +${reverseSortDirection}}" th:if="${currentPage != i}">user Id</a>
+                </th>
+                <th>
+                    <a th:href="@{'/admin/user/' +${currentPage} + '?sortField=firstName&sortDirection=' +${reverseSortDirection}}" th:if="${currentPage != i}">First Name</a>
+                </th>
+
+                <th>
+                    <a th:href="@{'/admin/user/' +${currentPage} + '?sortField=lastName&sortDirection=' +${reverseSortDirection}}" th:if="${currentPage != i}">Last Name</a>
+                </th>
+                <th>
+                    <a th:href="@{'/admin/user/' +${currentPage} + '?sortField=email&sortDirection=' +${reverseSortDirection}}" th:if="${currentPage != i}">Email</a>
+                </th>
+                <th>
+                    Phone
+                </th>
+                <th>
+                    Area
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+            <tbody>
+
+                <th:block th:each=" user : ${userLists} ">
+                    <tr>
+                        <td>[[${user.getUserId}]]</td>
+
+                        <td>[[${user.getFirstName}]]</td>
+                        <td>[[${user.getLastName}]]</td>
+                        <td>[[${user.getEmail}]]</td>
+                        <td>[[${user.getPhone}]]</td>
+                        <td>[[${user.getArea}]]</td>
+                        <td>
+                            <a class="h3 mr-3 btn btn-primary" th:href="@{ '/admin/editUser/' + ${user.getUserId}} ">EDIT</a>
+                            <a class="h3 mr-3 btn btn-danger " th:href="@{ '/admin/deleteUser/' + ${user.getUserId}} ">DELETE</a>
+                        </td>
+
+                    </tr>
+                </th:block>
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <div th:if="${totalPages > 1}">
+        <div class="row col-sm-10">
+            <div class="col-sm-2">
+                Total Rows: [[${totalItems}]]
+            </div>
+            <div class="col-sm-1">
+                <span th:each=" i: ${#numbers.sequence(1,totalPages)}">
+                    <a th:if="${currentPage != i}" th:href="@{'/admin/user/' +${i} + '?sortField=' + ${sortField} +'&sortDirection=' + ${sortDirection} }" >[[${i}]]</a>
+                    <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+                </span>
+            </div>
+            <div class="col-sm-1">
+                <a th:if="${currentPage < totalPages}" th:href="@{'/admin/user/' + ${currentPage+1} + '?sortField=' + ${sortField} +'&sortDirection=' + ${sortDirection} }">Next</a>
+                <span th:unless="${currentPage < totalPages}">Next</span>
+            </div>
+            <div class="col-sm-1">
+                <a th:if="${currentPage < totalPages}" th:href="@{'/admin/user/' + ${totalPages} + '?sortField=' + ${sortField} +'&sortDirection=' + ${sortDirection}}">Last</a>
+                <span th:unless="${currentPage < totalPages}">Last</span>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+    <th:block th:replace="fragments/script :: script" />
+
+<div th:replace="fragments/footer.html :: footer"></div>
+</body>
+
+</html>

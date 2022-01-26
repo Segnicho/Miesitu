@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en-US">
+
+<head>
+    <th:block th:include="fragments/head.html :: head" />
+    
+
+    <title>Anouncements</title>
+    <style>
+        main{
+            margin-top: 6rem;
+            margin-bottom: 4rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div th:replace="fragments/nav.html :: navbar"></div>
+
+    <main>
+
+        <div align="center" th:if="${!anouncementlist.isEmpty()}">
+            <h1 style="background-color: #23869C; width:fit-content; padding:0 10rem; font-weight:bold;">Currently Available Anouncements</h1>
+        </div>
+
+        <div th:if="${er}" class = "alert alert-danger text-center">
+            [[${er}]]
+        </div>
+        <div th:if="${message}" class = "alert alert-success text-center">
+            [[${message}]]
+        </div>
+        <div th:if="${success}" class = "alert alert-success text-center">
+            [[${success}]]
+        </div>
+
+        <div th:if="${anouncementlist.isEmpty()}" >
+            <h1 style="color: #23869C;">No Anouncements Currently</h1>
+       </div>
+    <div th:each=" anounce : ${anouncementlist} " align="center" style="margin-top: 3rem;">
+        <div class="card" style="width: min(80vw, 800px); text-align:start; ">
+            <h5 class="card-header" style="color:#23869C">Title: [[${anounce.getSubject}]] | <span class="text-muted">[[${anounce.getSentDate}]]</span> </h5>
+            <td></td>
+            <div class="card-body">
+                <p class="card-text">[[${anounce.getMessage}]]</p>
+            </div>
+        </div>
+    </div>
+
+    <div th:if="${totalPages > 1}" style=" margin-top:2rem;">
+        <div class="" style="display: inline;">
+            Total Rows: [[${totalItems}]]
+        </div>
+        <div class="container" style="display: flex; align-items:center; justify-content:center;">
+            
+
+            <div class="" style="display: inline;">
+                <a th:if="${currentPage > 1}" th:href="@{'/cust/anouncements/' + ${1}}" class="btn btn-outline-info disabled" role="button">Start</a>
+                <span th:unless="${currentPage > 1}" class="btn btn-outline-secondary disabled" role="button">Start</span>
+            </div>
+            <div class="" style="display: inline-block;">
+                <a th:if="${currentPage > 1}" th:href="@{'/cust/anouncements/' + ${currentPage - 1}}" class = "btn btn-outline-info">Previous</a>
+                <span th:unless="${currentPage > 1}" class="btn btn-outline-secondary disabled" role="button">Previous</span>
+            </div>
+
+            <div class="" style="display: inline-block;">
+                <span th:each=" i: ${#numbers.sequence(1,totalPages)}">
+                    <a th:if="${currentPage != i}" th:href="@{'/cust/anouncements/' +${i}}" class = "btn btn-outline-info">[[${i}]]</a>
+                    <span th:unless="${currentPage != i}" class="btn btn-primary disabled" role="button">[[${i}]]</span>
+                </span>
+            </div>
+            <div class="" style="display: inline-block;">
+                <a th:if="${currentPage < totalPages}" th:href="@{'/cust/anouncements/' + ${currentPage+1}}" class = "btn btn-outline-info">Next</a>
+                <span th:unless="${currentPage < totalPages}" class="btn btn-outline-secondary disabled" role="button">Next</span>
+            </div>
+            <div class="" style="display: inline-block;">
+                <a th:if="${currentPage < totalPages}" th:href="@{'/cust/anouncements/' + ${totalPages}}" class = "btn btn-outline-info">Last</a>
+                <span th:unless="${currentPage < totalPages}" class="btn btn-outline-secondary disabled" role="button">Last</span>
+            </div>
+        </div>
+    </div>
+
+    </main>
+
+    <div th:replace="fragments/footer.html :: footer"></div>
+    <th:block th:replace="fragments/script :: script" />
+
+</body>
+
+
+
+</html>

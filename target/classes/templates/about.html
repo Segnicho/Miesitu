@@ -1,0 +1,60 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+  <head>
+    <link th:href="@{/css/about.css}" rel="stylesheet" />
+    
+    <th:block  th:include="fragments/head.html :: head"/>
+    <title>About Us</title>
+
+
+</head>
+<body style="overflow-x: hidden; width:100vw;">
+    <div th:replace="fragments/nav.html :: navbar"></div>
+
+    <section id="about" class="section-padding about-section" style="margin:5vh 0;">
+        <div class="container">
+            <div class="row" >
+                <div class="col-sm-8">
+                    <div class="section_title">
+                        <h2 class="section_main_title">WE ARE <strong>MIESITU</strong></h2>
+                    </div>
+                    <div class="about-item">
+                        <p>
+                            Miesitu is a web app that tries to address one of the local problem of our society. 
+                            It is meant to solve the problem in 
+                            sugar and oil distribution at district level by digitalizing the process.
+                        </br>
+                            Miesitu allows it's customers to get Sugar and Oil,
+                             and information that is concerned with Sugar and Oil.
+                            information like pricing, arrival time
+                             brand and the deadline/final date.
+                            </p>
+                        
+                    </div>
+                   
+                </div>
+    
+                
+                <div class="col-sm-3  ">
+                    <div class="about-box">
+                        <img th:src="@{/images/logo.png}" class="img-fluid" alt="Responsive image">
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+ 
+<script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js}" 
+integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p}" 
+crossorigin="anonymous"></script>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+<div th:replace="fragments/footer.html :: footer"></div>
+
+</html>
